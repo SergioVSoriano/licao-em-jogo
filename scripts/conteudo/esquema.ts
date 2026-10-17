@@ -148,7 +148,7 @@ export const Personagens = z.object({ personagens: z.array(z.object({ id: texto,
 export const LivrosBiblicos = z.object({ livros: z.array(z.object({ nome: texto, abrev: z.array(texto) }).strict()).length(66) }).strict()
 
 /* ───────── catalogo.yaml ───────── */
-const ItemCatalogo = { titulo: texto, datas: z.string().optional(), textoBase: z.string().optional(), pacote: z.string().optional() }
+const ItemCatalogo = { titulo: texto, emoji: z.string().optional(), datas: z.string().optional(), textoBase: z.string().optional(), pacote: z.string().optional() }
 export const Catalogo = z
   .object({
     padrao: texto,
@@ -158,7 +158,15 @@ export const Catalogo = z
           publico: texto,
           titulo: texto,
           trimestres: z.array(
-            z.object({ id: texto, titulo: texto, semanas: z.array(z.object({ n: z.number().int().positive(), ...ItemCatalogo }).strict()) }).strict(),
+            z
+              .object({
+                id: texto,
+                titulo: texto,
+                /** sábado da semana 1 (AAAA-MM-DD): o app calcula as datas e destaca a semana atual */
+                inicio: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'use AAAA-MM-DD').optional(),
+                semanas: z.array(z.object({ n: z.number().int().positive(), ...ItemCatalogo }).strict()),
+              })
+              .strict(),
           ),
         })
         .strict(),
@@ -169,6 +177,7 @@ export const Catalogo = z
         .object({
           id: texto,
           titulo: texto,
+          emoji: z.string().optional(),
           autor: texto,
           capitulos: z.array(z.object({ n: z.number().int().positive(), ...ItemCatalogo }).strict()),
         })

@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
-import { useDefaultPack } from '../content'
+import { modeOfPack, useCatalog, usePackOrDefault } from '../content'
 import type { ContentPack } from '../content/types'
 import { createSession } from '../engine/session'
-import { PRESETS, coverage, defaultRounds, estimateGame, estimatePlan, fillPlan, fitPlan, hasContent, maxRounds, suggestPlan, FIXED_MINUTES } from '../engine/planner'
+import { PRESETS, PROFILES, coverage, defaultRounds, estimateGame, estimatePlan, fillPlan, fitPlan, hasContent, maxRounds, suggestPlan, FIXED_MINUTES } from '../engine/planner'
 import type { Depth, PlanItem } from '../engine/types'
 import { GAMES, GAME_BY_ID, KIND_LABEL } from '../games'
 import { net } from '../net'
@@ -24,19 +24,32 @@ const fmt = (m: number) => {
   return ss ? `${mm}min${String(ss).padStart(2, '0')}` : `${mm} min`
 }
 
-export function Planner() {
-  const { pack, error } = useDefaultPack()
+const KIND_ICON: Record<ContentPack['kind'], string> = { licao: '📖', tema: '🌿', livro: '📚' }
+
+export function Planner({ packId }: { packId?: string }) {
+  const { pack, error } = usePackOrDefault(packId)
   if (!pack) return <PackLoading error={error} />
   return <PlannerView pack={pack} />
 }
 
+/** Roteiro inicial: o "Recomendado" com o que o pacote tem; se sobrar pouco, a sugestão automática. */
+function initialPlan(pack: ContentPack, n: number, depth: Depth, minutes: number): PlanItem[] {
+  const items = PRESETS[0].games.filter((id) => n >= GAME_BY_ID[id].minPlayers && hasContent(GAME_BY_ID[id], pack)).map((id) => ({ gameId: id, rounds: defaultRounds(GAME_BY_ID[id], pack, n) }))
+  if (items.length >= 3) return fitPlan(items, GAME_BY_ID, n, depth, minutes).plan
+  return fillPlan(suggestPlan(GAMES, pack, n, depth, minutes), GAME_BY_ID, pack, n, depth, minutes)
+}
+
 function PlannerView({ pack }: { pack: ContentPack }) {
-  const preset = PRESETS[0]
-  const [minutes, setMinutes] = useState(preset.minutes)
-  const [n, setN] = useState(15)
-  const [depth, setDepth] = useState<Depth>(preset.depth)
+  const { catalog } = useCatalog()
+  const mode = catalog ? modeOfPack(catalog, pack.id) : null
+  const start = PROFILES[0]
+  const [profile, setProfile] = useState(start.id)
+  const [minutes, setMinutes] = useState(start.minutes)
+  const [n, setN] = useState(start.players)
+  const [depth, setDepth] = useState<Depth>(start.depth)
   const [rewards, setRewards] = useState(true)
-  const [plan, setPlan] = useState<PlanItem[]>(() => preset.games.map((id) => ({ gameId: id, rounds: GAME_BY_ID[id].rounds.default(15) })))
+  const [noNegative, setNoNegative] = useState(!!start.noNegative)
+  const [plan, setPlan] = useState<PlanItem[]>(() => initialPlan(pack, start.players, start.depth, start.minutes))
   const [notice, setNotice] = useState<string[]>([])
   const [info, setInfo] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
@@ -63,9 +76,23 @@ function PlannerView({ pack }: { pack: ContentPack }) {
   }
 
   function auto() {
-    const s = suggestPlan(GAMES, pack, n, depth, minutes)
+    const avoid = PROFILES.find((p) => p.id === profile)?.avoid
+    const s = suggestPlan(GAMES, pack, n, depth, minutes, avoid)
     setPlan(fillPlan(s, GAME_BY_ID, pack, n, depth, minutes))
-    setNotice(['✨ Montei um roteiro que cobre o máximo de dias da lição e cabe no tempo.'])
+    setNotice(['✨ Montei um roteiro que cobre o máximo de partes do conteúdo e cabe no tempo.'])
+  }
+
+  function chooseProfile(id: string) {
+    const p = PROFILES.find((x) => x.id === id)!
+    setProfile(p.id)
+    setMinutes(p.minutes)
+    setDepth(p.depth)
+    setN(p.players)
+    setNoNegative(!!p.noNegative)
+    const s = suggestPlan(GAMES, pack, p.players, p.depth, p.minutes, p.avoid)
+    setPlan(fillPlan(s, GAME_BY_ID, pack, p.players, p.depth, p.minutes))
+    setForce(false)
+    setNotice([`${p.emoji} ${p.name}: ${p.minutes} min, conversa ${DEPTHS.find((d) => d.id === p.depth)!.label.toLowerCase()}, cerca de ${p.players} pessoas${p.noNegative ? ', sem pontos negativos' : ''}. Montei um roteiro para esse grupo.`])
   }
 
   function toggle(id: string) {
@@ -94,7 +121,7 @@ function PlannerView({ pack }: { pack: ContentPack }) {
     setBusy(true)
     try {
       const { pin, host } = await net.createRoom()
-      const s = createSession(pin, pack.id, { minutes, depth, expectedPlayers: n, rewards, sound: true }, plan, host.serverNow())
+      const s = createSession(pin, pack.id, { minutes, depth, expectedPlayers: n, rewards, sound: true, profile, noNegative }, plan, host.serverNow())
       host.saveSnapshot(JSON.stringify(s))
       hostCache.set(pin, { host, state: s })
       navigate(`/host/${pin}`)
@@ -131,13 +158,36 @@ function PlannerView({ pack }: { pack: ContentPack }) {
         <div className="flex flex-col gap-5">
           {/* Lição */}
           <div className="card flex items-center gap-4 p-4">
-            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[var(--purpura)] text-3xl">📖</div>
-            <div className="flex-1">
-              <div className="text-sm font-bold text-[var(--muted)]">
-                {pack.subtitle} · {pack.dates}
-              </div>
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[var(--purpura)] text-3xl">{KIND_ICON[pack.kind]}</div>
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-bold text-[var(--muted)]">{[pack.subtitle, pack.dates].filter(Boolean).join(' · ')}</div>
               <div className="font-display text-2xl font-black">{pack.title}</div>
-              <div className="text-sm">Texto da semana: {pack.keyText}</div>
+              <div className="text-sm">
+                {pack.kind === 'licao' ? 'Texto da semana' : 'Texto-base'}: {pack.keyText}
+              </div>
+            </div>
+            <Link to={`/escolher/${mode ?? 'licao'}`} className="shrink-0 text-sm font-extrabold text-[var(--azul)] hover:underline">
+              Trocar ↺
+            </Link>
+          </div>
+
+          {/* Perfil do grupo */}
+          <div>
+            <div className="mb-2 font-display font-black">Para quem é a partida?</div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {PROFILES.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => chooseProfile(p.id)}
+                  aria-pressed={profile === p.id}
+                  className="card flex flex-col items-start gap-0.5 p-3 text-left"
+                  style={{ borderColor: profile === p.id ? 'var(--purpura)' : undefined, background: profile === p.id ? 'rgba(123,63,228,.08)' : undefined }}
+                >
+                  <span className="text-2xl">{p.emoji}</span>
+                  <span className="font-display font-black leading-tight">{p.name}</span>
+                  <span className="text-xs text-[var(--muted)]">{p.description}</span>
+                </button>
+              ))}
             </div>
           </div>
 
@@ -146,7 +196,7 @@ function PlannerView({ pack }: { pack: ContentPack }) {
             <div>
               <div className="mb-1 font-display font-black">⏱️ Tempo de jogo</div>
               <div className="font-display text-4xl font-black text-[var(--purpura)]">{minutes} min</div>
-              <input type="range" min={10} max={60} step={5} value={minutes} onChange={(e) => {
+              <input type="range" min={10} max={90} step={5} value={minutes} onChange={(e) => {
                   const m = Number(e.target.value)
                   setMinutes(m)
                   apply(plan, undefined, { mins: m })
@@ -342,6 +392,10 @@ function PlannerView({ pack }: { pack: ContentPack }) {
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" checked={rewards} onChange={(e) => setRewards(e.target.checked)} />
               🃏 Cartas de recompensa para o 1º lugar
+            </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" checked={noNegative} onChange={(e) => setNoNegative(e.target.checked)} />
+              🛡️ Sem pontos negativos (ninguém perde pontos ao errar)
             </label>
             {status === 'over' && (
               <label className="flex items-center gap-2 text-xs text-[var(--muted)]">

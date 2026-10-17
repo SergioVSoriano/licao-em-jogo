@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const BASE = process.env.BASE ?? 'http://localhost:5173'
-const OUT = join(ROOT, 'docs', 'testes')
+const OUT = process.env.OUT ?? join(ROOT, 'docs', 'testes')
 const PRINTS = join(OUT, 'prints')
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const t0 = Date.now()

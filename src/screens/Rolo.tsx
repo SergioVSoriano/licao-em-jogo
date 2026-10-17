@@ -1,4 +1,4 @@
-import { sectionLabel, useDefaultPack } from '../content'
+import { sectionLabel, usePackOrDefault } from '../content'
 import type { ContentPack } from '../content/types'
 import { Link } from '../router'
 import { Logo, PackLoading } from '../ui/kit'
@@ -37,8 +37,8 @@ export function RoloContent({ pack }: { pack: ContentPack }) {
   )
 }
 
-export function Rolo() {
-  const { pack, error } = useDefaultPack()
+export function Rolo({ packId }: { packId?: string }) {
+  const { pack, error } = usePackOrDefault(packId)
   if (!pack) return <PackLoading error={error} />
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-5 px-4 py-6">

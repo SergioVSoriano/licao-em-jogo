@@ -133,6 +133,7 @@ export interface ContentPack {
 export interface CatalogItem {
   id: string
   title: string
+  emoji?: string
   dates?: string
   keyText?: string
   /** null = ainda não publicado (aparece travado) */
@@ -141,8 +142,8 @@ export interface CatalogItem {
 
 export interface Catalog {
   defaultPack: string
-  lessons: { audience: string; label: string; quarters: { id: string; label: string; weeks: (CatalogItem & { n: number })[] }[] }[]
+  lessons: { audience: string; label: string; quarters: { id: string; label: string; weeks: (CatalogItem & { n: number; start?: string; end?: string })[] }[] }[]
   themes: { category: string; items: CatalogItem[] }[]
-  books: { id: string; title: string; author: string; chapters: (CatalogItem & { n: number })[] }[]
+  books: { id: string; title: string; emoji?: string; author: string; chapters: (CatalogItem & { n: number })[] }[]
   packs: Record<string, { version: string; title: string; kind: PackKind }>
 }

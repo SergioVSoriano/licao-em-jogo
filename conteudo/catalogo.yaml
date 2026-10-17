@@ -1,4 +1,5 @@
 # Catálogo: a árvore do menu (Lição / Temas / Livros).
+# Campos de cada item: titulo, emoji (opcional), datas, textoBase, pacote.
 # Uma entrada SEM "pacote" aparece travada (🔒 em preparo). Para destravar, publique o pacote e
 # escreva o id dele em "pacote".
 
@@ -10,6 +11,7 @@ licao:
     trimestres:
       - id: 2026-t4
         titulo: 4º trimestre de 2026
+        inicio: 2026-09-26   # sábado da semana 1: o app calcula as datas e destaca a semana atual
         semanas:
           - { n: 1, titulo: O Criador fala, datas: 26 de setembro a 2 de outubro, textoBase: Gênesis 3 }
           - { n: 2, titulo: O chamado do profeta, datas: 3 a 9 de outubro, textoBase: Isaías 6 }
@@ -28,19 +30,20 @@ licao:
 temas:
   - categoria: Origens
     itens:
-      - { id: tema-criacao, titulo: A Criação, textoBase: Gênesis 1–2 }
-      - { id: tema-noe, titulo: Noé e o dilúvio, textoBase: Gênesis 6–9 }
+      - { id: tema-criacao, emoji: 🌍, titulo: A Criação, textoBase: Gênesis 1–2 }
+      - { id: tema-noe, emoji: 🌈, titulo: Noé e o dilúvio, textoBase: Gênesis 6–9 }
   - categoria: O santuário
     itens:
-      - { id: tema-santuario, titulo: O santuário, textoBase: Êxodo 25–40 }
+      - { id: tema-santuario, emoji: ⛺, titulo: O santuário, textoBase: Êxodo 25–40 }
   - categoria: Reis e profetas
     itens:
-      - { id: tema-elias, titulo: Elias, textoBase: 1 Reis 17 – 2 Reis 2 }
-      - { id: tema-daniel, titulo: Daniel, textoBase: Daniel 1–6 }
+      - { id: tema-elias, emoji: 🔥, titulo: Elias, textoBase: 1 Reis 17 – 2 Reis 2 }
+      - { id: tema-daniel, emoji: 🦁, titulo: Daniel, textoBase: Daniel 1–6 }
 
 livros:
   - id: egw-profetas-e-reis
     titulo: Profetas e Reis
+    emoji: 📜
     autor: Ellen G. White
     capitulos:
       - { n: 14, titulo: No espírito e virtude de Elias }

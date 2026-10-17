@@ -80,6 +80,7 @@ export function makeCtx(s: SessionState, now: number): GameCtx {
     rng: Math.random,
     effects: s.effects,
     forcedSpotlight: s.forcedSpotlight,
+    noNegative: !!s.settings.noNegative,
   }
 }
 
@@ -122,7 +123,7 @@ function finishGame(s: SessionState, now: number) {
   const xp: Record<PlayerId, number> = {}
   for (const id of parts) {
     let v = Math.round(raw[id] ?? 0)
-    if (v < 0 && s.effects[id]?.shield) v = 0
+    if (v < 0 && (s.effects[id]?.shield || s.settings.noNegative)) v = 0
     xp[id] = v
   }
   const nonNeg = parts.map((id) => xp[id]).filter((v) => v >= 0)

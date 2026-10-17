@@ -91,12 +91,12 @@ export function fillPlan(plan: PlanItem[], games: Record<string, GameDef>, pack:
 }
 
 /** Greedy suggestion: cover lesson days, vary formats, warm-up first, application last. */
-export function suggestPlan(all: GameDef[], pack: ContentPack, n: number, depth: Depth, minutes: number): PlanItem[] {
+export function suggestPlan(all: GameDef[], pack: ContentPack, n: number, depth: Depth, minutes: number, avoid: string[] = []): PlanItem[] {
   const chosen: GameDef[] = []
   const days = new Set<string>()
   const kinds = new Set<string>()
   let total = FIXED_MINUTES
-  const available = all.filter((g) => n >= g.minPlayers && hasContent(g, pack))
+  const available = all.filter((g) => n >= g.minPlayers && hasContent(g, pack) && !avoid.includes(g.id))
   for (;;) {
     let best: GameDef | null = null
     let bestScore = -Infinity
@@ -156,4 +156,26 @@ export const PRESETS: Preset[] = [
   { id: 'relampago', name: 'Relâmpago', emoji: '⚡', minutes: 20, depth: 'leve', description: 'Rápido e animado', games: ['verdade', 'nuvem', 'duelo'] },
   { id: 'festa', name: 'Festa', emoji: '🎉', minutes: 30, depth: 'equilibrado', description: 'Os mais divertidos', games: ['nuvem', 'acrostico', 'sonho', 'sortes'] },
   { id: 'debate', name: 'Debate profundo', emoji: '🧠', minutes: 40, depth: 'profundo', description: 'Mais conversa e aplicação', games: ['linha', 'nuvem', 'fruto', 'voz'] },
+]
+
+/** Para quem é a partida: só muda os valores iniciais do planejador. */
+export interface GroupProfile {
+  id: string
+  name: string
+  emoji: string
+  description: string
+  minutes: number
+  depth: Depth
+  players: number
+  /** ninguém fica com pontos negativos */
+  noNegative?: boolean
+  /** jogos que a sugestão automática evita para este grupo */
+  avoid?: string[]
+}
+
+export const PROFILES: GroupProfile[] = [
+  { id: 'classe', name: 'Classe da Escola Sabatina', emoji: '⛪', description: '30 a 40 min, no ritmo da classe', minutes: 35, depth: 'equilibrado', players: 15 },
+  { id: 'pg', name: 'Pequeno Grupo (PG)', emoji: '🏠', description: 'Mais tempo de conversa em cada jogo', minutes: 50, depth: 'profundo', players: 10 },
+  { id: 'familia', name: 'Família em casa', emoji: '👨‍👩‍👧', description: 'Curto, leve e sem pontos negativos', minutes: 25, depth: 'leve', players: 5, noNegative: true, avoid: ['sonho', 'voz'] },
+  { id: 'evento', name: 'Evento ou retiro', emoji: '🎪', description: 'Turma grande, times e jogos de palco', minutes: 75, depth: 'equilibrado', players: 30 },
 ]

@@ -34,6 +34,10 @@ export interface Settings {
   expectedPlayers: number
   rewards: boolean
   sound: boolean
+  /** perfil do grupo escolhido no planejador (classe, pg, familia, evento) */
+  profile?: string
+  /** ninguém termina um jogo com pontos negativos (perfil Família) */
+  noNegative?: boolean
 }
 
 export interface PlanItem {
@@ -57,6 +61,8 @@ export interface GameCtx {
   rng: () => number
   effects: Record<PlayerId, Effects>
   forcedSpotlight?: PlayerId
+  /** a sessão não permite pontos negativos (perfil Família) */
+  noNegative?: boolean
 }
 
 export interface Control {

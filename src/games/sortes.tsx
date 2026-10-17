@@ -67,6 +67,7 @@ function resolve(s: S, which: 1 | 2, opt: number | null, ctx: any) {
     g = result === 'ok' ? 3 * X : result === 'wrong' ? -1 * X : 0
     s.second = { opt, result }
   }
+  if (ctx.noNegative) g = Math.max(0, g)
   addXp(s.xp, pid, g)
   s.note[pid] = `${g >= 0 ? '+' : ''}${g}`
   if (which === 1 && result !== 'ok') {

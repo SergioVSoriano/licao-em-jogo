@@ -38,28 +38,45 @@
 
 ## O que é
 
-**Lição em Jogo** transforma a lição da Escola Sabatina de jovens em uma partida para a turma toda, no estilo Kahoot com a leveza do Duolingo:
+**Lição em Jogo** transforma a lição da Escola Sabatina, um tema bíblico ou o capítulo de um livro em uma partida para o grupo todo, no estilo Kahoot com a leveza do Duolingo. Serve para a classe, o Pequeno Grupo (PG), a família em casa ou um evento.
+
+- 📚 **Três modos**: **Lição da Escola Sabatina** (trimestre → semana), **Temas bíblicos** (Criação, Noé, Santuário…) e **Livros** (capítulos de livros como os de Ellen G. White). O que ainda não foi preparado aparece 🔒 *em preparo*.
 
 - 📺 **Telão** (TV, projetor ou só o notebook): mostra as perguntas, o mapa, o placar e as histórias da lição.
 - 📱 **Celular de cada pessoa**: vira o controle. Entra pelo QR Code ou pelo PIN, sem cadastro e sem instalar nada.
 - 🧑‍🏫 **Facilitador (professor)**: só conduz. Avança as telas, julga respostas faladas e puxa a conversa. Não joga.
 - 🗺️ **Mapa do santuário**: cada jogo faz o grupo avançar do Átrio até o Santíssimo.
 - 💬 **Momento Revelação**: depois de cada jogo, uma enquete anônima e perguntas para conversar sobre o texto bíblico.
-- ⏱️ **Planejador**: escolhe os jogos e ajusta as rodadas para a lição caber no tempo (30 a 40 minutos).
+- ⏱️ **Planejador**: perfis para cada grupo (classe, PG, família, evento), escolhe os jogos e ajusta as rodadas para caber no tempo.
 
-O primeiro pacote de conteúdo é a **Lição 3, "Profetas do AT"** (10 a 16 de outubro de 2026, texto-base 1 Reis 19:1-16), para jovens de 15 a 30 anos, com cerca de 15 pessoas. O jogo funciona de 1 a 30 jogadores.
+O primeiro conteúdo publicado é a **Lição 3, "Profetas do AT"** (Jovens, 10 a 16 de outubro de 2026, texto-base 1 Reis 19:1-16). As outras semanas do trimestre, os temas e os livros vão sendo liberados conforme são preparados por um curador ([como funciona a curadoria](conteudo/REGRAS.md)). O jogo funciona de 1 a 30 jogadores.
 
 ---
 
 ## Como a plataforma funciona
 
-### 1. O facilitador monta a aula
+### 1. O facilitador escolhe o conteúdo
 
-No **Planejador**, o facilitador escolhe o tempo e a profundidade (leve, equilibrado ou profundo). A plataforma sugere os jogos, reduz as rodadas para caber no tempo e **bloqueia** o que passaria do limite.
+No Início, o facilitador escolhe o modo. Na **Lição**, as 13 semanas do trimestre aparecem com a **semana atual em destaque**; se ela ainda estiver em preparo, o atalho sugere a última lição pronta. Em **Temas** e **Livros**, o mesmo: o que está pronto tem o botão **Jogar**, o resto aparece travado.
+
+![Escolha do conteúdo: semanas do trimestre com a semana atual em destaque](docs/img/escolher.jpg)
+
+### 2. E monta a partida
+
+No **Planejador**, o facilitador diz **para quem é a partida**:
+
+| Perfil | Tempo | Conversa | O que muda |
+| --- | --- | --- | --- |
+| ⛪ Classe da Escola Sabatina | 35 min | Equilibrada | Como na classe |
+| 🏠 Pequeno Grupo (PG) | 50 min | Profunda | Mais tempo no Momento Revelação |
+| 👨‍👩‍👧 Família em casa | 25 min | Leve | Sem pontos negativos e sem os jogos mais complexos |
+| 🎪 Evento ou retiro | 75 min | Equilibrada | Turma grande, times e jogos de palco |
+
+Depois ajusta o tempo e a profundidade se quiser. A plataforma sugere os jogos, reduz as rodadas para caber no tempo, **trava os jogos que o conteúdo ainda não tem** e **bloqueia** o que passaria do limite.
 
 ![Planejador de tempo](docs/img/planejador.jpg)
 
-### 2. A turma entra pelo celular
+### 3. A turma entra pelo celular
 
 O telão mostra o QR Code e o PIN da sala. Cada pessoa digita o nome, escolhe um personagem bíblico e já está dentro. Quem prefere não aparecer marca "Prefiro não ser sorteado" e joga como plateia nos jogos de holofote.
 
@@ -67,7 +84,7 @@ O telão mostra o QR Code e o PIN da sala. Cada pessoa digita o nome, escolhe um
 
 ![Sala de espera no telão, com QR Code, PIN e roteiro](docs/img/lobby.jpg)
 
-### 3. A partida: o ciclo de cada jogo
+### 4. A partida: o ciclo de cada jogo
 
 Todo jogo segue o mesmo ritmo, então a turma aprende uma vez e já sabe jogar os doze.
 
@@ -87,13 +104,13 @@ Cada jogo tem uma tela de **"Como jogar"** com os passos ilustrados, no telão e
 
 ![Abertura da partida](docs/img/abertura.jpg)
 
-### 4. Momento Revelação
+### 5. Momento Revelação
 
 Depois de cada jogo, o telão mostra o que aquele jogo tem a ver com a lição: o versículo, **"Na lição"**, **"Na Bíblia"** (exemplos como Hulda, Débora e Ellen White), uma ideia-síntese e uma pergunta para a turma discutir. Os celulares respondem a uma **enquete anônima** e quem quer falar levanta a mão virtual.
 
 ![Momento Revelação no telão, no celular e no controle do facilitador](docs/img/revelacao.jpg)
 
-### 5. Mapa, recompensas e pódio
+### 6. Mapa, recompensas e pódio
 
 ![Mapa do santuário com o grupo caminhando e o Pão e Água](docs/img/mapa.jpg)
 
@@ -101,13 +118,13 @@ O primeiro lugar de cada jogo ganha uma **carta de recompensa** (Voz de Comando,
 
 ![Pódio final no telão e no celular](docs/img/podio.jpg)
 
-### 6. Rolo da Lição
+### 7. Rolo da Lição
 
 Ao terminar, a turma recebe o **Rolo da Lição**: um resumo de cada verdade da semana com exemplos bíblicos e uma pergunta para levar para casa. Dá para **baixar como imagem** (formato de story, 1080×1920) e compartilhar.
 
 ![Rolo da Lição no telão](docs/img/rolo.jpg)
 
-### 7. O controle do facilitador
+### 8. O controle do facilitador
 
 O facilitador pode usar o próprio celular como controle (botão 📲 no telão): avançar telas, julgar ✓/✗ nos jogos falados e ler notas de condução. Atalhos no telão: `Espaço` avança · `1`/`2` acerto/erro · `F` tela cheia · `M` som.
 
@@ -408,9 +425,13 @@ Para atualizar depois: `npx vercel@latest deploy --prod`.
 O script [`scripts/simular-partida.mjs`](scripts/simular-partida.mjs) abre o Microsoft Edge em modo invisível com 6 abas (1 telão, 4 celulares e o controle do facilitador, mais 3 robôs) e **joga os 12 jogos agindo em cada papel**, tirando prints do telão, do celular e do controle.
 
 ```bash
-npm run dev       # em um terminal
-npm run simular   # em outro (cerca de 20 minutos)
+# em um terminal: servidor em MODO DEMONSTRAÇÃO (a simulação lê o estado do jogo no navegador)
+VITE_FIREBASE_API_KEY= VITE_FIREBASE_DATABASE_URL= npx vite --port 5174
+# em outro (cerca de 20 minutos); OUT=pasta grava os prints fora de docs/testes
+BASE=http://localhost:5174 npm run simular
 ```
+
+Sem o Firebase configurado, um `npm run dev` comum já roda em modo demonstração e `npm run simular` funciona direto.
 
 O resultado é o relatório [`docs/testes/RELATORIO.md`](docs/testes/RELATORIO.md), com cerca de 170 prints em [`docs/testes/prints/`](docs/testes/prints/). Na última execução: **12 de 12 jogos concluídos e nenhum erro de JavaScript**.
 

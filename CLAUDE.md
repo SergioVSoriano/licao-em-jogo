@@ -20,7 +20,9 @@ npm run build               # typecheck + vite build
 npm run conteudo:validar    # valida conteudo/ sem gerar nada
 npm run conteudo:construir  # valida e gera public/conteudo/
 npm run testar:online       # telão + 3 celulares isolados (BASE=http://localhost:5173 ou a URL do site)
-npm run simular             # partida completa dos 12 jogos com prints (~20 min, servidor rodando)
+npm run simular             # 12 jogos com prints (~20 min). Precisa de servidor em MODO DEMONSTRAÇÃO:
+                            #   VITE_FIREBASE_API_KEY= VITE_FIREBASE_DATABASE_URL= npx vite --port 5174
+                            #   BASE=http://localhost:5174 OUT=<pasta> npm run simular  (OUT evita sobrescrever docs/testes)
 ```
 
 No Windows/PowerShell use `npx.cmd`/`npm.cmd` se a política de scripts bloquear `npx`.

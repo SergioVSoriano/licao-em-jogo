@@ -364,6 +364,7 @@ function Intro({ pub, list, pack }: PhaseProps) {
         <div className="text-[1.45em]">
           <HowToCard g={g} dark />
         </div>
+        {pub.settings.noNegative && <div className="font-bold text-[var(--ouro)]">🛡️ Nesta partida ninguém perde pontos: onde a regra diz "−", vale 0.</div>}
       </div>
       <div className="flex flex-col items-center justify-center gap-[1em] text-center">
         <div className="grid h-[7em] w-[7em] place-items-center rounded-[1.6em]" style={{ background: g.accent, boxShadow: '0 0.3em 0 rgba(0,0,0,.25)' }}>

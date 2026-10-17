@@ -224,11 +224,19 @@ function paraApp(b: TPacoteBase, j: TJogos, r: TReflexoes, estacoes: Estacao[], 
   return { ...semVersao, version }
 }
 
+/** Sábado de início e sexta de fim da semana n, a partir do sábado da semana 1. */
+function semana(inicio: string, n: number) {
+  const d = new Date(`${inicio}T12:00:00Z`)
+  const start = new Date(d.getTime() + (n - 1) * 7 * 86400000)
+  const end = new Date(start.getTime() + 6 * 86400000)
+  return { start: start.toISOString().slice(0, 10), end: end.toISOString().slice(0, 10) }
+}
+
 function montarCatalogo(c: TCatalogo, pacotes: ContentPack[], erros: string[], avisos: string[]): Catalog {
   const publicados = new Map(pacotes.filter((p) => p.status === 'publicado').map((p) => [p.id, p]))
   const todos = new Map(pacotes.map((p) => [p.id, p]))
   const usados = new Set<string>()
-  const item = (id: string, x: { titulo: string; datas?: string; textoBase?: string; pacote?: string }): CatalogItem => {
+  const item = (id: string, x: { titulo: string; emoji?: string; datas?: string; textoBase?: string; pacote?: string }): CatalogItem => {
     let pack: string | null = null
     if (x.pacote) {
       usados.add(x.pacote)
@@ -236,17 +244,21 @@ function montarCatalogo(c: TCatalogo, pacotes: ContentPack[], erros: string[], a
       else if (todos.has(x.pacote)) avisos.push(`catalogo.yaml: "${x.titulo}" aponta para ${x.pacote}, que ainda é rascunho (fica travado)`)
       else erros.push(`catalogo.yaml: "${x.titulo}" aponta para o pacote "${x.pacote}", que não existe ou está com erro`)
     }
-    return { id, title: x.titulo, ...(x.datas ? { dates: x.datas } : {}), ...(x.textoBase ? { keyText: x.textoBase } : {}), pack }
+    return { id, title: x.titulo, ...(x.emoji ? { emoji: x.emoji } : {}), ...(x.datas ? { dates: x.datas } : {}), ...(x.textoBase ? { keyText: x.textoBase } : {}), pack }
   }
   const cat: Catalog = {
     defaultPack: c.padrao,
     lessons: c.licao.map((l) => ({
       audience: l.publico,
       label: l.titulo,
-      quarters: l.trimestres.map((t) => ({ id: t.id, label: t.titulo, weeks: t.semanas.map((s) => ({ n: s.n, ...item(`${t.id}-${l.publico}-s${s.n}`, s) })) })),
+      quarters: l.trimestres.map((t) => ({
+        id: t.id,
+        label: t.titulo,
+        weeks: t.semanas.map((s) => ({ n: s.n, ...item(`${t.id}-${l.publico}-s${s.n}`, s), ...(t.inicio ? semana(t.inicio, s.n) : {}) })),
+      })),
     })),
     themes: c.temas.map((t) => ({ category: t.categoria, items: t.itens.map((i) => item(i.id, i)) })),
-    books: c.livros.map((b) => ({ id: b.id, title: b.titulo, author: b.autor, chapters: b.capitulos.map((ch) => ({ n: ch.n, ...item(`${b.id}-c${ch.n}`, ch) })) })),
+    books: c.livros.map((b) => ({ id: b.id, title: b.titulo, ...(b.emoji ? { emoji: b.emoji } : {}), author: b.autor, chapters: b.capitulos.map((ch) => ({ n: ch.n, ...item(`${b.id}-c${ch.n}`, ch) })) })),
     packs: Object.fromEntries([...publicados.values()].map((p) => [p.id, { version: p.version, title: p.title, kind: p.kind }])),
   }
   if (!publicados.has(c.padrao)) erros.push(`catalogo.yaml: "padrao" (${c.padrao}) precisa ser um pacote publicado`)
