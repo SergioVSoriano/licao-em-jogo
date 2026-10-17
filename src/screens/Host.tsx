@@ -2,8 +2,9 @@ import confetti from 'canvas-confetti'
 import { QRCodeSVG } from 'qrcode.react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getPack } from '../content'
+import { DAYS } from '../content/types'
 import { REVEAL_SECONDS } from '../engine/planner'
-import { REWARDS, finalRanking } from '../engine/session'
+import { REWARDS, currentRevelation, finalRanking } from '../engine/session'
 import type { Control, Player, PublicState } from '../engine/types'
 import { GAME_BY_ID } from '../games'
 import { isDemo } from '../net'
@@ -11,9 +12,10 @@ import { joinUrl, navigate } from '../router'
 import { Avatar } from '../ui/avatars'
 import { HowToCard } from '../ui/HowToCard'
 import { Btn, Kbd, Logo, Lume, Pill, Timer, useNow } from '../ui/kit'
-import { SanctuaryMap, stationsReached } from '../ui/SanctuaryMap'
+import { FitMap, stationsReached } from '../ui/SanctuaryMap'
 import { isMuted, setMuted, sfx } from '../ui/sound'
 import { useHost } from './useHost'
+import { TruthCard } from '../ui/RoloPoster'
 
 export function Host({ pin }: { pin: string }) {
   const { pub, dispatch, error, clock, judgeKey } = useHost(pin)
@@ -322,18 +324,21 @@ function Opening({ pub, list, pack }: PhaseProps) {
       <div className="grid grid-cols-3 gap-[1em]">
         {pack.comic.map((t, i) => (
           <div key={i} className="anim-pop flex flex-col items-center rounded-[1.2em] bg-white p-[0.8em] text-[var(--noite)]" style={{ animationDelay: `${i * 0.5}s` }}>
-            <Avatar id="elias" size="6em" mood={moods[i]} />
+            <div className="relative">
+              <Avatar id="elias" size="4.5em" mood={moods[i]} showItem={false} />
+              <span className="absolute -right-[0.6em] -top-[0.2em] text-[1.8em]">{['💧', '💤', '💪'][i]}</span>
+            </div>
             <div className="mt-[0.3em] font-display text-[1.4em] font-black">"{t}"</div>
           </div>
         ))}
       </div>
       <div className="anim-pop rounded-[1.2em] bg-white/10 p-[1em] text-center" style={{ animationDelay: '1.5s' }}>
-        <div className="font-display text-[1.6em] font-black leading-snug">"{pack.openingVerse.text}"</div>
+        <div className="font-display text-[1.4em] font-black leading-snug">"{pack.openingVerse.text}"</div>
         <div className="mt-[0.2em] font-display font-black text-[var(--ouro)]">{pack.openingVerse.ref}</div>
       </div>
-      <div className="flex min-h-0 flex-1 items-center gap-[1.5em]">
-        <div className="min-w-0 flex-1">
-          <SanctuaryMap players={list} L={pub.trackLength} />
+      <div className="flex min-h-0 flex-1 items-stretch gap-[1.5em]">
+        <div className="min-h-0 min-w-0 flex-1">
+          <FitMap players={list} L={pub.trackLength} />
         </div>
         <div className="flex w-[17em] flex-col gap-[0.6em] text-[1.05em]">
           <Lume size="5em" mood="wink" />
@@ -438,39 +443,81 @@ function Results({ pub, players }: PhaseProps) {
   )
 }
 
-function Reveal({ pub, pack, now, players }: PhaseProps) {
-  const r = pub.results
-  const rev = pack.revelations.find((x) => x.game === r?.gameId) ?? pack.revelations[0]
+function Reveal({ pub, pack, now, players, list }: PhaseProps) {
+  const rev = currentRevelation(pub)
   const truth = pack.truths.find((t) => t.id === rev.truth)
+  const day = DAYS.find((d) => d.id === truth?.day)?.label
   const secs = REVEAL_SECONDS[pub.settings.depth] + pub.revealExtra
+  const questions = [rev.question, ...rev.followUps]
+  const qi = (pub.revealQ ?? 0) % questions.length
+  const votes = Object.values(pub.poll ?? {})
+  const counts = rev.poll.options.map((_, i) => votes.filter((v) => v === i).length)
+  const maxC = Math.max(1, ...counts)
+  const voters = list.filter((p) => p.online).length
   return (
-    <div className="grid h-full grid-cols-[1fr_16em] gap-[2em]">
-      <div className="flex flex-col justify-center gap-[1em]">
-        <div className="font-display text-[1.3em] font-black text-[var(--ouro)]">💬 MOMENTO REVELAÇÃO {truth && `· ${truth.title}`}</div>
-        <div className="anim-pop rounded-[1.4em] bg-white p-[1.2em] text-[var(--noite)] shadow-[0_0.3em_0_rgba(0,0,0,.25)]">
-          <div className="font-display text-[1.1em] font-black text-[var(--purpura)]">📜 {rev.verse}</div>
-          <div className="font-display text-[2em] font-black leading-snug">{rev.verseText}</div>
+    <div className="grid h-full min-h-0 grid-cols-[1.2fr_1fr] gap-[1.4em]">
+      <div className="flex min-h-0 flex-col gap-[0.7em]">
+        <div className="font-display text-[1.15em] font-black text-[var(--ouro)]">
+          💬 MOMENTO REVELAÇÃO {truth && `· ${truth.emoji} ${truth.title}`} {day && <span className="opacity-70">· {day}</span>}
         </div>
-        <div className="anim-pop flex gap-[0.6em] text-[1.6em]" style={{ animationDelay: '.4s' }}>
+        <div className="anim-pop rounded-[1.2em] bg-white px-[1em] py-[0.7em] text-[var(--noite)] shadow-[0_0.25em_0_rgba(0,0,0,.25)]">
+          <div className="font-display text-[0.95em] font-black text-[var(--purpura)]">📜 {rev.verse}</div>
+          <div className="font-display text-[1.7em] font-black leading-snug">{rev.verseText}</div>
+        </div>
+        <div className="anim-pop rounded-[1em] bg-white/10 px-[0.9em] py-[0.6em] text-[1.1em]" style={{ animationDelay: '.2s' }}>
+          <div className="font-display text-[0.85em] font-black text-[var(--ouro)]">📖 NA LIÇÃO</div>
+          <div>{rev.lesson}</div>
+        </div>
+        <div className="anim-pop flex flex-col gap-[0.35em]" style={{ animationDelay: '.4s' }}>
+          <div className="font-display text-[0.85em] font-black text-[var(--ouro)]">🔎 NA BÍBLIA</div>
+          {rev.bible.map((b) => (
+            <div key={b.ref} className="flex items-baseline gap-[0.6em] text-[1.05em]">
+              <span className="shrink-0 rounded-full bg-[var(--ouro)] px-[0.6em] font-display text-[0.85em] font-black text-[#2a1d00]">{b.ref}</span>
+              <span>{b.text}</span>
+            </div>
+          ))}
+        </div>
+        <div className="anim-pop mt-auto flex gap-[0.5em] text-[1.25em] font-semibold" style={{ animationDelay: '.6s' }}>
           <span>💡</span>
-          <span className="font-semibold">{rev.insight}</span>
-        </div>
-        <div className="anim-pop rounded-[1.2em] border-[0.15em] border-dashed border-[var(--ouro)] p-[1em] text-[1.8em]" style={{ animationDelay: '.8s' }}>
-          <span className="mr-[0.3em]">🗣️</span>
-          <b>{rev.question}</b>
+          <span>{rev.insight}</span>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center gap-[1em] text-center">
-        <Timer start={pub.phaseAt} end={pub.phaseAt + secs * 1000} now={now} size="7em" label="conversa" />
-        <div className="text-[0.9em] opacity-75">Tempo sugerido de conversa: o facilitador decide quando seguir.</div>
-        {pub.hands.length > 0 && (
-          <div className="w-full rounded-[1em] bg-white/10 p-[0.6em]">
-            <div className="font-display font-black">✋ Querem falar</div>
-            {pub.hands.map((h) => (
-              <div key={h}>{players[h]?.name}</div>
-            ))}
+      <div className="flex min-h-0 flex-col gap-[0.8em]">
+        <div key={qi} className="anim-pop rounded-[1.2em] border-[0.15em] border-dashed border-[var(--ouro)] bg-black/15 p-[0.9em]">
+          <div className="font-display text-[0.85em] font-black text-[var(--ouro)]">
+            🗣️ PERGUNTA {qi + 1} DE {questions.length}
           </div>
-        )}
+          <div className="font-display text-[1.75em] font-black leading-snug">{questions[qi]}</div>
+        </div>
+        <div className="flex min-h-0 flex-1 flex-col gap-[0.4em] rounded-[1.2em] bg-white/10 p-[0.9em]">
+          <div className="flex items-baseline justify-between gap-[0.6em]">
+            <div className="font-display text-[1.1em] font-black">📱 {rev.poll.q}</div>
+            <div className="shrink-0 text-[0.85em] opacity-75">
+              {votes.length}/{voters} votaram
+            </div>
+          </div>
+          {rev.poll.options.map((o, i) => (
+            <div key={o} className="relative overflow-hidden rounded-[0.7em] bg-black/20">
+              <div className="absolute inset-y-0 left-0 rounded-[0.7em] transition-all duration-500" style={{ width: `${(counts[i] / maxC) * 100}%`, background: counts[i] === maxC && counts[i] > 0 ? 'var(--ouro)' : 'var(--purpura)' }} />
+              <div className="relative flex items-center justify-between px-[0.7em] py-[0.25em] font-display font-black" style={{ color: counts[i] === maxC && counts[i] > 0 ? '#2a1d00' : '#fff' }}>
+                <span>{o}</span>
+                <span className="tabular">{votes.length ? Math.round((counts[i] / votes.length) * 100) : 0}%</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-[0.8em]">
+          <Timer start={pub.phaseAt} end={pub.phaseAt + secs * 1000} now={now} size="4.2em" label="conversa" />
+          <div className="min-w-0 flex-1 text-[0.95em]">
+            {pub.hands.length > 0 ? (
+              <>
+                <b>✋ Querem falar:</b> {pub.hands.map((h) => players[h]?.name).join(', ')}
+              </>
+            ) : (
+              <span className="opacity-70">Quem quiser falar toca em ✋ no celular. Tecla Q troca a pergunta.</span>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -515,9 +562,7 @@ function MapPhase({ pub, list, pack }: PhaseProps) {
         </div>
       </div>
       <div className="relative min-h-0 flex-1">
-        <div className="mx-auto h-full" style={{ aspectRatio: '16 / 7', maxWidth: '100%' }}>
-          <SanctuaryMap players={list} L={L} from={pub.stepsBefore} />
-        </div>
+        <FitMap players={list} L={L} from={pub.stepsBefore} />
         {showCard && (station || pub.bread.length > 0) && (
           <div className="absolute inset-x-0 top-0 flex justify-center gap-[1em]">
             {station && (
@@ -590,8 +635,8 @@ function Finale({ pub, list }: PhaseProps) {
     <div className="flex h-full flex-col gap-[0.8em]">
       <div className="text-center font-display text-[2.4em] font-black">{podium ? '✨ O véu se rasgou!' : '🟪 Diante do véu…'}</div>
       <div className="flex min-h-0 flex-1 items-center gap-[1.5em]">
-        <div className="min-w-0 flex-1">
-          <SanctuaryMap players={list} L={pub.trackLength} open={podium} enteredIds={podium ? ranking.map((p) => p.id) : undefined} highlight={podium ? top[0]?.id : undefined} />
+        <div className="h-full min-h-0 min-w-0 flex-1">
+          <FitMap players={list} L={pub.trackLength} open={podium} enteredIds={podium ? ranking.map((p) => p.id) : undefined} highlight={podium ? top[0]?.id : undefined} />
         </div>
         {podium && (
           <div className="flex w-[22em] flex-col items-center gap-[0.8em]">
@@ -637,33 +682,69 @@ function Finale({ pub, list }: PhaseProps) {
 
 function End({ pack, pub }: PhaseProps) {
   const url = `${location.origin}/rolo`
+  const [open, setOpen] = useState<number | null>(null)
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(null)
+      if (e.key === 'ArrowRight') setOpen((o) => (o === null ? 0 : (o + 1) % pack.truths.length))
+      if (e.key === 'ArrowLeft') setOpen((o) => (o === null ? pack.truths.length - 1 : (o + pack.truths.length - 1) % pack.truths.length))
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [pack.truths.length])
+  const t = open !== null ? pack.truths[open] : null
   return (
-    <div className="grid h-full grid-cols-[1fr_18em] gap-[2em]">
-      <div className="flex flex-col justify-center gap-[0.8em]">
-        <div className="font-display text-[1.3em] font-black text-[var(--ouro)]">📜 ROLO DA LIÇÃO · {pack.title}</div>
-        <div className="font-display text-[1.9em] font-black leading-snug">{pack.bigIdea}</div>
-        <div className="grid grid-cols-2 gap-[0.5em]">
-          {pack.truths.map((t) => (
-            <div key={t.id} className="rounded-[0.8em] bg-white/10 p-[0.6em]">
-              <div className="font-display font-black text-[var(--ouro)]">{t.title}</div>
-              <div className="text-[0.95em]">{t.text}</div>
+    <div className="flex h-full min-h-0 flex-col gap-[0.7em]">
+      <div>
+        <div className="font-display text-[1.1em] font-black text-[var(--ouro)]">📜 ROLO DA LIÇÃO · {pack.title}</div>
+        <div className="font-display text-[1.45em] font-black leading-snug">{pack.bigIdea}</div>
+      </div>
+      <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-[0.7em] text-[1em]">
+        {pack.truths.map((tr, i) => (
+          <TruthCard key={tr.id} t={tr} dark compact onClick={() => setOpen(i)} />
+        ))}
+        <div className="flex flex-col items-center justify-center gap-[0.4em] rounded-[1em] bg-white/5 p-[0.6em] text-center">
+          <div className="rounded-[0.8em] bg-white p-[0.4em]">
+            <QRCodeSVG value={url} size={300} style={{ width: '6.5em', height: '6.5em' }} />
+          </div>
+          <div className="text-[0.85em]">Resumo e imagem no celular 📱</div>
+          <div className="text-[0.75em] opacity-60">
+            {pub.plan.length} jogos · {Object.keys(pub.players).length} jogadores
+          </div>
+          <Btn tone="neutral" className="!px-[0.8em] !py-[0.3em] !text-[0.8em]" onClick={() => navigate('/criar')}>
+            Nova partida
+          </Btn>
+        </div>
+      </div>
+      <div className="text-center text-[0.9em] opacity-70">👆 Clique num tópico (ou use ← →) para discutir a lição inteira a partir do Rolo</div>
+      {t && (
+        <div className="fixed inset-0 z-40 grid place-items-center bg-black/60 p-[3em]" onClick={() => setOpen(null)}>
+          <div className="anim-pop flex w-full max-w-[60em] flex-col gap-[0.8em] rounded-[1.6em] bg-white p-[1.6em] text-[var(--noite)]" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-[0.6em]">
+              <span className="text-[3em] leading-none">{t.emoji}</span>
+              <div className="flex-1">
+                <div className="text-[0.9em] font-bold tracking-wide text-[var(--muted)] uppercase">{DAYS.find((d) => d.id === t.day)?.label}</div>
+                <div className="font-display text-[2.4em] font-black leading-none text-[var(--purpura)]">{t.title}</div>
+              </div>
+              <div className="font-display font-black opacity-50">
+                {open! + 1}/{pack.truths.length}
+              </div>
             </div>
-          ))}
+            <div className="font-display text-[1.6em] font-black leading-snug">{t.text}</div>
+            <div className="rounded-[1em] bg-[var(--linho-2)] p-[0.8em] text-[1.2em]">📖 <b>Na lição:</b> {t.lesson}</div>
+            <div className="flex flex-col gap-[0.4em] text-[1.2em]">
+              {t.examples.map((e) => (
+                <div key={e.ref}>
+                  <span className="mr-[0.5em] rounded-full bg-[var(--ouro)] px-[0.6em] font-display text-[0.85em] font-black text-[#2a1d00]">{e.ref}</span>
+                  {e.text}
+                </div>
+              ))}
+            </div>
+            <div className="rounded-[1em] border-[0.15em] border-dashed border-[var(--ouro)] p-[0.8em] font-display text-[1.6em] font-black">🗣️ {t.question}</div>
+            <div className="text-center text-[0.9em] text-[var(--muted)]">← → para navegar · Esc para fechar</div>
+          </div>
         </div>
-        <div className="rounded-[1em] border-[0.15em] border-dashed border-[var(--ouro)] p-[0.8em] text-[1.3em]">🗣️ {pack.summary.questions[2]}</div>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-[0.8em] text-center">
-        <div className="rounded-[1.2em] bg-white p-[0.8em]">
-          <QRCodeSVG value={url} size={400} style={{ width: '12em', height: '12em' }} />
-        </div>
-        <div>O resumo também já está no seu celular 📱</div>
-        <Lume size="5em" mood="wink" />
-        <div className="font-display text-[1.3em] font-black">Obrigado por jogar! 🙌</div>
-        <Btn tone="neutral" onClick={() => navigate('/criar')}>
-          Nova partida
-        </Btn>
-        <div className="text-[0.8em] opacity-60">{pub.plan.length} jogos · {Object.keys(pub.players).length} jogadores</div>
-      </div>
+      )}
     </div>
   )
 }

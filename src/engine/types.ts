@@ -171,6 +171,10 @@ export interface SessionState {
   forcedSpotlight?: PlayerId
   reactions: { id: string; pid: PlayerId; emoji: string; at: number }[]
   hands: PlayerId[]
+  /** enquete do Momento Revelação: voto de cada um */
+  poll: Record<PlayerId, number>
+  /** qual pergunta do Momento Revelação está no telão (0 = principal) */
+  revealQ: number
   revealExtra: number
   sessionStartedAt?: number
   trackLength: number

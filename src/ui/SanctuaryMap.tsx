@@ -261,3 +261,14 @@ export function SanctuaryMap({
     </div>
   )
 }
+
+/** Encaixa o mapa no espaço disponível (largura E altura), sem sobrepor nada. */
+export function FitMap(props: React.ComponentProps<typeof SanctuaryMap>) {
+  return (
+    <div className="relative h-full min-h-0 w-full" style={{ containerType: 'size' }}>
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ width: `min(100cqw, calc(100cqh * ${W} / ${H}))` }}>
+        <SanctuaryMap {...props} />
+      </div>
+    </div>
+  )
+}

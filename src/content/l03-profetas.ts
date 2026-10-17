@@ -1,4 +1,5 @@
 import type { ContentPack } from './types'
+import { revelations, truths } from './l03-discussao'
 
 export const pack: ContentPack = {
   id: '2026-q4-l03',
@@ -13,15 +14,7 @@ export const pack: ContentPack = {
   comic: ['Tira a minha vida!', 'Modo depressivo ativado', 'Ainda há trabalho!'],
   bigIdea:
     'Deus fala por meio de pessoas humanas, frágeis e às vezes cansadas. Ele cuida antes de cobrar e procura gente fiel e disponível, não gente pronta ou popular.',
-  truths: [
-    { id: 'V1', day: 'sab', title: 'Disponíveis, não prontos', text: 'Deus não chama os prontos, chama os disponíveis. O profeta revela o coração de Deus.', refs: ['Am 3:7'] },
-    { id: 'V2', day: 'dom', title: 'GPS espiritual', text: 'Não deixe a cultura ser o seu GPS. O reavivamento começa dentro de casa.', refs: ['2Rs 2:11', 'Ml 4:5,6'] },
-    { id: 'V3', day: 'seg', title: 'Humanos como nós', text: 'Até pessoas de fé chegam ao limite. Deus cuida antes de cobrar, e a crise não é o fim do chamado.', refs: ['1Rs 19:4', 'Tg 5:17'] },
-    { id: 'V4', day: 'ter', title: 'Popular ≠ verdadeiro', text: 'Nem tudo que é popular é verdadeiro. Discirna e fale a verdade com amor.', refs: ['1Rs 22', 'Dt 18:20'] },
-    { id: 'V5', day: 'qua', title: 'Profetisas', text: 'Deus chama homens e mulheres. O critério é fidelidade.', refs: ['Êx 15:20', 'Jz 4:4', '2Rs 22:14'] },
-    { id: 'V6', day: 'qui', title: 'Funções dos profetas', text: 'Profeta não só prevê: orienta, confronta, instrui, escreve e obedece. Deus usa jovens.', refs: ['1Sm 8', '2Cr 34', 'Mt 21:11'] },
-    { id: 'V7', day: 'sex', title: 'Imperfeita, mas disposta', text: 'Deus capacita quem está disponível. A limitação não define o tamanho da influência.', refs: ['Testemunhos v.1 p.59-61'] },
-  ],
+  truths,
   characters: [
     { id: 'elias', name: 'Elias', emoji: '🔥', bio: 'Profeta tisbita que enfrentou Baal no Carmelo, chegou ao limite debaixo do zimbro e ouviu a voz mansa no Horebe.', refs: '1Rs 17–19; 2Rs 2:11; Tg 5:17', clues: ['Usava cinto de couro', 'Pediu a morte debaixo de uma árvore', 'Subiu ao céu num carro de fogo'], inDisguise: true },
     { id: 'eliseu', name: 'Eliseu', emoji: '🧥', bio: 'Sucessor de Elias, de Abel-Meolá. Pediu porção dobrada do espírito de Elias.', refs: '1Rs 19:16,19; 2Rs 2', clues: ['Arava com 12 juntas de bois', 'Pediu porção dobrada', 'Recebeu o manto de Elias'], inDisguise: true },
@@ -86,16 +79,16 @@ export const pack: ContentPack = {
     { id: 'vozes', title: 'Vozes de Deus na história', ref: 'Lição 3', events: ['Miriã', 'Débora', 'Samuel', 'Elias', 'Hulda', 'Ellen G. White'] },
   ],
   threeSigns: [
-    { answer: 'Hulda', clues: ['O marido cuidava das vestimentas', 'Morava na "segunda parte" de Jerusalém', 'Consultada quando acharam o Livro da Lei'], options: ['Hulda', 'Débora', 'Miriã', 'Jezabel', 'Ester', 'Noadia', 'Ana', 'Rute'], ref: '2Rs 22:14' },
-    { answer: 'Micaías', clues: ['O nome significa "Quem é como o Senhor?"', 'Levou um tapa e foi preso a pão e água', 'Sozinho contra 400 profetas'], options: ['Micaías', 'Elias', 'Eliseu', 'Obadias', 'Samuel', 'Zedequias', 'Josafá', 'Jeremias'], ref: '1Rs 22' },
-    { answer: 'Débora', clues: ['O nome significa "abelha"', 'Trabalhou com Baraque', 'Julgava debaixo de uma palmeira'], options: ['Débora', 'Hulda', 'Miriã', 'Ester', 'Rute', 'Jael', 'Ana', 'Sara'], ref: 'Jz 4:4-5' },
-    { answer: 'Obadias', clues: ['Trabalhava no palácio de quem perseguia profetas', 'O nome significa "servo do Senhor"', 'Escondeu 100 profetas em covas'], options: ['Obadias', 'Micaías', 'Eliseu', 'Josafá', 'Samuel', 'Hilquias', 'Safã', 'Jeú'], ref: '1Rs 18:3-4' },
-    { answer: 'Eliseu', clues: ['Arava com 12 juntas de bois', 'Pediu porção dobrada', 'Recebeu o manto de Elias'], options: ['Eliseu', 'Elias', 'Samuel', 'Micaías', 'Josias', 'Jeú', 'Hazael', 'Obadias'], ref: '1Rs 19:19; 2Rs 2' },
-    { answer: 'Horebe', clues: ['Também chamado de "monte de Deus"', 'Ali havia uma caverna', 'Onde Elias ouviu a voz mansa'], options: ['Horebe', 'Carmelo', 'Sião', 'Moriá', 'Tabor', 'Nebo', 'Ararate', 'Gilboa'], ref: '1Rs 19:8-12' },
-    { answer: 'Zimbro', clues: ['Também chamado de giesta', 'Fica a um dia de caminho depois de Berseba', 'Elias pediu a morte debaixo dele'], options: ['Zimbro', 'Oliveira', 'Figueira', 'Palmeira', 'Cedro', 'Acácia', 'Videira', 'Carvalho'], ref: '1Rs 19:4' },
-    { answer: 'Samuel', clues: ['Filho de uma mulher que orou chorando', 'Ouviu seu nome de noite no templo', 'Ungiu Saul como rei'], options: ['Samuel', 'Eli', 'Davi', 'Saul', 'Natã', 'Elias', 'Gideão', 'Sansão'], ref: '1Sm 1–10' },
-    { answer: 'Carro de fogo', clues: ['Puxado por cavalos', 'Separou dois profetas', 'Levou Elias ao céu'], options: ['Carro de fogo', 'Arca da aliança', 'Sarça ardente', 'Coluna de fogo', 'Escada de Jacó', 'Manto', 'Redemoinho', 'Nuvem'], ref: '2Rs 2:11' },
-    { answer: 'Ellen G. White', clues: ['Levou uma pedrada no rosto aos 9 anos', 'Orou para que o encargo fosse dado a outro', 'Recebeu a 1ª visão aos 17 anos (1844)'], options: ['Ellen G. White', 'Hulda', 'Débora', 'Miriã', 'Ester', 'Ana', 'Maria', 'Lídia'], ref: 'Testemunhos v.1' },
+    { answer: 'Hulda', ask: 'Quem é?', accept: ['hulda'], clues: ['O marido cuidava das vestimentas', 'Morava na "segunda parte" de Jerusalém', 'Consultada quando acharam o Livro da Lei'], options: ['Hulda', 'Débora', 'Miriã', 'Jezabel', 'Ester', 'Noadia', 'Ana', 'Rute'], ref: '2Rs 22:14' },
+    { answer: 'Micaías', ask: 'Quem é?', accept: ['micaias', 'micaia'], clues: ['O nome significa "Quem é como o Senhor?"', 'Levou um tapa e foi preso a pão e água', 'Sozinho contra 400 profetas'], options: ['Micaías', 'Elias', 'Eliseu', 'Obadias', 'Samuel', 'Zedequias', 'Josafá', 'Jeremias'], ref: '1Rs 22' },
+    { answer: 'Débora', ask: 'Quem é?', accept: ['debora'], clues: ['O nome significa "abelha"', 'Trabalhou com Baraque', 'Julgava debaixo de uma palmeira'], options: ['Débora', 'Hulda', 'Miriã', 'Ester', 'Rute', 'Jael', 'Ana', 'Sara'], ref: 'Jz 4:4-5' },
+    { answer: 'Obadias', ask: 'Quem é?', accept: ['obadias'], clues: ['Trabalhava no palácio de quem perseguia profetas', 'O nome significa "servo do Senhor"', 'Escondeu 100 profetas em covas'], options: ['Obadias', 'Micaías', 'Eliseu', 'Josafá', 'Samuel', 'Hilquias', 'Safã', 'Jeú'], ref: '1Rs 18:3-4' },
+    { answer: 'Eliseu', ask: 'Quem é?', accept: ['eliseu'], clues: ['Arava com 12 juntas de bois', 'Pediu porção dobrada', 'Recebeu o manto de Elias'], options: ['Eliseu', 'Elias', 'Samuel', 'Micaías', 'Josias', 'Jeú', 'Hazael', 'Obadias'], ref: '1Rs 19:19; 2Rs 2' },
+    { answer: 'Horebe', ask: 'Onde é?', accept: ['horebe', 'horeb', 'monte horebe', 'sinai', 'monte sinai'], clues: ['Também chamado de "monte de Deus"', 'Ali havia uma caverna', 'Onde Elias ouviu a voz mansa'], options: ['Horebe', 'Carmelo', 'Sião', 'Moriá', 'Tabor', 'Nebo', 'Ararate', 'Gilboa'], ref: '1Rs 19:8-12' },
+    { answer: 'Zimbro', ask: 'O que é?', accept: ['zimbro', 'giesta', 'arvore de zimbro', 'pe de zimbro'], clues: ['Também chamado de giesta', 'Fica a um dia de caminho depois de Berseba', 'Elias pediu a morte debaixo dele'], options: ['Zimbro', 'Oliveira', 'Figueira', 'Palmeira', 'Cedro', 'Acácia', 'Videira', 'Carvalho'], ref: '1Rs 19:4' },
+    { answer: 'Samuel', ask: 'Quem é?', accept: ['samuel'], clues: ['Filho de uma mulher que orou chorando', 'Ouviu seu nome de noite no templo', 'Ungiu Saul como rei'], options: ['Samuel', 'Eli', 'Davi', 'Saul', 'Natã', 'Elias', 'Gideão', 'Sansão'], ref: '1Sm 1–10' },
+    { answer: 'Carro de fogo', ask: 'O que é?', accept: ['carro de fogo', 'carruagem de fogo', 'carro', 'carruagem', 'carros de fogo'], clues: ['Puxado por cavalos', 'Separou dois profetas', 'Levou Elias ao céu'], options: ['Carro de fogo', 'Arca da aliança', 'Sarça ardente', 'Coluna de fogo', 'Escada de Jacó', 'Manto', 'Redemoinho', 'Nuvem'], ref: '2Rs 2:11' },
+    { answer: 'Ellen G. White', ask: 'Quem é?', accept: ['ellen white', 'ellen g white', 'ellen', 'egw', 'ellen harmon', 'ellen gould white', 'ellen g. white'], clues: ['Levou uma pedrada no rosto aos 9 anos', 'Orou para que o encargo fosse dado a outro', 'Recebeu a 1ª visão aos 17 anos (1844)'], options: ['Ellen G. White', 'Hulda', 'Débora', 'Miriã', 'Ester', 'Ana', 'Maria', 'Lídia'], ref: 'Testemunhos v.1' },
   ],
   taboo: [
     { word: 'ELIAS', forbidden: ['profeta', 'fogo', 'Carmelo', 'céu', 'carro'] },
@@ -149,20 +142,7 @@ export const pack: ContentPack = {
     { text: 'Como o reavivamento começa na SUA casa nesta semana?', ref: 'Ml 4:6' },
     { text: 'Você recebeu um chamado e se sente como Ellen aos 17. O que faz agora?', ref: 'Testemunhos v.1 p.59-61' },
   ],
-  revelations: [
-    { game: 'nuvem', truth: 'V3', verse: '1 Reis 19:5', verseText: '"Levanta-te e come."', insight: 'Deus cuida antes de cobrar. A exaustão espiritual muitas vezes começa no físico.', question: 'Quando você confundiu cansaço com falta de fé?', note: 'Pergunte quem escreveu as palavras mais diferentes e por quê.' },
-    { game: 'linha', truth: 'V3', verse: '1 Reis 19:12', verseText: '"…e depois do fogo, uma voz mansa e delicada."', insight: 'Depois do espetáculo do Carmelo, Deus falou no silêncio.', question: 'Você só reconhece Deus no "fogo"? Onde está a voz mansa na sua semana?' },
-    { game: 'verdade', truth: 'V4', verse: '1 Reis 22:14', verseText: '"O que o Senhor me disser, isso falarei."', insight: 'Nem tudo que é popular é verdadeiro, e os 400 usavam o nome de Deus.', question: 'Por que a popularidade nem sempre é um guia confiável?', note: 'Pergunta do comENTE (terça).' },
-    { game: 'sinais', truth: 'V5', verse: '2 Reis 22:14', verseText: 'Foram à profetisa Hulda… e falaram com ela.', insight: 'O critério de Deus é fidelidade, não gênero.', question: 'Que características de Miriã, Débora e Hulda Deus quer ver em você?' },
-    { game: 'sortes', truth: 'V6', verse: 'Mateus 21:11', verseText: '"Este é Jesus, o profeta de Nazaré da Galileia."', insight: 'Profeta não só prevê: orienta, confronta, instrui e obedece.', question: 'Como as funções dos profetas nos ajudam a entender Jesus?', note: 'Pergunta do comPARTILHE (quinta).' },
-    { game: 'duelo', truth: 'V6', verse: '1 Reis 18:21', verseText: '"Até quando coxeareis entre dois pensamentos?"', insight: 'Coragem não é ausência de medo, é não deixar o medo governar.', question: 'O que você sabe que Deus pede, mas ainda não obedece?' },
-    { game: 'acrostico', truth: 'V2', verse: 'Malaquias 4:6', verseText: '"Ele converterá o coração dos pais aos filhos e o coração dos filhos a seus pais."', insight: 'A cultura muda, a Palavra permanece. O reavivamento começa em casa.', question: 'Em que área a cultura tem sido o seu GPS?' },
-    { game: 'fruto', truth: 'V4', verse: 'Deuteronômio 18:20', verseText: 'O profeta que falar em Meu nome o que Eu não mandei… morrerá.', insight: 'Discernir exige conhecer a Palavra e pedir o Espírito.', question: 'Como você testa se algo que ouve (inclusive na internet) vem de Deus?' },
-    { game: 'sonho', truth: 'V2', verse: 'Malaquias 4:5', verseText: '"Eis que Eu vos enviarei o profeta Elias…"', insight: 'Hoje, a "mensagem de Elias" chama a deixar os ídolos e a curar os lares.', question: 'Qual "ídolo" moderno mais disputa o seu coração?' },
-    { game: 'disfarcados', truth: 'V3', verse: 'Tiago 5:17', verseText: '"Elias era homem semelhante a nós."', insight: 'Os heróis da Bíblia eram humanos, e Deus os usou mesmo assim.', question: 'Com qual personagem desta semana você mais se identifica? Por quê?' },
-    { game: 'atos', truth: 'V6', verse: 'Jeremias 42:4', verseText: '"Eis que orarei ao Senhor, vosso Deus…"', insight: 'Profetas eram pessoas de oração, de estudo e de ação.', question: 'Que "ato profético" (atitude visível) sua vida pode ter nesta semana?' },
-    { game: 'voz', truth: 'V7', verse: 'Testemunhos, v.1, p.61', verseText: '"…cumprir Sua ordem, não importando o que fosse."', insight: 'Deus não chama os prontos, capacita os disponíveis.', question: 'Se Deus te chamasse hoje para ser voz de esperança, qual seria a sua resposta?', note: 'Pergunta do Diálogo Aberto (sábado).' },
-  ],
+  revelations,
   stations: [
     { id: 'porta', name: 'Porta', emoji: '🚪', meaning: 'Só há uma entrada: "Eu sou a porta."', bridge: 'O chamado começa com um "sim".', ref: 'Jo 10:9' },
     { id: 'altar', name: 'Altar do Holocausto', emoji: '🔥', meaning: 'O sacrifício de Cristo, o Cordeiro de Deus.', bridge: 'Como o altar de 12 pedras no Carmelo.', ref: 'Jo 1:29' },

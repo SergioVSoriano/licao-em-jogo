@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { GameDef } from '../engine/types'
 import { normalizeWord, online, pick } from '../engine/helpers'
 import { Btn, Sheet } from '../ui/kit'
@@ -221,6 +221,11 @@ export const nuvem: GameDef<S> = {
   PlayerView({ view: v, priv, send, now, participant }) {
     const [w, setW] = useState<string[]>(['', '', ''])
     const [editing, setEditing] = useState(false)
+    // cada pergunta começa com os campos vazios
+    useEffect(() => {
+      setW(['', '', ''])
+      setEditing(false)
+    }, [v.i])
     if (!participant) return <Waiting title="Assistindo esta rodada" />
     if (v.stage === 'write') {
       const sent = priv?.words && !editing

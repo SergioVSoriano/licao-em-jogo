@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getPack } from '../content'
-import { finalRanking, REWARDS } from '../engine/session'
+import { currentRevelation, finalRanking, REWARDS } from '../engine/session'
 import type { Player, PublicState } from '../engine/types'
 import { GAME_BY_ID } from '../games'
 import { navigate } from '../router'
@@ -330,18 +330,48 @@ function PlayerPhase({ pub, priv, me, send, now, pack, pos }: { pub: PublicState
       )
     }
     case 'reveal': {
-      const rev = pack.revelations.find((x) => x.game === pub.results?.gameId) ?? pack.revelations[0]
+      const rev = currentRevelation(pub)
+      const questions = [rev.question, ...rev.followUps]
+      const q = questions[(pub.revealQ ?? 0) % questions.length]
+      const mine = pub.poll?.[me.id]
       const raised = pub.hands.includes(me.id)
       return (
         <div className="flex flex-1 flex-col gap-3 p-4">
           <div className="font-display text-sm font-black text-[var(--purpura)]">💬 MOMENTO REVELAÇÃO</div>
-          <div className="card p-4">
-            <div className="text-sm font-bold text-[var(--purpura)]">📜 {rev.verse}</div>
-            <div className="font-display text-xl font-black">{rev.verseText}</div>
+          <div key={q} className="anim-pop rounded-2xl border-2 border-dashed border-[var(--ouro)] p-3 font-display text-xl font-black leading-snug">
+            🗣️ {q}
           </div>
-          <div className="font-semibold">💡 {rev.insight}</div>
-          <div className="rounded-2xl border-2 border-dashed border-[var(--ouro)] p-3 text-lg font-bold">🗣️ {rev.question}</div>
-          <Btn tone={raised ? 'gold' : 'blue'} className="mt-auto !text-xl" onClick={() => send('hand')}>
+          <div className="card flex flex-col gap-2 p-3">
+            <div className="font-display font-black">📱 {rev.poll.q}</div>
+            {rev.poll.options.map((o, i) => (
+              <button
+                key={o}
+                onClick={() => send('poll', { opt: i })}
+                className="rounded-xl border-2 px-3 py-2 text-left font-display font-extrabold transition active:scale-[.98]"
+                style={{ borderColor: mine === i ? 'var(--purpura)' : 'var(--line)', background: mine === i ? 'var(--purpura)' : 'var(--card)', color: mine === i ? '#fff' : 'var(--text)' }}
+              >
+                {o} {mine === i && '✓'}
+              </button>
+            ))}
+            {mine !== undefined && <div className="text-center text-xs text-[var(--muted)]">Voto anônimo · pode trocar · resultado no telão</div>}
+          </div>
+          <div className="card p-3">
+            <div className="text-sm font-bold text-[var(--purpura)]">📜 {rev.verse}</div>
+            <div className="font-display text-lg font-black">{rev.verseText}</div>
+          </div>
+          <details className="card p-3 text-sm">
+            <summary className="cursor-pointer font-display font-black">📖 Na lição e na Bíblia</summary>
+            <p className="mt-2">{rev.lesson}</p>
+            <ul className="mt-2 flex flex-col gap-1">
+              {rev.bible.map((b) => (
+                <li key={b.ref}>
+                  <b className="text-[var(--purpura)]">{b.ref}</b> {b.text}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 font-semibold">💡 {rev.insight}</p>
+          </details>
+          <Btn tone={raised ? 'gold' : 'blue'} className="sticky bottom-16 mt-auto !text-xl" onClick={() => send('hand')}>
             {raised ? '✋ Na fila para falar (tocar para sair)' : '✋ Quero falar'}
           </Btn>
         </div>

@@ -1,8 +1,8 @@
 import { DEFAULT_PACK } from '../content'
 import type { ContentPack } from '../content/types'
-import { DAYS } from '../content/types'
 import { Link } from '../router'
 import { Logo } from '../ui/kit'
+import { DownloadRolo, TruthCard } from '../ui/RoloPoster'
 
 export function RoloContent({ pack }: { pack: ContentPack }) {
   return (
@@ -13,29 +13,12 @@ export function RoloContent({ pack }: { pack: ContentPack }) {
         <div className="mt-1 text-sm opacity-90">Texto da semana: {pack.keyText}</div>
         <div className="mt-3 font-semibold">{pack.bigIdea}</div>
       </div>
+      <DownloadRolo pack={pack} />
       <div>
         <div className="mb-2 font-display text-xl font-black">As 7 verdades da semana</div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           {pack.truths.map((t) => (
-            <div key={t.id} className="card flex gap-3 p-3">
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--ouro)] font-display font-black text-[#2a1d00]">{DAYS.find((d) => d.id === t.day)?.label.slice(0, 3)}</div>
-              <div>
-                <div className="font-display font-black">{t.title}</div>
-                <div className="text-sm">{t.text}</div>
-                <div className="text-xs font-bold text-[var(--purpura)]">{t.refs.join(' · ')}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div>
-        <div className="mb-2 font-display text-xl font-black">Versos para guardar</div>
-        <div className="grid gap-2">
-          {pack.summary.verses.map((v) => (
-            <div key={v.ref} className="card p-3">
-              <div className="font-display font-black text-[var(--purpura)]">{v.ref}</div>
-              <div className="text-sm">{v.text}</div>
-            </div>
+            <TruthCard key={t.id} t={t} />
           ))}
         </div>
       </div>

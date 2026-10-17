@@ -1,5 +1,5 @@
-import { getPack } from '../content'
 import { GAME_BY_ID } from '../games'
+import { currentRevelation } from '../engine/session'
 import { Btn, Lume } from '../ui/kit'
 import { usePlayer, useWakeLock } from './usePlayer'
 
@@ -31,11 +31,11 @@ export function Judge({ pin, judgeKey }: { pin: string; judgeKey: string }) {
       </div>
     )
 
-  const pack = getPack(pub.packId)
   const game = pub.game ? GAME_BY_ID[pub.game.id] : pub.phase === 'intro' ? GAME_BY_ID[pub.plan[pub.gameIdx].gameId] : null
   const main = pub.controls.filter((c) => !c.small)
   const small = pub.controls.filter((c) => c.small)
-  const rev = pub.phase === 'reveal' ? (pack.revelations.find((r) => r.game === pub.results?.gameId) ?? pack.revelations[0]) : null
+  const rev = pub.phase === 'reveal' ? currentRevelation(pub) : null
+  const questions = rev ? [rev.question, ...rev.followUps] : []
   const online = Object.values(pub.players).filter((p) => p.online && !pub.kicked.includes(p.id)).length
 
   return (
@@ -63,7 +63,16 @@ export function Judge({ pin, judgeKey }: { pin: string; judgeKey: string }) {
         <div className="card flex flex-col gap-1 p-3 text-sm">
           <div className="font-bold text-[var(--purpura)]">📜 {rev.verse}</div>
           <div>💡 {rev.insight}</div>
-          <div className="font-bold">🗣️ {rev.question}</div>
+          <div className="text-xs text-[var(--muted)]">📖 {rev.lesson}</div>
+          {questions.map((q, i) => (
+            <div key={q} className={i === (pub.revealQ ?? 0) % questions.length ? 'font-bold' : 'opacity-60'}>
+              {i === (pub.revealQ ?? 0) % questions.length ? '▶' : '·'} 🗣️ {q}
+            </div>
+          ))}
+          <div className="text-xs">
+            📱 Enquete: {Object.keys(pub.poll ?? {}).length} votos ·{' '}
+            {rev.poll.options.map((o, i) => `${o} ${Object.values(pub.poll ?? {}).filter((v) => v === i).length}`).join(' · ')}
+          </div>
           {rev.note && <div className="rounded-xl bg-[var(--linho-2)] p-2 text-[var(--tinta)]">🧭 Nota de condução: {rev.note}</div>}
           {pub.hands.length > 0 && <div>✋ Querem falar: {pub.hands.map((h) => pub.players[h]?.name).join(', ')}</div>}
         </div>

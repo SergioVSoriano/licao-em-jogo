@@ -113,3 +113,45 @@ export function uid(n = 8): string {
   for (let i = 0; i < n; i++) s += chars[Math.floor(Math.random() * chars.length)]
   return s
 }
+
+function lev(a: string, b: string): number {
+  const dp = Array.from({ length: b.length + 1 }, (_, j) => j)
+  for (let i = 1; i <= a.length; i++) {
+    let prev = dp[0]
+    dp[0] = i
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = dp[j]
+      dp[j] = Math.min(dp[j] + 1, dp[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1))
+      prev = tmp
+    }
+  }
+  return dp[b.length]
+}
+
+export function cleanGuess(raw: string): string {
+  return raw
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .replace(/\b(o|a|os|as|um|uma|e|eh|acho que|sera|seria)\b/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/** Resposta digitada: aceita sem acento, com artigo, frase ("acho que é hulda") e erro leve de digitação. */
+export function matchAnswer(guess: string, accept: string[]): boolean {
+  const g = cleanGuess(guess)
+  if (!g) return false
+  for (const raw of accept) {
+    const a = cleanGuess(raw)
+    if (!a) continue
+    if (g === a) return true
+    const tol = a.length >= 9 ? 2 : a.length >= 5 ? 1 : 0
+    if (lev(g, a) <= tol) return true
+    if (a.length >= 4 && ` ${g} `.includes(` ${a} `)) return true
+    // cada palavra do palpite contra a resposta (ex.: "hulda profetisa")
+    if (a.length >= 5 && !a.includes(' ') && g.split(' ').some((w) => lev(w, a) <= tol)) return true
+  }
+  return false
+}

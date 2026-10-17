@@ -311,9 +311,23 @@ export const acrostico: GameDef<S> = {
       )
     const out = !v.alive.includes(meId) && v.order.includes(meId)
     return (
-      <Waiting title={out ? 'Você saiu desta rodada' : `Vez de ${cur?.name ?? '…'}`} me={me} mood={out ? 'sad' : 'happy'}>
-        {out ? 'Continue votando quando alguém falar!' : v.order.includes(meId) ? 'Prepare uma palavra… as letras estão acabando!' : 'Você está como plateia.'}
-      </Waiting>
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <Waiting title={out ? 'Você saiu desta rodada' : `Vez de ${cur?.name ?? '…'}`} me={out ? me : cur} mood={out ? 'sad' : 'happy'}>
+          {out ? 'Mas ainda dá pontos: quando alguém falar, vote 👍/👎 (+20 se votar com a maioria).' : v.order.includes(meId) ? 'Prepare uma palavra… as letras estão acabando!' : 'Você está como plateia: vote quando alguém falar.'}
+        </Waiting>
+        <div className="card p-3 text-center">
+          <div className="text-xs font-bold text-[var(--muted)]">TEMA</div>
+          <div className="font-display font-black">{v.theme}</div>
+          <div className="mt-2 flex flex-wrap justify-center gap-1">
+            {LETTERS.map((l) => (
+              <span key={l} className="grid h-7 w-7 place-items-center rounded-full font-display text-sm font-black" style={{ background: v.used.includes(l) ? 'var(--line)' : 'var(--azul)', color: v.used.includes(l) ? 'var(--muted)' : '#fff', textDecoration: v.used.includes(l) ? 'line-through' : undefined }}>
+                {l}
+              </span>
+            ))}
+          </div>
+          <div className="mt-2 text-xs text-[var(--muted)]">Pense numa palavra para cada letra livre: ajuda a fixar a lição!</div>
+        </div>
+      </div>
     )
   },
 }

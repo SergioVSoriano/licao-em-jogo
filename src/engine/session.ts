@@ -49,6 +49,8 @@ export function createSession(pin: string, packId: string, settings: Settings, p
     effects: {},
     reactions: [],
     hands: [],
+    poll: {},
+    revealQ: 0,
     revealExtra: 0,
     trackLength: 3 * plan.length + 2,
   }
@@ -59,7 +61,7 @@ export const REWARDS: Record<RewardId, { name: string; emoji: string; text: stri
   dobro: { name: 'Porção Dobrada', emoji: '🔥', text: 'Seus passos dobram no próximo jogo', ref: '2Rs 2:9' },
   escudo: { name: 'Escudo da Fé', emoji: '🛡️', text: 'Você não perde pontos no próximo jogo', ref: 'Ef 6:16' },
   sorte: { name: 'Lançar a Sorte', emoji: '🎲', text: 'Escolha quem será sorteado primeiro no próximo jogo', ref: 'Pv 16:33' },
-  lampada: { name: 'Lâmpada', emoji: '🕯️', text: 'Alternativas erradas apagadas para você no próximo jogo', ref: 'Sl 119:105' },
+  lampada: { name: 'Lâmpada', emoji: '🕯️', text: 'Uma ajuda extra no próximo jogo (alternativas apagadas ou a letra inicial)', ref: 'Sl 119:105' },
 }
 
 const BOT_NAMES = ['Tito', 'Lia', 'Davi', 'Bia', 'Caleb', 'Mel', 'Noemi', 'Gabi', 'Rafa', 'Duda', 'Enzo', 'Sofia', 'Léo', 'Clara', 'Theo', 'Ana', 'Benja', 'Isa', 'Joca', 'Malu']
@@ -90,6 +92,8 @@ function setPhase(s: SessionState, phase: SessionState['phase'], now: number) {
   s.phaseAt = now
   s.hands = []
   s.ack = []
+  s.poll = {}
+  s.revealQ = 0
 }
 
 function startIntro(s: SessionState, idx: number, now: number) {
@@ -323,6 +327,11 @@ function handleInput(s: SessionState, msg: InputMsg, now: number) {
     if (!s.ack.includes(pid)) s.ack.push(pid)
     return
   }
+  if (type === 'poll' && s.phase === 'reveal') {
+    const opt = Number(data?.opt)
+    if (opt >= 0 && opt < 8) (s.poll ??= {})[pid] = opt
+    return
+  }
   if (type === 'hand') {
     if (s.hands.includes(pid)) s.hands = s.hands.filter((h) => h !== pid)
     else s.hands.push(pid)
@@ -357,6 +366,10 @@ function botStep(s: SessionState, now: number) {
   for (const b of bots) {
     if (s.phase === 'intro' && !s.ack.includes(b.id) && Math.random() < 0.1) s.ack.push(b.id)
     if (s.phase === 'reveal' && Math.random() < 0.004 && !s.hands.includes(b.id)) s.hands.push(b.id)
+    if (s.phase === 'reveal' && (s.poll ??= {})[b.id] === undefined && Math.random() < 0.08) {
+      const rev = currentRevelation(s)
+      if (rev) s.poll[b.id] = Math.floor(Math.random() * rev.poll.options.length)
+    }
     if (s.phase === 'reward' && s.reward?.pid === b.id && now - s.phaseAt > 2500) {
       autoReward(s, now)
       return
@@ -480,6 +493,11 @@ function control(s: SessionState, id: string, data: any, now: number) {
     case 'extend':
       s.revealExtra += 30
       return
+    case 'nextQ': {
+      const rev = currentRevelation(s)
+      if (rev) s.revealQ = ((s.revealQ ?? 0) + 1) % (1 + rev.followUps.length)
+      return
+    }
   }
 }
 
@@ -515,7 +533,8 @@ export function sessionControls(s: SessionState, now: number): Control[] {
     case 'reveal':
       return [
         { id: 'next', label: 'Ver o mapa ▶', key: ' ', tone: 'primary' },
-        { id: 'extend', label: '+30s de conversa', key: '+', tone: 'neutral' },
+        { id: 'nextQ', label: '🔄 Outra pergunta', key: 'q', tone: 'neutral' },
+        { id: 'extend', label: '+30s', key: '+', tone: 'neutral' },
       ]
     case 'map':
       return [{ id: 'next', label: s.gameIdx + 1 < s.plan.length ? 'Continuar ▶' : 'O Véu ▶', key: ' ', tone: 'primary' }]
@@ -551,4 +570,10 @@ export function privateFor(s: SessionState, pid: PlayerId, now: number): any {
 /** Final ranking: passos → 1º lugares → XP normalizado. */
 export function finalRanking(players: Player[]): Player[] {
   return players.slice().sort((a, b) => b.steps - a.steps || b.firsts - a.firsts || b.normSum - a.normSum)
+}
+
+/** O Momento Revelação do jogo que acabou de terminar. */
+export function currentRevelation(s: { packId: string; results: GameResult | null }) {
+  const pack = getPack(s.packId)
+  return pack.revelations.find((r) => r.game === s.results?.gameId) ?? pack.revelations[0]
 }
