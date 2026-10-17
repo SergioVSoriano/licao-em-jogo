@@ -112,7 +112,7 @@ export function Spotlight({ p, label, size = '9em' }: { p?: Player; label?: Reac
     <div className="anim-pop flex flex-col items-center">
       <div className="relative">
         <div className="absolute inset-[-12%] rounded-full bg-[radial-gradient(circle,rgba(255,200,80,.55),transparent_65%)]" />
-        <Avatar id={p.avatar} color={p.color} size={size} />
+        <Avatar id={p.avatar} color={p.color} size={size} className="relative" />
       </div>
       <div className="-mt-[0.4em] rounded-full bg-[var(--ouro)] px-[0.9em] py-[0.1em] font-display text-[1.5em] font-black text-[#2a1d00]">{p.name}</div>
       {label && <div className="mt-[0.3em] text-[1.1em] opacity-80">{label}</div>}

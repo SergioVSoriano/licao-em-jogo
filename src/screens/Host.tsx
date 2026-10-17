@@ -477,7 +477,7 @@ function Reveal({ pub, pack, now, players, list }: PhaseProps) {
             </div>
           ))}
         </div>
-        <div className="anim-pop mt-auto flex gap-[0.5em] text-[1.25em] font-semibold" style={{ animationDelay: '.6s' }}>
+        <div className="anim-pop mt-[0.4em] flex gap-[0.5em] rounded-[1em] bg-[var(--ouro)]/15 px-[0.9em] py-[0.6em] text-[1.25em] font-semibold" style={{ animationDelay: '.6s' }}>
           <span>💡</span>
           <span>{rev.insight}</span>
         </div>

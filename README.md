@@ -66,3 +66,21 @@ src/
 
 ### Nova lição, novo pacote
 Copie `src/content/l03-profetas.ts`, troque o conteúdo e registre o novo pacote em `src/content/index.ts`. Os jogos leem tudo do pacote.
+
+## Teste visual automático (simulação de uma partida)
+
+Com o servidor rodando (`npm run dev`), em outro terminal:
+
+```bash
+npm run simular
+```
+
+O script abre o Microsoft Edge em modo invisível com 6 abas: 1 telão, 4 celulares (Ana, Bruno, Carla e Davi) e o controle do facilitador, mais 3 robôs. Ele joga os 12 jogos agindo em cada papel e gera [docs/testes/RELATORIO.md](docs/testes/RELATORIO.md) com os prints em `docs/testes/prints/`. Leva cerca de 20 minutos. Para usar outro endereço: `BASE=http://localhost:5174 npm run simular`; para ver o navegador: `HEADED=1 npm run simular`.
+
+## No ar (produção)
+
+- Site: https://licao-em-jogo.vercel.app (Vercel, projeto `licao-em-jogo`)
+- Firebase: projeto `licao-em-jogo` (Realtime Database `licao-em-jogo-default-rtdb` + login anônimo). As regras ficam em `database.rules.json`.
+- Variáveis `VITE_FIREBASE_*` estão no painel da Vercel (Production) e em `.env.local` para desenvolvimento.
+- Atualizar o site: `npx vercel@latest deploy --prod`. Atualizar as regras: `npx firebase-tools@latest deploy --only database`.
+- Teste online (telão + 3 celulares em contextos isolados): `BASE=https://licao-em-jogo.vercel.app npm run testar:online`.

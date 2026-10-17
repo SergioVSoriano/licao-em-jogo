@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "simular": "node scripts/simular-partida.mjs",
+    "testar:online": "node scripts/testar-firebase.mjs"
   },
   "dependencies": {
     "canvas-confetti": "1.9.4",
@@ -24,6 +26,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "5.2.0",
+    "playwright-core": "1.63.0",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "vite": "7.3.7"

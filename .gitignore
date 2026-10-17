@@ -5,3 +5,7 @@ dist
 *.pdf
 .vercel
 *.tsbuildinfo
+*.log
+
+.vercel
+.env*

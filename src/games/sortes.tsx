@@ -215,8 +215,8 @@ export const sortes: GameDef<S> = {
   bot(s, pid, ctx) {
     const qq = q(s, ctx)
     const guess = ctx.rng() < 0.65 ? qq.answer : Math.floor(ctx.rng() * 4)
-    if (s.stage === 'answer' && pid === s.chosen && ctx.now - s.t0 > 2500) return ctx.rng() < 0.1 ? { type: 'pass' } : { type: 'answer', data: { opt: guess } }
-    if (s.stage === 'answer2' && pid === s.chosen2 && ctx.now - s.t0 > 2500) return { type: 'answer', data: { opt: guess } }
+    if (s.stage === 'answer' && pid === s.chosen && ctx.now - s.t0 > 5000) return ctx.rng() < 0.1 ? { type: 'pass' } : { type: 'answer', data: { opt: guess } }
+    if (s.stage === 'answer2' && pid === s.chosen2 && ctx.now - s.t0 > 5000) return { type: 'answer', data: { opt: guess } }
     if (pid !== s.chosen && pid !== s.chosen2 && s.aud[pid] === undefined && (s.stage === 'answer' || s.stage === 'answer2')) return { type: 'aud', data: { opt: guess } }
     return null
   },
@@ -289,7 +289,9 @@ export const sortes: GameDef<S> = {
   PlayerView({ view: v, priv, send, me, now, players }) {
     const meId = me?.id
     const iAmUp = (v.stage === 'answer' && meId === v.chosen) || (v.stage === 'answer2' && meId === v.chosen2)
-    if (v.stage === 'draw' || v.stage === 'draw2') {
+    // na 2ª sorte a pergunta já está no telão: a plateia continua podendo responder
+    const audienceDuringDraw2 = v.stage === 'draw2' && meId !== v.chosen && meId !== v.chosen2 && priv?.aud == null
+    if ((v.stage === 'draw' || v.stage === 'draw2') && !audienceDuringDraw2) {
       const settled = now > v.t1 - 900
       const target = v.stage === 'draw' ? v.chosen : v.chosen2
       if (settled && target === meId) return <Waiting title="A sorte caiu em você! 🎲" me={me} mood="wow">Prepare-se…</Waiting>
@@ -333,7 +335,7 @@ export const sortes: GameDef<S> = {
     return (
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="text-center font-display font-black text-[var(--muted)]">
-          👥 Plateia · {up ? `${players[up]?.name} está respondendo` : 'todos respondem'} · acerto +{v.chosen ? 50 : 100}
+          👥 Plateia · {v.stage === 'draw2' ? 'a sorte está escolhendo a 2ª pessoa' : up ? `${players[up]?.name} está respondendo` : 'todos respondem'} · acerto +{v.chosen ? 50 : 100}
         </div>
         <div className="card p-3 text-center font-display text-lg font-black">{v.q}</div>
         {priv?.aud != null ? <Waiting title="Palpite registrado 🤫" /> : <MCPad labels={v.opts} onPick={(i) => send('aud', { opt: i })} hide={priv?.hide} />}

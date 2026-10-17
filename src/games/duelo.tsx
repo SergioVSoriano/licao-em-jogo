@@ -184,7 +184,7 @@ export const duelo: GameDef<S> = {
   bot(s, pid, ctx) {
     const qq = ctx.pack.questions[s.qs[s.i]]
     const guess = ctx.rng() < 0.6 ? qq.answer : Math.floor(ctx.rng() * 4)
-    if (pid === s.a || pid === s.b) return s.stage === 'q' && s.duel[pid] === undefined && ctx.now - s.t0 > 1500 && ctx.rng() < 0.3 ? { type: 'answer', data: { opt: guess } } : null
+    if (pid === s.a || pid === s.b) return s.stage === 'q' && s.duel[pid] === undefined && ctx.now - s.t0 > 4500 && ctx.rng() < 0.15 ? { type: 'answer', data: { opt: guess } } : null
     if (!s.bets[pid] && s.stage !== 'reveal') return { type: 'bet', data: { pid: ctx.rng() < 0.5 ? s.a : s.b } }
     if (s.stage === 'q' && s.aud[pid] === undefined) return { type: 'aud', data: { opt: guess } }
     return null
@@ -200,7 +200,7 @@ export const duelo: GameDef<S> = {
           {isKing && <div className="font-display text-[1.1em] font-black text-[var(--ouro)]">⛰️ Rei do Monte ×{v.streak}</div>}
           <div className={`relative ${v.winner === p.id ? 'anim-pop' : ''}`}>
             {v.winner === p.id && <div className="absolute inset-[-15%] rounded-full bg-[radial-gradient(circle,rgba(255,120,30,.75),transparent_65%)]" />}
-            <Avatar id={p.avatar} color={p.color} size={v.stage === 'draw' ? '11em' : '5em'} mood={v.winner === p.id ? 'wow' : v.locked.includes(p.id) ? 'sad' : 'happy'} />
+            <Avatar id={p.avatar} color={p.color} size={v.stage === 'draw' ? '11em' : '4.2em'} mood={v.winner === p.id ? 'wow' : v.locked.includes(p.id) ? 'sad' : 'happy'} className="relative" />
           </div>
           <div className="rounded-full bg-white px-[0.8em] font-display text-[1.4em] font-black text-[var(--noite)]">{p.name}</div>
           <div className="mt-[0.2em] text-[0.95em] opacity-80">👥 {bets} apostas</div>
@@ -209,7 +209,7 @@ export const duelo: GameDef<S> = {
         </div>
       )
     return (
-      <div className="flex h-full flex-col gap-[1em]">
+      <div className="flex h-full flex-col gap-[0.7em]">
         <RoundBar label={`Duelo ${v.i + 1} de ${v.total}`} right={v.stage === 'q' ? <TimerBox start={v.t0} end={v.t1} now={now} /> : null} />
         <div className="flex items-center justify-center gap-[3em]">
           {side(A, v.bets[0], v.king === v.a && v.streak > 0)}
@@ -220,7 +220,7 @@ export const duelo: GameDef<S> = {
           <div className="text-center font-display text-[1.6em] font-black opacity-90">Prepare-se… plateia, faça sua aposta! 👥</div>
         ) : (
           <>
-            <div className="rounded-[1.2em] bg-white px-[1em] py-[0.7em] text-center font-display text-[2em] font-black leading-tight text-[var(--noite)]">{v.q}</div>
+            <div className="rounded-[1.2em] bg-white px-[1em] py-[0.5em] text-center font-display text-[1.7em] font-black leading-tight text-[var(--noite)]">{v.q}</div>
             <OptionsGrid options={v.opts} correct={r?.answer} reveal={!!r} />
             {r && <Explain refText={r.ref}>{r.explain}</Explain>}
           </>

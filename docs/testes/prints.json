@@ -1,0 +1,1214 @@
+{
+  "shots": [
+    {
+      "file": "001-inicio.jpg",
+      "caption": "Página inicial (computador).",
+      "section": "1. Início e planejador",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "002-inicio-celular.jpg",
+      "caption": "Página inicial no celular.",
+      "section": "1. Início e planejador",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "003-como-funciona.jpg",
+      "caption": "Página \"Como funciona\": passo a passo, mapa, pontos e os 12 jogos.",
+      "section": "1. Início e planejador",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "004-planejador.jpg",
+      "caption": "Planejador com os 12 jogos em 60 min: as rodadas foram reduzidas sozinhas para caber (lista ✂️ à direita).",
+      "section": "1. Início e planejador",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "005-lobby-vazio.jpg",
+      "caption": "Sala de espera no telão: QR Code, PIN 606366 e roteiro.",
+      "section": "2. Entrada dos jogadores",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "006-entrada-nome.jpg",
+      "caption": "Celular: passo 1, o nome.",
+      "section": "2. Entrada dos jogadores",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "007-entrada-personagem.jpg",
+      "caption": "Celular: passo 2, escolher o personagem bíblico (e a cor da roupa).",
+      "section": "2. Entrada dos jogadores",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "008-entrada-nao-sortear.jpg",
+      "caption": "Davi marcou \"Prefiro não ser sorteado\": joga como plateia nos jogos de holofote.",
+      "section": "2. Entrada dos jogadores",
+      "device": "Celular de Davi",
+      "kind": "phone"
+    },
+    {
+      "file": "009-lobby-celular.jpg",
+      "caption": "Celular depois de entrar: \"Você está dentro!\" e uma curiosidade da lição.",
+      "section": "2. Entrada dos jogadores",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "010-lobby-cheio.jpg",
+      "caption": "Telão com os 4 jogadores + 3 robôs (para completar os times).",
+      "section": "2. Entrada dos jogadores",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "011-controle-lobby.jpg",
+      "caption": "Controle do facilitador no celular (aberto pelo QR 📲 do telão).",
+      "section": "2. Entrada dos jogadores",
+      "device": "Celular do facilitador",
+      "kind": "judge"
+    },
+    {
+      "file": "012-abertura.jpg",
+      "caption": "Abertura: a tirinha da lição, o verso de Amós 3:7 e o mapa do santuário.",
+      "section": "3. Abertura",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "013-abertura-celular.jpg",
+      "caption": "Celular na abertura.",
+      "section": "3. Abertura",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "014-nuvem-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "015-nuvem-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "016-nuvem-celular-escrevendo.jpg",
+      "caption": "Ana escreve até 3 palavras (anônimo).",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "017-nuvem-telao-escrevendo.jpg",
+      "caption": "Telão enquanto a turma escreve: as palavras ficam escondidas até o tempo acabar.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "018-nuvem-telao-nuvem.jpg",
+      "caption": "A nuvem revelada: palavras repetidas crescem (cansado + exausto contam juntas).",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "019-nuvem-palavra-de-ouro.jpg",
+      "caption": "O facilitador clicou numa palavra original para dar ⭐ Palavra de Ouro (+200).",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "020-nuvem-controle.jpg",
+      "caption": "No controle do facilitador, as palavras também aparecem para dar a ⭐.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular do facilitador",
+      "kind": "judge"
+    },
+    {
+      "file": "021-nuvem-celular-resultado.jpg",
+      "caption": "Celular da Ana: pontos da rodada.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "022-nuvem-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "023-nuvem-celular-placar.jpg",
+      "caption": "Placar no celular: posição e passos ganhos.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "024-nuvem-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Qual é o seu \"zimbro\"? Onde você se esconde quando chega no limite?\" com enquete ao vivo e quem quer falar.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "025-nuvem-celular-momento-revelacao.jpg",
+      "caption": "Momento Revelação no celular: pergunta, enquete e \"Quero falar\".",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "026-nuvem-controle-momento-revelacao.jpg",
+      "caption": "Controle do facilitador: insight, todas as perguntas, resultado da enquete e nota de condução.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular do facilitador",
+      "kind": "judge"
+    },
+    {
+      "file": "027-nuvem-telao-outra-pergunta.jpg",
+      "caption": "Tecla Q (ou \"Outra pergunta\"): troca para a pergunta seguinte.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "028-nuvem-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "029-nuvem-celular-mapa.jpg",
+      "caption": "Mapa no celular, com o próprio avatar em destaque.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "030-nuvem-celular-recompensa.jpg",
+      "caption": "Ana venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "4. Jogo 1: Nuvem de Testemunhas",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "031-linha-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "032-linha-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "033-linha-celular-embaralhado.jpg",
+      "caption": "Celular: os acontecimentos chegam embaralhados para arrastar (ou usar ▲ ▼).",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "034-linha-celular-ordenado.jpg",
+      "caption": "Ana colocou na ordem certa antes de enviar.",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "035-linha-telao-ordenando.jpg",
+      "caption": "Telão: as cartas embaralhadas e quantos já enviaram.",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "036-linha-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "037-linha-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Se a sua semana fosse a história de Elias, você estaria em qual parte?\" com enquete ao vivo e quem quer falar.",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "038-linha-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "039-linha-telao-recompensa.jpg",
+      "caption": "Um robô venceu: o telão mostra as cartas de recompensa.",
+      "section": "5. Jogo 2: Linha do Tempo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "040-verdade-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "041-verdade-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "042-vf-celular-pergunta.jpg",
+      "caption": "Celular: a afirmação e dois botões grandes.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "043-vf-telao-pergunta.jpg",
+      "caption": "Telão: a afirmação, o tempo e quantos já responderam.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "044-vf-telao-revelacao.jpg",
+      "caption": "Revelação: porcentagem da turma, resposta certa e explicação com o versículo.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "045-vf-celular-feedback-1.jpg",
+      "caption": "Feedback no celular da Ana (estilo Duolingo).",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "046-vf-celular-feedback-2.jpg",
+      "caption": "Feedback no celular do Bruno.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "047-verdade-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "048-verdade-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Qual \"verdade popular\" da internet você já acreditou e depois descobriu que era falsificação?\" com enquete ao vivo e quem quer falar.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "049-verdade-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "050-verdade-telao-recompensa.jpg",
+      "caption": "Um robô venceu: o telão mostra as cartas de recompensa.",
+      "section": "6. Jogo 3: Verdade ou Falsificação",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "051-sinais-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "052-sinais-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "053-sinais-telao-dica1.jpg",
+      "caption": "Telão: só a dica 1 aparece para todos; as outras abrem no celular de quem erra.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "054-sinais-celular-dica1.jpg",
+      "caption": "Celular: digite o palpite (pode errar acento) ou \"Não sei\".",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "055-sinais-celular-errou.jpg",
+      "caption": "Ana chutou \"Elias\" e errou: abriu a dica 2, agora valendo 600.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "056-sinais-celular-dica3.jpg",
+      "caption": "Bruno tocou \"Não sei\" duas vezes: vê as 3 dicas, valendo 300.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "057-sinais-celular-acertou.jpg",
+      "caption": "Carla acertou \"Débora\" logo na dica 1 (+1000).",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "058-sinais-telao-corrida.jpg",
+      "caption": "Telão: a corrida, com quem acertou em cada dica.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "059-sinais-telao-revelacao.jpg",
+      "caption": "Revelação: as 3 dicas, a resposta e os palpites errados mais comuns.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "060-sinais-celular-resposta.jpg",
+      "caption": "Celular de quem não acertou mostra a resposta.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Davi",
+      "kind": "phone"
+    },
+    {
+      "file": "061-sinais-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "062-sinais-celular-placar.jpg",
+      "caption": "Placar no celular: posição e passos ganhos.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "063-sinais-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Se você pudesse tomar um café com Miriã, Débora ou Hulda, quem escolheria e o que perguntaria?\" com enquete ao vivo e quem quer falar.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "064-sinais-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "065-sinais-celular-recompensa.jpg",
+      "caption": "Davi venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Davi",
+      "kind": "phone"
+    },
+    {
+      "file": "066-sinais-celular-recompensa-alvo.jpg",
+      "caption": "Escolhendo o alvo da carta.",
+      "section": "7. Jogo 4: Três Sinais",
+      "device": "Celular de Davi",
+      "kind": "phone"
+    },
+    {
+      "file": "067-sortes-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "068-sortes-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "069-sortes-celular-sorteado.jpg",
+      "caption": "Ana foi sorteado(a): responde, passa ou pede ajuda à plateia.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "070-sortes-telao-respondendo.jpg",
+      "caption": "Telão: a pergunta, quem está respondendo e a plateia respondendo em silêncio.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "071-sortes-telao-ajuda.jpg",
+      "caption": "Pediu ajuda à plateia: o telão mostra a porcentagem de cada alternativa.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "072-sortes-celular-plateia.jpg",
+      "caption": "Bruno está na plateia: responde em silêncio valendo +50.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "073-sortes-telao-revelacao.jpg",
+      "caption": "Revelação: resultado de cada sorteado e quanto da plateia acertou.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "074-sortes-celular-resultado.jpg",
+      "caption": "Celular do sorteado: errou na 1ª chance (−200).",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "075-sortes-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "076-sortes-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Se um profeta mandasse uma mensagem direta para a sua geração, sobre o que ela seria?\" com enquete ao vivo e quem quer falar.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "077-sortes-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "078-sortes-celular-recompensa.jpg",
+      "caption": "Ana venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "079-sortes-celular-recompensa-alvo.jpg",
+      "caption": "Escolhendo o alvo da carta.",
+      "section": "8. Jogo 5: Lançar Sortes",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "080-duelo-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "082-duelo-telao-sorteio.jpg",
+      "caption": "Telão: dois sorteados frente a frente; a plateia aposta.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "083-duelo-celular-duelista.jpg",
+      "caption": "Ana está no duelo: quem acertar primeiro vence.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "084-duelo-celular-plateia.jpg",
+      "caption": "Carla na plateia: aposta em quem vence e responde em silêncio.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "085-duelo-telao-vencedor.jpg",
+      "caption": "Telão: o vencedor fica no monte (\"Rei do Monte\").",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "086-duelo-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "087-duelo-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Em que área da vida é mais fácil ficar \"coxeando entre dois pensamentos\"?\" com enquete ao vivo e quem quer falar.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "088-duelo-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "089-duelo-celular-recompensa.jpg",
+      "caption": "Ana venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "9. Jogo 6: Duelo no Carmelo",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "090-acrostico-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "091-acrostico-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "092-acrostico-telao-vez.jpg",
+      "caption": "Telão: o tema, a roda de letras e de quem é a vez.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "093-acrostico-celular-voto.jpg",
+      "caption": "Ana vota se a palavra vale.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "094-acrostico-telao-votacao.jpg",
+      "caption": "Telão: a letra escolhida e a votação da turma; o facilitador decide com 1 ou 2.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "095-acrostico-celular-vez.jpg",
+      "caption": "Vez de Bruno: fala a palavra em voz alta e toca na letra.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "096-acrostico-celular-eliminado.jpg",
+      "caption": "Carla saiu da rodada, mas continua votando e vê o tema e as letras livres.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "097-acrostico-telao-fim.jpg",
+      "caption": "Fim da rodada: quem resistiu ganha +300.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "098-acrostico-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "099-acrostico-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Se a sua família avaliasse a sua fé com estrelas esta semana, quantas você levaria? 😅\" com enquete ao vivo e quem quer falar.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "100-acrostico-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "101-acrostico-celular-recompensa.jpg",
+      "caption": "Bruno venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "10. Jogo 7: Acróstico 119",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "102-fruto-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "103-fruto-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "104-fruto-celular-pronto.jpg",
+      "caption": "Ana vai explicar: só ele(a) vê a carta.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "105-fruto-telao-turno-1.jpg",
+      "caption": "Telão: placar dos times, quem explica, o fiscal e a \"carta secreta\".",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "106-fruto-celular-carta.jpg",
+      "caption": "Celular de quem explica: a palavra e as 5 proibidas.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "107-fruto-celular-time.jpg",
+      "caption": "Bruno: o time adivinha em voz alta.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "108-fruto-telao-fim-turno-1.jpg",
+      "caption": "Fim do turno: as palavras do turno aparecem (✓ acerto, 🚨 buzz).",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "109-fruto-telao-turno-2.jpg",
+      "caption": "Telão: placar dos times, quem explica, o fiscal e a \"carta secreta\".",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "110-fruto-celular-fiscal.jpg",
+      "caption": "Ana é o FISCAL: vê a mesma carta e tem o botão BUZZ.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "111-fruto-telao-fim-turno-2.jpg",
+      "caption": "Fim do turno: as palavras do turno aparecem (✓ acerto, 🚨 buzz).",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "112-fruto-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "113-fruto-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Qual verdade desta lição é mais difícil de explicar sem cair no clichê?\" com enquete ao vivo e quem quer falar.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "114-fruto-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "115-fruto-celular-recompensa.jpg",
+      "caption": "Ana venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "11. Jogo 8: Fruto Proibido",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "116-sonho-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "117-sonho-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "118-sonho-telao-rei.jpg",
+      "caption": "Telão: quem é o Rei (vira de costas e fecha os olhos).",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "119-sonho-celular-papel-mago.jpg",
+      "caption": "Ana recebeu o papel secreto: Mago da Corte 🔮.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "120-sonho-celular-rei.jpg",
+      "caption": "Bruno é o REI 👑.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "121-sonho-celular-papel-anjo.jpg",
+      "caption": "Carla recebeu o papel secreto: Anjo 😇.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "122-sonho-telao-noite.jpg",
+      "caption": "Noite: a palavra aparece no telão (o Rei está de costas).",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "123-sonho-celular-palavra.jpg",
+      "caption": "Ana vê a palavra e o próprio papel, e dá UMA pista.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "124-sonho-controle.jpg",
+      "caption": "Controle do facilitador durante a noite: ✓ acertou / ✗ errou.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular do facilitador",
+      "kind": "judge"
+    },
+    {
+      "file": "125-sonho-telao-interpretacao.jpg",
+      "caption": "\"Interpretação\": o Rei reconta o sonho ligando as palavras (como Daniel).",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "126-sonho-celular-discernimento.jpg",
+      "caption": "O Rei tenta apontar um Falso Profeta (tema de terça: discernimento).",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "127-sonho-telao-pontos.jpg",
+      "caption": "Pontuação: os papéis são revelados e cada um ganha conforme o papel.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "128-sonho-celular-resultado.jpg",
+      "caption": "Ana vê o próprio resultado.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "129-sonho-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "130-sonho-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Quem são os \"anjos\" e os \"falsos profetas\" (as vozes que te ajudam e as que te confundem) na sua rotina?\" com enquete ao vivo e quem quer falar.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "131-sonho-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "132-sonho-celular-recompensa.jpg",
+      "caption": "Bruno venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "12. Jogo 9: O Sonho do Rei",
+      "device": "Celular de Bruno",
+      "kind": "phone"
+    },
+    {
+      "file": "133-disfarcados-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "134-disfarcados-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "135-disfarcados-telao-grade.jpg",
+      "caption": "Telão: a grade com 12 personagens e as pistas.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "136-disfarcados-celular-palpite.jpg",
+      "caption": "Ana: toca no rosto do personagem (um palpite só).",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "137-disfarcados-telao-revelacao.jpg",
+      "caption": "Revelação: o personagem, os votos e a ficha bíblica.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "138-disfarcados-celular-informante.jpg",
+      "caption": "Carla é o INFORMANTE: vê o personagem secreto e pistas prontas.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "139-disfarcados-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "140-disfarcados-celular-placar.jpg",
+      "caption": "Placar no celular: posição e passos ganhos.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "141-disfarcados-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Com qual personagem desta semana você mais se identifica? Por quê?\" com enquete ao vivo e quem quer falar.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "142-disfarcados-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "143-disfarcados-celular-recompensa.jpg",
+      "caption": "Ana venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "13. Jogo 10: Disfarçados",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "144-atos-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "145-atos-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "146-atos-celular-escolha.jpg",
+      "caption": "Ana é o ator: escolhe cena fácil (100) ou difícil (200).",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "147-atos-telao-encenando-1.jpg",
+      "caption": "Telão: quem encena, o tempo e o placar dos times.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "148-atos-celular-cena.jpg",
+      "caption": "Celular do ator: a cena para encenar sem falar.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "149-atos-celular-time.jpg",
+      "caption": "Carla é do time da vez: adivinha em voz alta.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "150-atos-telao-fim-1.jpg",
+      "caption": "Fim do turno: a cena é revelada.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "151-atos-telao-encenando-2.jpg",
+      "caption": "Telão: quem encena, o tempo e o placar dos times.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "152-atos-telao-roubo.jpg",
+      "caption": "Tempo esgotado: os outros times podem roubar com um palpite.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "153-atos-telao-fim-2.jpg",
+      "caption": "Fim do turno: a cena é revelada.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "154-atos-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "155-atos-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Se a sua vida fosse uma \"encenação profética\" esta semana, o que as pessoas entenderiam sobre Deus só de te ver?\" com enquete ao vivo e quem quer falar.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "156-atos-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "157-atos-celular-recompensa.jpg",
+      "caption": "Carla venceu o jogo e escolhe uma carta de recompensa.",
+      "section": "14. Jogo 11: Atos Proféticos",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "158-voz-telao-regras.jpg",
+      "caption": "Regras do jogo no telão (também aparecem no celular).",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "159-voz-celular-regras.jpg",
+      "caption": "Regras no celular, com o botão \"Entendi ✓\".",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Celular de Carla",
+      "kind": "phone"
+    },
+    {
+      "file": "160-voz-telao-preparo.jpg",
+      "caption": "Telão: cada time com um caso da vida real e o roteiro de 3 passos.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "161-voz-celular-preparo.jpg",
+      "caption": "Celular: o caso do time, o versículo e o roteiro (com porta-voz sugerido).",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "162-voz-telao-pitch-1.jpg",
+      "caption": "Pitch de 1 minuto do time 1.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "163-voz-telao-pitch-2.jpg",
+      "caption": "Pitch de 1 minuto do time 2.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "164-voz-celular-voto.jpg",
+      "caption": "Ana avalia os OUTROS times: \"Fiel ao texto\" e \"Prático para a vida\".",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "165-voz-telao-resultado.jpg",
+      "caption": "Resultado: média de estrelas de cada time.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "166-voz-telao-placar.jpg",
+      "caption": "Placar do jogo: pontos, passos ganhos (👣) e bônus como 🍞 Pão e Água.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "167-voz-telao-momento-revelacao.jpg",
+      "caption": "Momento Revelação: \"Se Deus te chamasse hoje para ser voz de esperança onde você vive, qual seria a sua primeira desculpa? 😅\" com enquete ao vivo e quem quer falar.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "168-voz-telao-mapa.jpg",
+      "caption": "Mapa do santuário: os avatares andam os passos ganhos.",
+      "section": "15. Jogo 12: Voz Profética",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "169-final-veu.jpg",
+      "caption": "Diante do véu: quem chegou mais longe no caminho?",
+      "section": "16. Final: véu, pódio e Rolo da Lição",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "170-final-podio.jpg",
+      "caption": "O véu se rasga: todos entram no Santíssimo, com o pódio e os destaques.",
+      "section": "16. Final: véu, pódio e Rolo da Lição",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "171-final-podio-celular.jpg",
+      "caption": "Celular: a posição final.",
+      "section": "16. Final: véu, pódio e Rolo da Lição",
+      "device": "Celular de Ana",
+      "kind": "phone"
+    },
+    {
+      "file": "172-final-rolo-telao.jpg",
+      "caption": "Rolo da Lição no telão: os 7 tópicos com exemplos e perguntas.",
+      "section": "16. Final: véu, pódio e Rolo da Lição",
+      "device": "Telão (professor)",
+      "kind": "host"
+    },
+    {
+      "file": "173-final-rolo-topico.jpg",
+      "caption": "Clique num tópico: ele abre em tela cheia para discussão (← → para navegar).",
+      "section": "16. Final: véu, pódio e Rolo da Lição",
+      "device": "Telão (professor)",
+      "kind": "host"
+    }
+  ],
+  "errors": [
+    "print 081-duelo-celular-regras.jpg: page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+    "print 174-final-rolo-celular.jpg: page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+    "print 175-final-controle.jpg: page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+  ],
+  "gamesPlayed": 12
+}
