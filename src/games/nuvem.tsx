@@ -63,7 +63,6 @@ export const nuvem: GameDef<S> = {
   needsJudge: false,
   minPlayers: 2,
   idealRange: [5, 30],
-  truths: ['V3', 'V2', 'V5', 'V6'],
   energy: 2,
   depth: 3,
   accent: 'var(--azul)',

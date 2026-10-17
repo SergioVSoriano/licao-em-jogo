@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { DEFAULT_PACK } from '../content'
+import { useDefaultPack } from '../content'
+import type { ContentPack } from '../content/types'
 import { REWARDS } from '../engine/session'
 import { GAMES, KIND_LABEL } from '../games'
 import { Link, navigate } from '../router'
 import { Avatar } from '../ui/avatars'
 import { HowToCard } from '../ui/HowToCard'
-import { Btn, Logo, Lume } from '../ui/kit'
+import { Btn, Logo, Lume, PackLoading } from '../ui/kit'
 import { SanctuaryMap } from '../ui/SanctuaryMap'
 import type { Player } from '../engine/types'
 
@@ -36,7 +37,12 @@ function Section({ id, title, emoji, children }: { id: string; title: string; em
 }
 
 export function HowItWorks() {
-  const pack = DEFAULT_PACK
+  const { pack, error } = useDefaultPack()
+  if (!pack) return <PackLoading error={error} />
+  return <HowItWorksView pack={pack} />
+}
+
+function HowItWorksView({ pack }: { pack: ContentPack }) {
   const [open, setOpen] = useState<string | null>(GAMES[0].id)
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-6">

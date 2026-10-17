@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { DEFAULT_PACK } from '../content'
+import { useDefaultPack } from '../content'
+import type { ContentPack } from '../content/types'
 import { isDemo } from '../net'
 import { Link, navigate } from '../router'
 import { Avatar } from '../ui/avatars'
-import { Btn, Logo, Lume } from '../ui/kit'
+import { Btn, Logo, Lume, PackLoading } from '../ui/kit'
 
 export function DemoBanner() {
   if (!isDemo) return null
@@ -15,8 +16,13 @@ export function DemoBanner() {
 }
 
 export function Home() {
+  const { pack, error } = useDefaultPack()
+  if (!pack) return <PackLoading error={error} />
+  return <HomeView pack={pack} />
+}
+
+function HomeView({ pack }: { pack: ContentPack }) {
   const [pin, setPin] = useState('')
-  const pack = DEFAULT_PACK
   return (
     <div className="mx-auto flex min-h-dvh max-w-5xl flex-col gap-6 px-4 py-6 sm:py-10">
       <header className="flex items-center justify-between">

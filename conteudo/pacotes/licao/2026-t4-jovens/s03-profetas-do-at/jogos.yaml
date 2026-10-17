@@ -1,0 +1,855 @@
+# Conteúdo dos minijogos. Todas as listas são opcionais: o jogo sem conteúdo aparece travado no planejador.
+# Pacote: 2026-q4-l03 → novo id licao-2026-t4-jovens-s03
+# Formato e regras: conteudo/REGRAS.md
+
+perguntas:
+  - pergunta: Depois do Carmelo, quem ameaçou matar Elias?
+    opcoes:
+      - Acabe
+      - Jezabel
+      - Obadias
+      - Hazael
+    correta: Jezabel
+    explicacao: Jezabel jurou matá-lo em 24 horas, e Elias fugiu.
+    ref: 1Rs 19:2
+    verdade: V3
+  - pergunta: Debaixo de que árvore Elias pediu a morte?
+    opcoes:
+      - Oliveira
+      - Figueira
+      - Zimbro
+      - Palmeira
+    correta: Zimbro
+    explicacao: Zimbro (giesta), no deserto, depois de Berseba.
+    ref: 1Rs 19:4
+    verdade: V3
+  - pergunta: O que o anjo levou a Elias?
+    opcoes:
+      - Maná e codornizes
+      - Pão cozido em brasas e água
+      - Mel e gafanhotos
+      - Uvas e azeite
+    correta: Pão cozido em brasas e água
+    explicacao: '"Levanta-te e come": Deus cuidou do corpo primeiro.'
+    ref: 1Rs 19:5-6
+    verdade: V3
+  - pergunta: Quantos dias Elias caminhou até o Horebe?
+    opcoes:
+      - "7"
+      - "12"
+      - "40"
+      - "3"
+    correta: "40"
+    explicacao: 40 dias e 40 noites com a força daquela comida.
+    ref: 1Rs 19:8
+    verdade: V3
+  - pergunta: Em qual destes Deus falou com Elias no Horebe?
+    opcoes:
+      - Vento forte
+      - Terremoto
+      - Fogo
+      - Voz mansa e delicada
+    correta: Voz mansa e delicada
+    explicacao: Deus não estava no espetáculo, mas no cicio suave.
+    ref: 1Rs 19:11-12
+    verdade: V3
+  - pergunta: Quem Elias NÃO recebeu ordem de ungir?
+    opcoes:
+      - Hazael
+      - Jeú
+      - Eliseu
+      - Josias
+    correta: Josias
+    explicacao: Hazael (Síria), Jeú (Israel) e Eliseu (profeta). Josias viveu séculos depois.
+    ref: 1Rs 19:15-16
+    verdade: V3
+  - pergunta: Quantos profetas aconselharam Acabe a atacar Ramote-Gileade?
+    opcoes:
+      - "12"
+      - "70"
+      - "400"
+      - "850"
+    correta: "400"
+    explicacao: 400 vozes em uníssono, e mesmo assim erradas.
+    ref: 1Rs 22:6
+    verdade: V4
+  - pergunta: Por que Acabe odiava Micaías?
+    opcoes:
+      - Era estrangeiro
+      - Nunca profetizava o bem a respeito dele
+      - Roubou seu manto
+      - Apoiava Jezabel
+    correta: Nunca profetizava o bem a respeito dele
+    explicacao: A verdade nem sempre é popular.
+    ref: 1Rs 22:8
+    verdade: V4
+  - pergunta: 'Qual rei perguntou: "Não há aqui algum profeta do Senhor?"'
+    opcoes:
+      - Acabe
+      - Josafá
+      - Saul
+      - Josias
+    correta: Josafá
+    explicacao: Josafá, rei de Judá, desconfiou da unanimidade.
+    ref: 1Rs 22:7
+    verdade: V4
+  - pergunta: Como Elias foi levado ao céu?
+    opcoes:
+      - Numa nuvem
+      - Num redemoinho, com carro de fogo
+      - Numa escada
+      - Nos braços de um anjo
+    correta: Num redemoinho, com carro de fogo
+    explicacao: Elias não morreu.
+    ref: 2Rs 2:11
+    verdade: V2
+  - pergunta: Segundo Malaquias 4:6, a mensagem de Elias converteria o coração de…
+    opcoes:
+      - Reis e sacerdotes
+      - Pais e filhos
+      - Judeus e gentios
+      - Profetas e povo
+    correta: Pais e filhos
+    explicacao: O reavivamento começa em casa.
+    ref: Ml 4:6
+    verdade: V2
+  - pergunta: Qual profetisa também era juíza de Israel?
+    opcoes:
+      - Miriã
+      - Hulda
+      - Débora
+      - Noadia
+    correta: Débora
+    explicacao: Ela julgava debaixo da "palmeira de Débora".
+    ref: Jz 4:4-5
+    verdade: V5
+  - pergunta: Quem foi consultada quando o Livro da Lei foi encontrado?
+    opcoes:
+      - Débora
+      - Hulda
+      - Miriã
+      - Ester
+    correta: Hulda
+    explicacao: Josias mandou Hilquias e outros consultá-la.
+    ref: 2Rs 22:14
+    verdade: V5
+  - pergunta: Noadia é lembrada na Bíblia como…
+    opcoes:
+      - Juíza
+      - Falsa profetisa
+      - Rainha
+      - Mãe de Samuel
+    correta: Falsa profetisa
+    explicacao: Ela tentou intimidar Neemias.
+    ref: Ne 6:14
+    verdade: V5
+  - pergunta: Quem Samuel ungiu como o primeiro rei de Israel?
+    opcoes:
+      - Davi
+      - Saul
+      - Salomão
+      - Jeú
+    correta: Saul
+    explicacao: O povo queria um rei "como todas as nações".
+    ref: 1Sm 8:5; 10:1
+    verdade: V6
+  - pergunta: Que sacerdote foi apedrejado por ordem do rei Joás?
+    opcoes:
+      - Eli
+      - Hilquias
+      - Zacarias, filho de Joiada
+      - Arão
+    correta: Zacarias, filho de Joiada
+    explicacao: Profetas pagavam caro para confrontar reis.
+    ref: 2Cr 24:20-22
+    verdade: V6
+  - pergunta: Qual destas NÃO era uma função dos profetas?
+    opcoes:
+      - Aconselhar reis
+      - Repreender sacerdotes
+      - Escrever mensagens
+      - Cobrar impostos
+    correta: Cobrar impostos
+    explicacao: Profetizar é orientar, confrontar, instruir e escrever.
+    ref: 2Cr 13:22
+    verdade: V6
+  - pergunta: Com que idade Ellen Harmon recebeu o chamado profético?
+    opcoes:
+      - "12"
+      - "17"
+      - "25"
+      - "33"
+    correta: "17"
+    explicacao: Jovem, tímida e de saúde frágil.
+    ref: Testemunhos v.1
+    verdade: V7
+  - pergunta: O que Ellen pediu a Deus ao receber o encargo?
+    opcoes:
+      - Riquezas
+      - Que fosse dado a outra pessoa
+      - Uma terceira visão
+      - Para mudar de país
+    correta: Que fosse dado a outra pessoa
+    explicacao: Como Elias, ela chegou a desejar a morte. Depois, se rendeu.
+    ref: Testemunhos v.1 p.59-60
+    verdade: V7
+  - pergunta: Em que ano a IASD foi organizada oficialmente?
+    opcoes:
+      - "1844"
+      - "1863"
+      - "1888"
+      - "1915"
+    correta: "1863"
+    explicacao: Com forte influência do ministério de Ellen White.
+    ref: Lição, sexta
+    verdade: V7
+  - pergunta: '"Elias era humano como nós" está em…'
+    opcoes:
+      - Tiago 5:17
+      - Hebreus 11
+      - Romanos 8
+      - 1 Pedro 2
+    correta: Tiago 5:17
+    explicacao: Profetas eram humanos, sujeitos às mesmas lutas.
+    ref: Tg 5:17
+    verdade: V3
+  - pergunta: Qual versículo diz que Deus revela seus segredos aos profetas?
+    opcoes:
+      - Amós 3:7
+      - Joel 2:28
+      - Jeremias 1:5
+      - Isaías 6:8
+    correta: Amós 3:7
+    explicacao: É o verso de abertura da semana.
+    ref: Am 3:7
+    verdade: V1
+  - pergunta: Quantos profetas Obadias escondeu em covas?
+    opcoes:
+      - "12"
+      - "50"
+      - "100"
+      - "400"
+    correta: "100"
+    explicacao: 50 em cada cova.
+    ref: 1Rs 18:4
+    verdade: V6
+  - pergunta: Em 1 Reis 22, os 400 profetas falavam em nome de…
+    opcoes:
+      - Baal
+      - Aserá
+      - Do Senhor
+      - Moloque
+    correta: Do Senhor
+    explicacao: A falsificação mais perigosa usa o nome de Deus.
+    ref: 1Rs 22:6,11
+    verdade: V4
+verdadeiroOuFalso:
+  - afirmacao: Elias morreu idoso e foi enterrado em Jezreel.
+    verdadeira: false
+    explicacao: Ele foi levado ao céu num redemoinho.
+    ref: 2Rs 2:11
+    verdade: V2
+  - afirmacao: Logo depois da vitória no Carmelo, Elias entrou em desespero.
+    verdadeira: true
+    explicacao: Ameaçado por Jezabel, fugiu e pediu a morte.
+    ref: 1Rs 19:3-4
+    verdade: V3
+  - afirmacao: Deus estava no terremoto.
+    verdadeira: false
+    explicacao: Não estava no vento, nem no terremoto, nem no fogo, e sim na voz mansa.
+    ref: 1Rs 19:11-12
+    verdade: V3
+  - afirmacao: Antes de dar uma nova missão, Deus mandou Elias comer e descansar.
+    verdadeira: true
+    explicacao: Deus cuida antes de cobrar.
+    ref: 1Rs 19:5-8
+    verdade: V3
+  - afirmacao: Elias era realmente o único fiel em Israel.
+    verdadeira: false
+    explicacao: Havia 7 mil que não dobraram os joelhos a Baal.
+    ref: 1Rs 19:18
+    verdade: V3
+  - afirmacao: Se a maioria dos profetas concorda, a mensagem é de Deus.
+    verdadeira: false
+    explicacao: Eram 400 contra 1, e o 1 estava certo.
+    ref: 1Rs 22
+    verdade: V4
+  - afirmacao: Micaías só falou depois de ouvir o que Deus diria.
+    verdadeira: true
+    explicacao: '"O que o Senhor me disser, isso falarei."'
+    ref: 1Rs 22:14
+    verdade: V4
+  - afirmacao: Na Bíblia, só homens receberam o dom de profecia.
+    verdadeira: false
+    explicacao: Miriã, Débora e Hulda foram profetisas.
+    ref: Êx 15:20; Jz 4:4; 2Rs 22:14
+    verdade: V5
+  - afirmacao: O papel principal de um profeta era prever o futuro.
+    verdadeira: false
+    explicacao: "O profeta revelava o coração de Deus: orientava, confrontava e instruía."
+    ref: Lição, quinta
+    verdade: V6
+  - afirmacao: Profetas também repreendiam sacerdotes corruptos.
+    verdadeira: true
+    explicacao: Um exemplo é a casa de Eli.
+    ref: 1Sm 2:27-36
+    verdade: V6
+  - afirmacao: Deus só usa pessoas mais velhas e experientes.
+    verdadeira: false
+    explicacao: Samuel era menino, Josias tinha 8 anos e Ellen tinha 17.
+    ref: 2Cr 34:1
+    verdade: V6
+  - afirmacao: Ellen White aceitou o chamado imediatamente, sem medo.
+    verdadeira: false
+    explicacao: Ela orou para que o encargo fosse dado a outra pessoa.
+    ref: Testemunhos v.1
+    verdade: V7
+  - afirmacao: Ellen White deixou cerca de 100 mil páginas escritas.
+    verdadeira: true
+    explicacao: É a contribuição mais importante do seu ministério.
+    ref: Lição, sexta
+    verdade: V7
+  - afirmacao: Jesus também foi reconhecido como profeta.
+    verdadeira: true
+    explicacao: '"Este é Jesus, o profeta de Nazaré."'
+    ref: Mt 21:11
+    verdade: V6
+linhasDoTempo:
+  - id: carmelo-horebe
+    titulo: Do Carmelo ao Horebe
+    ref: 1Rs 18–19
+    eventos:
+      - Fogo do céu no Carmelo
+      - Jezabel ameaça Elias
+      - Fuga até Berseba
+      - Pede a morte debaixo do zimbro
+      - Anjo traz pão e água
+      - 40 dias até o Horebe
+      - Ouve a voz mansa e delicada
+  - id: josias
+    titulo: Josias e o Livro da Lei
+    ref: 2Rs 22; 2Cr 34
+    eventos:
+      - Josias vira rei aos 8 anos
+      - Reforma do templo
+      - Hilquias acha o Livro da Lei
+      - Safã lê o Livro ao rei
+      - Josias rasga as vestes
+      - Consultam a profetisa Hulda
+  - id: jornada-elias
+    titulo: A jornada completa de Elias
+    ref: 1Rs 17 – 2Rs 2
+    eventos:
+      - Anuncia a seca a Acabe
+      - Corvos o alimentam em Querite
+      - A viúva de Sarepta
+      - Desafio no Monte Carmelo
+      - Voz mansa no Horebe
+      - Sobe num carro de fogo
+  - id: vozes
+    titulo: Vozes de Deus na história
+    ref: Lição 3
+    eventos:
+      - Miriã
+      - Débora
+      - Samuel
+      - Elias
+      - Hulda
+      - Ellen G. White
+tresSinais:
+  - resposta: Hulda
+    tipo: Quem é?
+    dicas:
+      - O marido cuidava das vestimentas
+      - Morava na "segunda parte" de Jerusalém
+      - Consultada quando acharam o Livro da Lei
+    aceitas:
+      - hulda
+    palpitesErrados:
+      - Hulda
+      - Débora
+      - Miriã
+      - Jezabel
+      - Ester
+      - Noadia
+      - Ana
+      - Rute
+    ref: 2Rs 22:14
+  - resposta: Micaías
+    tipo: Quem é?
+    dicas:
+      - O nome significa "Quem é como o Senhor?"
+      - Levou um tapa e foi preso a pão e água
+      - Sozinho contra 400 profetas
+    aceitas:
+      - micaias
+      - micaia
+    palpitesErrados:
+      - Micaías
+      - Elias
+      - Eliseu
+      - Obadias
+      - Samuel
+      - Zedequias
+      - Josafá
+      - Jeremias
+    ref: 1Rs 22
+  - resposta: Débora
+    tipo: Quem é?
+    dicas:
+      - O nome significa "abelha"
+      - Trabalhou com Baraque
+      - Julgava debaixo de uma palmeira
+    aceitas:
+      - debora
+    palpitesErrados:
+      - Débora
+      - Hulda
+      - Miriã
+      - Ester
+      - Rute
+      - Jael
+      - Ana
+      - Sara
+    ref: Jz 4:4-5
+  - resposta: Obadias
+    tipo: Quem é?
+    dicas:
+      - Trabalhava no palácio de quem perseguia profetas
+      - O nome significa "servo do Senhor"
+      - Escondeu 100 profetas em covas
+    aceitas:
+      - obadias
+    palpitesErrados:
+      - Obadias
+      - Micaías
+      - Eliseu
+      - Josafá
+      - Samuel
+      - Hilquias
+      - Safã
+      - Jeú
+    ref: 1Rs 18:3-4
+  - resposta: Eliseu
+    tipo: Quem é?
+    dicas:
+      - Arava com 12 juntas de bois
+      - Pediu porção dobrada
+      - Recebeu o manto de Elias
+    aceitas:
+      - eliseu
+    palpitesErrados:
+      - Eliseu
+      - Elias
+      - Samuel
+      - Micaías
+      - Josias
+      - Jeú
+      - Hazael
+      - Obadias
+    ref: 1Rs 19:19; 2Rs 2
+  - resposta: Horebe
+    tipo: Onde é?
+    dicas:
+      - Também chamado de "monte de Deus"
+      - Ali havia uma caverna
+      - Onde Elias ouviu a voz mansa
+    aceitas:
+      - horebe
+      - horeb
+      - monte horebe
+      - sinai
+      - monte sinai
+    palpitesErrados:
+      - Horebe
+      - Carmelo
+      - Sião
+      - Moriá
+      - Tabor
+      - Nebo
+      - Ararate
+      - Gilboa
+    ref: 1Rs 19:8-12
+  - resposta: Zimbro
+    tipo: O que é?
+    dicas:
+      - Também chamado de giesta
+      - Fica a um dia de caminho depois de Berseba
+      - Elias pediu a morte debaixo dele
+    aceitas:
+      - zimbro
+      - giesta
+      - arvore de zimbro
+      - pe de zimbro
+    palpitesErrados:
+      - Zimbro
+      - Oliveira
+      - Figueira
+      - Palmeira
+      - Cedro
+      - Acácia
+      - Videira
+      - Carvalho
+    ref: 1Rs 19:4
+  - resposta: Samuel
+    tipo: Quem é?
+    dicas:
+      - Filho de uma mulher que orou chorando
+      - Ouviu seu nome de noite no templo
+      - Ungiu Saul como rei
+    aceitas:
+      - samuel
+    palpitesErrados:
+      - Samuel
+      - Eli
+      - Davi
+      - Saul
+      - Natã
+      - Elias
+      - Gideão
+      - Sansão
+    ref: 1Sm 1–10
+  - resposta: Carro de fogo
+    tipo: O que é?
+    dicas:
+      - Puxado por cavalos
+      - Separou dois profetas
+      - Levou Elias ao céu
+    aceitas:
+      - carro de fogo
+      - carruagem de fogo
+      - carro
+      - carruagem
+      - carros de fogo
+    palpitesErrados:
+      - Carro de fogo
+      - Arca da aliança
+      - Sarça ardente
+      - Coluna de fogo
+      - Escada de Jacó
+      - Manto
+      - Redemoinho
+      - Nuvem
+    ref: 2Rs 2:11
+  - resposta: Ellen G. White
+    tipo: Quem é?
+    dicas:
+      - Levou uma pedrada no rosto aos 9 anos
+      - Orou para que o encargo fosse dado a outro
+      - Recebeu a 1ª visão aos 17 anos (1844)
+    aceitas:
+      - ellen white
+      - ellen g white
+      - ellen
+      - egw
+      - ellen harmon
+      - ellen gould white
+      - ellen g. white
+    palpitesErrados:
+      - Ellen G. White
+      - Hulda
+      - Débora
+      - Miriã
+      - Ester
+      - Ana
+      - Maria
+      - Lídia
+    ref: Testemunhos v.1
+frutoProibido:
+  - palavra: ELIAS
+    proibidas:
+      - profeta
+      - fogo
+      - Carmelo
+      - céu
+      - carro
+  - palavra: ZIMBRO
+    proibidas:
+      - árvore
+      - sombra
+      - Elias
+      - deserto
+      - dormir
+  - palavra: MICAÍAS
+    proibidas:
+      - "400"
+      - verdade
+      - Acabe
+      - profeta
+      - rei
+  - palavra: JEZABEL
+    proibidas:
+      - rainha
+      - Acabe
+      - Baal
+      - matar
+      - má
+  - palavra: VOZ MANSA
+    proibidas:
+      - Horebe
+      - vento
+      - terremoto
+      - fogo
+      - Deus
+  - palavra: CARMELO
+    proibidas:
+      - monte
+      - fogo
+      - Baal
+      - altar
+      - Elias
+  - palavra: DÉBORA
+    proibidas:
+      - juíza
+      - palmeira
+      - mulher
+      - profetisa
+      - Baraque
+  - palavra: HULDA
+    proibidas:
+      - livro
+      - lei
+      - Josias
+      - profetisa
+      - mulher
+  - palavra: SAMUEL
+    proibidas:
+      - rei
+      - Saul
+      - ungir
+      - Ana
+      - menino
+  - palavra: BAAL
+    proibidas:
+      - deus
+      - ídolo
+      - profetas
+      - falso
+      - Carmelo
+  - palavra: PROFETA
+    proibidas:
+      - futuro
+      - Deus
+      - mensagem
+      - falar
+      - Bíblia
+  - palavra: BURNOUT
+    proibidas:
+      - cansado
+      - trabalho
+      - estresse
+      - esgotado
+      - descansar
+  - palavra: GPS
+    proibidas:
+      - caminho
+      - direção
+      - mapa
+      - celular
+      - rota
+  - palavra: CORVO
+    proibidas:
+      - pássaro
+      - preto
+      - pão
+      - Elias
+      - carne
+  - palavra: MANTO
+    proibidas:
+      - roupa
+      - Eliseu
+      - capa
+      - jogar
+      - vestir
+  - palavra: OBADIAS
+    proibidas:
+      - esconder
+      - cova
+      - "100"
+      - palácio
+      - profetas
+palavrasDoSonho:
+  - Elias
+  - Jezabel
+  - Zimbro
+  - Corvo
+  - Pão
+  - Caverna
+  - Voz mansa
+  - Carro de fogo
+  - Manto
+  - Carmelo
+  - Fogo do céu
+  - Chuva
+  - Micaías
+  - 400 profetas
+  - Débora
+  - Palmeira
+  - Tamborim
+  - Hulda
+  - Livro da Lei
+  - Samuel
+  - Coroa
+  - Azeite
+  - Baal
+  - Altar
+  - Ellen White
+  - GPS
+  - Anjo
+  - Deserto
+  - Terremoto
+  - Vento
+temasAcrostico:
+  - Personagens, lugares ou objetos da história de Elias
+  - Algo que um profeta FAZ (verbos)
+  - Qualidades de alguém disponível para Deus
+  - Ídolos modernos que competem com Deus
+mimicas:
+  - cena: Elias dormindo debaixo do zimbro
+    dificil: false
+  - cena: Corvos trazendo pão
+    dificil: false
+  - cena: Fogo descendo do céu
+    dificil: false
+  - cena: Miriã tocando tamborim
+    dificil: false
+  - cena: Anjo acordando alguém
+    dificil: false
+  - cena: Chuva depois da seca
+    dificil: false
+  - cena: Josias rasgando as vestes
+    dificil: true
+  - cena: Eliseu arando com 12 juntas de bois
+    dificil: true
+  - cena: Elias correndo à frente do carro do rei
+    dificil: true
+  - cena: Micaías levando um tapa
+    dificil: true
+  - cena: Encharcar o altar com 12 cântaros
+    dificil: true
+  - cena: Elias cobrindo o rosto com o manto
+    dificil: true
+nuvem:
+  - pergunta: Uma palavra para como Elias se sentia debaixo do zimbro
+    pontua: true
+    verdade: V3
+    sinonimos:
+      exausto: cansado
+      esgotado: cansado
+      cansaco: cansado
+      tristeza: triste
+      so: sozinho
+      solidao: sozinho
+      sozinha: sozinho
+      medo: medo
+      amedrontado: medo
+      depressivo: deprimido
+      depressao: deprimido
+      desanimado: desanimo
+      desanimo: desanimo
+  - pergunta: O que faz alguém "coxear entre dois pensamentos" hoje?
+    pontua: true
+    verdade: V2
+    sinonimos:
+      redes: redes sociais
+      instagram: redes sociais
+      tiktok: redes sociais
+      grana: dinheiro
+  - pergunta: PROFETISA → qual palavra vem à sua cabeça?
+    pontua: true
+    verdade: V5
+    sinonimos:
+      corajosa: coragem
+      fiel: fidelidade
+      lider: lideranca
+  - pergunta: Uma palavra que define um verdadeiro profeta
+    pontua: true
+    verdade: V6
+    sinonimos:
+      corajoso: coragem
+      fiel: fidelidade
+      obediente: obediencia
+  - pergunta: Uma atitude que você leva desta lição (sem pontos 🙏)
+    pontua: false
+    verdade: V7
+vozProfetica:
+  - caso: Seu amigo está em burnout, como Elias. O que Deus faria por ele?
+    ref: 1Rs 19:5-15
+  - caso: Como ser um "GPS espiritual" numa cultura de influencers e algoritmos?
+    ref: Ml 4:5,6; 1Rs 22
+  - caso: Como o reavivamento começa na SUA casa nesta semana?
+    ref: Ml 4:6
+  - caso: Você recebeu um chamado e se sente como Ellen aos 17. O que faz agora?
+    ref: Testemunhos v.1 p.59-61
+disfarcados:
+  elias:
+    - Hoje seria preso por enfrentar 850 influencers
+    - Teve um burnout depois do maior sucesso da carreira
+    - Nunca precisou de velório
+    - Saiu de cena de carro… de fogo
+  jezabel:
+    - Hoje seria a rainha do cancelamento
+    - Mandava em quem mandava
+    - Tinha 850 funcionários religiosos na folha de pagamento
+    - Ameaçou um profeta por mensagem
+  micaias:
+    - Seria o único "não" numa reunião de 400 "sim"
+    - Prefere perder o emprego a mentir
+    - Foi parar na cadeia a pão e água
+    - 'O rei dizia: "eu odeio esse cara"'
+  obadias:
+    - Trabalhava no governo e escondia gente perseguida
+    - Agente duplo do bem
+    - Sabia guardar segredo (e 100 pessoas)
+    - Mordomo do palácio
+  debora:
+    - Seria juíza com escritório debaixo de uma árvore
+    - Liderou um exército junto com um general
+    - Chamada de "mãe em Israel"
+    - O nome lembra um inseto que faz mel
+  hulda:
+    - A consultora que o presidente chamou quando acharam um documento perdido
+    - Casada com o responsável pelo guarda-roupa
+    - Morava na parte nova da capital
+    - Profetisa no tempo de Josias
+  acabe:
+    - Teria uma mansão toda de marfim
+    - Odiava quem falava a verdade
+    - Foi para a guerra disfarçado
+    - Marido de uma rainha temida
+  eliseu:
+    - Largou o trabalho no campo para seguir um mentor
+    - Pediu herança em dobro
+    - Ficou com a roupa do chefe
+    - Viu o mestre subir ao céu
+  josafa:
+    - Desconfiou quando todo mundo concordou
+    - Rei do sul, aliado do rei do norte
+    - Pediu uma segunda opinião
+    - Perguntou se havia um profeta do Senhor
+  miria:
+    - Seria a líder do louvor do acampamento
+    - Irmã mais velha de dois líderes famosos
+    - Vigiou um cestinho num rio
+    - Tocava tamborim
+  josias:
+    - Assumiu o trono antes de aprender a tabuada
+    - Achou um livro antigo e mudou o país
+    - Rasgou a própria roupa ao ouvir a leitura
+    - Fez uma grande reforma
+  samuel:
+    - Ouvia vozes de madrugada (e era Deus)
+    - Filho de uma oração chorada
+    - Escolheu o primeiro rei
+    - 'Disse: "Fala, que o teu servo ouve"'
+curiosidades:
+  - Elias significa "Meu Deus é o Senhor".
+  - Micaías significa "Quem é como o Senhor?".
+  - Débora significa "abelha".
+  - No Carmelo, o altar foi encharcado com 12 cântaros de água antes do fogo cair.
+  - Josias tinha 8 anos quando virou rei.
+  - A seca do tempo de Elias durou 3 anos e meio (Tg 5:17).
+  - Jezabel sustentava 850 profetas falsos (1Rs 18:19).
+  - Ellen White escreveu cerca de 100 mil páginas.
+  - Elias caminhou 40 dias e 40 noites até o Horebe.
+  - "Obadias escondeu 100 profetas: 50 em cada cova."

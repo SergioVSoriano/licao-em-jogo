@@ -1,0 +1,44 @@
+# As 8 estações do mapa do santuário (iguais para todos os pacotes).
+# Cada pacote pode ter a sua "ponte" (pontesDoSantuario em reflexoes.yaml).
+
+estacoes:
+  - id: porta
+    nome: Porta
+    emoji: 🚪
+    significado: 'Só há uma entrada: "Eu sou a porta."'
+    ref: Jo 10:9
+  - id: altar
+    nome: Altar do Holocausto
+    emoji: 🔥
+    significado: O sacrifício de Cristo, o Cordeiro de Deus.
+    ref: Jo 1:29
+  - id: pia
+    nome: Pia de Bronze
+    emoji: 💧
+    significado: Purificação e recomeço.
+    ref: Tt 3:5
+  - id: mesa
+    nome: Mesa dos Pães
+    emoji: 🍞
+    significado: Jesus, o Pão da Vida. A Palavra que alimenta.
+    ref: Jo 6:35
+  - id: candelabro
+    nome: Candelabro
+    emoji: 🕎
+    significado: Jesus, a Luz do mundo, e o Espírito Santo.
+    ref: Jo 8:12
+  - id: incenso
+    nome: Altar de Incenso
+    emoji: 🙏
+    significado: Oração e intercessão.
+    ref: Ap 8:3-4
+  - id: veu
+    nome: Véu
+    emoji: 🟪
+    significado: A separação entre o Santo e o Santíssimo.
+    ref: Êx 26:33
+  - id: arca
+    nome: Santíssimo
+    emoji: ✨
+    significado: A presença de Deus. Por Jesus, o caminho está aberto para todos.
+    ref: Hb 10:19-20

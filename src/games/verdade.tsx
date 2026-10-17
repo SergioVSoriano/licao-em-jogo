@@ -47,7 +47,6 @@ export const verdade: GameDef<S> = {
   needsJudge: false,
   minPlayers: 1,
   idealRange: [3, 30],
-  truths: ['V2', 'V3', 'V4', 'V5', 'V6', 'V7'],
   energy: 2,
   depth: 2,
   accent: 'var(--azul)',

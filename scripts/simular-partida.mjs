@@ -194,7 +194,10 @@ await shot(host, 'abertura', 'Abertura: a tirinha da lição, o verso de Amós 3
 await shot(B, 'abertura-celular', 'Celular na abertura.')
 await key('Space')
 
-const pack = await host.evaluate(async () => JSON.parse(JSON.stringify((await import('/src/content/index.ts')).DEFAULT_PACK)))
+const pack = await host.evaluate(async () => {
+  const cat = await (await fetch('/conteudo/catalogo.json')).json()
+  return (await fetch(`/conteudo/pacotes/${cat.defaultPack}.json`)).json()
+})
 const GAME_NAMES = Object.fromEntries((await host.evaluate(async () => (await import('/src/games/index.ts')).GAMES.map((g) => [g.id, g.name]))))
 
 /* ───────────── Jogos ───────────── */

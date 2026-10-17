@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react'
-import { DAYS } from '../content/types'
-import { DEFAULT_PACK } from '../content'
+import { useDefaultPack } from '../content'
+import type { ContentPack } from '../content/types'
 import { createSession } from '../engine/session'
-import { PRESETS, coverage, estimateGame, estimatePlan, fillPlan, fitPlan, maxRounds, suggestPlan, FIXED_MINUTES } from '../engine/planner'
+import { PRESETS, coverage, defaultRounds, estimateGame, estimatePlan, fillPlan, fitPlan, hasContent, maxRounds, suggestPlan, FIXED_MINUTES } from '../engine/planner'
 import type { Depth, PlanItem } from '../engine/types'
 import { GAMES, GAME_BY_ID, KIND_LABEL } from '../games'
 import { net } from '../net'
 import { hostCache } from '../net/hostCache'
 import { Link, navigate } from '../router'
 import { Dots, HowToCard } from '../ui/HowToCard'
-import { Btn, Logo } from '../ui/kit'
+import { Btn, Logo, PackLoading } from '../ui/kit'
 import { DemoBanner } from './Home'
 
 const DEPTHS: { id: Depth; label: string; text: string }[] = [
@@ -25,7 +25,12 @@ const fmt = (m: number) => {
 }
 
 export function Planner() {
-  const pack = DEFAULT_PACK
+  const { pack, error } = useDefaultPack()
+  if (!pack) return <PackLoading error={error} />
+  return <PlannerView pack={pack} />
+}
+
+function PlannerView({ pack }: { pack: ContentPack }) {
   const preset = PRESETS[0]
   const [minutes, setMinutes] = useState(preset.minutes)
   const [n, setN] = useState(15)
@@ -39,7 +44,7 @@ export function Planner() {
 
   const est = useMemo(() => estimatePlan(plan, GAME_BY_ID, n, depth), [plan, n, depth])
   const status = est.total <= minutes ? 'ok' : est.total <= minutes * 1.05 ? 'warn' : 'over'
-  const cov = coverage(plan, GAME_BY_ID, pack)
+  const cov = coverage(plan, pack)
   const spare = minutes - est.total
 
   function apply(next: PlanItem[], protect?: string, opts?: { mins?: number; players?: number; dep?: Depth }) {
@@ -53,7 +58,7 @@ export function Planner() {
     const p = PRESETS.find((x) => x.id === id)!
     setMinutes(p.minutes)
     setDepth(p.depth)
-    const items = p.games.filter((g) => n >= GAME_BY_ID[g].minPlayers).map((g) => ({ gameId: g, rounds: GAME_BY_ID[g].rounds.default(n) }))
+    const items = p.games.filter((g) => n >= GAME_BY_ID[g].minPlayers && hasContent(GAME_BY_ID[g], pack)).map((g) => ({ gameId: g, rounds: defaultRounds(GAME_BY_ID[g], pack, n) }))
     apply(items, undefined, { mins: p.minutes, dep: p.depth })
   }
 
@@ -65,7 +70,7 @@ export function Planner() {
 
   function toggle(id: string) {
     if (plan.some((p) => p.gameId === id)) apply(plan.filter((p) => p.gameId !== id))
-    else apply([...plan, { gameId: id, rounds: GAME_BY_ID[id].rounds.default(n) }], id)
+    else apply([...plan, { gameId: id, rounds: defaultRounds(GAME_BY_ID[id], pack, n) }], id)
   }
   function setRounds(id: string, d: number) {
     const def = GAME_BY_ID[id]
@@ -196,8 +201,9 @@ export function Planner() {
             <div className="grid gap-3 sm:grid-cols-2">
               {GAMES.map((g) => {
                 const inPlan = plan.find((p) => p.gameId === g.id)
-                const blocked = n < g.minPlayers
-                const minutesG = estimateGame(g, n, inPlan?.rounds ?? g.rounds.default(n), depth)
+                const noContent = !hasContent(g, pack)
+                const blocked = n < g.minPlayers || noContent
+                const minutesG = estimateGame(g, n, inPlan?.rounds ?? defaultRounds(g, pack, n), depth)
                 return (
                   <div key={g.id} className="card flex flex-col gap-2 p-3" style={{ borderColor: inPlan ? g.accent : undefined, opacity: blocked ? 0.55 : 1 }}>
                     <div className="flex items-start gap-3">
@@ -223,7 +229,11 @@ export function Planner() {
                         📖 <Dots n={g.depth} color="var(--azul)" />
                       </span>
                       <span>⏱️ ~{fmt(minutesG)}</span>
-                      {blocked && <span className="text-[var(--carmesim)]">precisa de {g.minPlayers}+ pessoas</span>}
+                      {noContent ? (
+                        <span className="text-[var(--carmesim)]">🔒 este conteúdo ainda não tem material para este jogo</span>
+                      ) : (
+                        blocked && <span className="text-[var(--carmesim)]">precisa de {g.minPlayers}+ pessoas</span>
+                      )}
                     </div>
                     <div className="mt-auto flex items-center gap-2">
                       {inPlan ? (
@@ -320,11 +330,11 @@ export function Planner() {
               </Btn>
             )}
             <div>
-              <div className="mb-1 text-xs font-bold text-[var(--muted)]">Cobertura da lição</div>
+              <div className="mb-1 text-xs font-bold text-[var(--muted)]">Cobertura do conteúdo</div>
               <div className="flex gap-1">
-                {DAYS.map((d) => (
+                {pack.sections.map((d) => (
                   <div key={d.id} title={d.label} className="grid h-8 flex-1 place-items-center rounded-lg font-display text-sm font-black" style={{ background: cov.has(d.id) ? 'var(--ouro)' : 'var(--linho-2)', color: cov.has(d.id) ? '#2a1d00' : 'var(--cinza)' }}>
-                    {d.short}
+                    {d.label.slice(0, 1)}
                   </div>
                 ))}
               </div>

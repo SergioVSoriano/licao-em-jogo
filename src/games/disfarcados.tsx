@@ -80,7 +80,6 @@ export const disfarcados: GameDef<S> = {
   needsJudge: false,
   minPlayers: 2,
   idealRange: [3, 30],
-  truths: ['V3', 'V4', 'V5', 'V6'],
   energy: 2,
   depth: 2,
   accent: 'var(--fogo)',
@@ -95,6 +94,11 @@ export const disfarcados: GameDef<S> = {
     tip: 'Tímido? O informante pode só tocar nas pistas prontas, sem precisar falar.',
   },
   rounds: { min: 2, max: 6, label: 'personagens', default: () => 4 },
+  // a grade mostra até 12 personagens; cada rodada usa um que tenha pistas
+  maxRoundsFor: (pack) => {
+    const grid = pack.characters.filter((c) => c.inDisguise).slice(0, 12)
+    return grid.length >= 4 ? grid.filter((c) => pack.disguiseClues[c.id]?.length).length : 0
+  },
   perRound: () => 1,
 
   init(ctx, rounds) {

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { getPack } from '../content'
+import { getPack, usePack } from '../content'
 import { currentRevelation, finalRanking, REWARDS } from '../engine/session'
 import type { Player, PublicState } from '../engine/types'
 import { GAME_BY_ID } from '../games'
@@ -32,6 +32,7 @@ export function Play({ pin }: { pin: string }) {
   const now = useNow(clock, 250)
   const me = pub && pid ? pub.players[pid] : undefined
   const kicked = pub?.kicked.includes(pid)
+  const { pack, error: packError } = usePack(pub?.packId)
   useWakeLock(!!me)
 
   if (!pin || status === 'notfound')
@@ -56,11 +57,12 @@ export function Play({ pin }: { pin: string }) {
         </div>
       </Shell>
     )
-  if (status !== 'ok' || !pub)
+  if (status !== 'ok' || !pub || !pack)
     return (
       <Shell>
-        <div className="flex flex-1 items-center justify-center">
-          <Lume size={100} className="anim-bob" />
+        <div className="flex flex-1 flex-col items-center justify-center gap-3 p-6 text-center">
+          <Lume size={100} mood={packError ? 'wow' : 'happy'} className={packError ? '' : 'anim-bob'} />
+          {packError && <div className="font-display text-xl font-black">Não consegui carregar o conteúdo da sala. Atualize a página.</div>}
         </div>
       </Shell>
     )

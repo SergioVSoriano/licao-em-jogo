@@ -1,6 +1,6 @@
 import { getPack } from '../content'
 import { GAME_BY_ID } from '../games'
-import { estimateGame, estimatePlan } from './planner'
+import { defaultRounds, estimateGame, estimatePlan, hasContent } from './planner'
 import { pick, shuffle, uid } from './helpers'
 import type {
   Control,
@@ -209,9 +209,10 @@ export function vozOptions(s: SessionState, now: number): string[] {
   const afterMin = estimatePlan(after, GAME_BY_ID, n, s.settings.depth).total - 4
   const budget = s.settings.minutes - elapsedMinutes(s, now) - 2.5 - afterMin
   const played = new Set(s.history.map((h) => h.gameId))
+  const pack = getPack(s.packId)
   const options = Object.values(GAME_BY_ID)
-    .filter((g) => n >= g.minPlayers && !played.has(g.id) && !after.some((a) => a.gameId === g.id))
-    .filter((g) => g.id === next.gameId || estimateGame(g, n, g.rounds.default(n), s.settings.depth) <= Math.max(budget, estimateGame(GAME_BY_ID[next.gameId], n, next.rounds, s.settings.depth)) + 0.5)
+    .filter((g) => n >= g.minPlayers && hasContent(g, pack) && !played.has(g.id) && !after.some((a) => a.gameId === g.id))
+    .filter((g) => g.id === next.gameId || estimateGame(g, n, defaultRounds(g, pack, n), s.settings.depth) <= Math.max(budget, estimateGame(GAME_BY_ID[next.gameId], n, next.rounds, s.settings.depth)) + 0.5)
     .map((g) => g.id)
   const others = shuffle(options.filter((id) => id !== next.gameId)).slice(0, 3)
   return [next.gameId, ...others]
@@ -249,7 +250,7 @@ function applyReward(s: SessionState, now: number) {
     if (r.chosen === 'sorte' && typeof r.target === 'string') s.forcedSpotlight = r.target
     if (r.chosen === 'voz' && typeof r.target === 'string' && GAME_BY_ID[r.target]) {
       const n = nPlayers(s)
-      s.plan[s.gameIdx + 1] = { gameId: r.target, rounds: GAME_BY_ID[r.target].rounds.default(n) }
+      s.plan[s.gameIdx + 1] = { gameId: r.target, rounds: defaultRounds(GAME_BY_ID[r.target], getPack(s.packId), n) }
     }
   }
   startIntro(s, s.gameIdx + 1, now)
@@ -572,8 +573,15 @@ export function finalRanking(players: Player[]): Player[] {
   return players.slice().sort((a, b) => b.steps - a.steps || b.firsts - a.firsts || b.normSum - a.normSum)
 }
 
-/** O Momento Revelação do jogo que acabou de terminar. */
-export function currentRevelation(s: { packId: string; results: GameResult | null }) {
+/**
+ * O Momento Revelação do jogo que acabou de terminar: a revelação específica do jogo, se o pacote tiver;
+ * senão, as revelações gerais (sem jogo) em rodízio, para pacotes pequenos também funcionarem.
+ */
+export function currentRevelation(s: { packId: string; gameIdx: number; results: GameResult | null }) {
   const pack = getPack(s.packId)
-  return pack.revelations.find((r) => r.game === s.results?.gameId) ?? pack.revelations[0]
+  const own = pack.revelations.find((r) => r.game === s.results?.gameId)
+  if (own) return own
+  const general = pack.revelations.filter((r) => !r.game)
+  const pool = general.length ? general : pack.revelations
+  return pool[Math.max(0, s.gameIdx) % pool.length]
 }

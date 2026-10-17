@@ -65,7 +65,6 @@ export const sinais: GameDef<S> = {
   needsJudge: false,
   minPlayers: 1,
   idealRange: [3, 30],
-  truths: ['V5', 'V6', 'V7', 'V3'],
   energy: 2,
   depth: 2,
   accent: 'var(--ouro)',

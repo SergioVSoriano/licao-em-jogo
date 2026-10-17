@@ -1,8 +1,7 @@
 import confetti from 'canvas-confetti'
 import { QRCodeSVG } from 'qrcode.react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { getPack } from '../content'
-import { DAYS } from '../content/types'
+import { gameTruths, getPack, sectionLabel } from '../content'
 import { REVEAL_SECONDS } from '../engine/planner'
 import { REWARDS, currentRevelation, finalRanking } from '../engine/session'
 import type { Control, Player, PublicState } from '../engine/types'
@@ -380,7 +379,7 @@ function Intro({ pub, list, pack }: PhaseProps) {
             {REWARDS[lastReward.chosen!].emoji} {pub.players[lastReward.pid]?.name} usou <b>{REWARDS[lastReward.chosen!].name}</b>
           </div>
         )}
-        <div className="text-[0.9em] italic opacity-70">{pack.truths.filter((t) => g.truths.includes(t.id)).slice(0, 2).map((t) => t.title).join(' · ')}</div>
+        <div className="text-[0.9em] italic opacity-70">{pack.truths.filter((t) => gameTruths(pack, g.id).includes(t.id)).slice(0, 2).map((t) => t.title).join(' · ')}</div>
       </div>
     </div>
   )
@@ -446,7 +445,7 @@ function Results({ pub, players }: PhaseProps) {
 function Reveal({ pub, pack, now, players, list }: PhaseProps) {
   const rev = currentRevelation(pub)
   const truth = pack.truths.find((t) => t.id === rev.truth)
-  const day = DAYS.find((d) => d.id === truth?.day)?.label
+  const day = sectionLabel(pack, truth?.section)
   const secs = REVEAL_SECONDS[pub.settings.depth] + pub.revealExtra
   const questions = [rev.question, ...rev.followUps]
   const qi = (pub.revealQ ?? 0) % questions.length
@@ -701,7 +700,7 @@ function End({ pack, pub }: PhaseProps) {
       </div>
       <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-2 gap-[0.7em] text-[1em]">
         {pack.truths.map((tr, i) => (
-          <TruthCard key={tr.id} t={tr} dark compact onClick={() => setOpen(i)} />
+          <TruthCard key={tr.id} t={tr} label={sectionLabel(pack, tr.section)} dark compact onClick={() => setOpen(i)} />
         ))}
         <div className="flex flex-col items-center justify-center gap-[0.4em] rounded-[1em] bg-white/5 p-[0.6em] text-center">
           <div className="rounded-[0.8em] bg-white p-[0.4em]">
@@ -723,7 +722,7 @@ function End({ pack, pub }: PhaseProps) {
             <div className="flex items-center gap-[0.6em]">
               <span className="text-[3em] leading-none">{t.emoji}</span>
               <div className="flex-1">
-                <div className="text-[0.9em] font-bold tracking-wide text-[var(--muted)] uppercase">{DAYS.find((d) => d.id === t.day)?.label}</div>
+                <div className="text-[0.9em] font-bold tracking-wide text-[var(--muted)] uppercase">{sectionLabel(pack, t.section)}</div>
                 <div className="font-display text-[2.4em] font-black leading-none text-[var(--purpura)]">{t.title}</div>
               </div>
               <div className="font-display font-black opacity-50">

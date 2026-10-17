@@ -1,17 +1,20 @@
-export type Day = 'sab' | 'dom' | 'seg' | 'ter' | 'qua' | 'qui' | 'sex'
-export const DAYS: { id: Day; short: string; label: string }[] = [
-  { id: 'sab', short: 'S', label: 'Sábado' },
-  { id: 'dom', short: 'D', label: 'Domingo' },
-  { id: 'seg', short: 'S', label: 'Segunda' },
-  { id: 'ter', short: 'T', label: 'Terça' },
-  { id: 'qua', short: 'Q', label: 'Quarta' },
-  { id: 'qui', short: 'Q', label: 'Quinta' },
-  { id: 'sex', short: 'S', label: 'Sexta' },
-]
+/** Uma parte do pacote: os dias da lição, as partes de uma história ou os blocos de um capítulo. */
+export interface Section {
+  id: string
+  label: string
+}
+
+export type PackKind = 'licao' | 'tema' | 'livro'
+
+export interface PackSource {
+  type: string
+  label: string
+  url?: string
+}
 
 export interface Truth {
   id: string
-  day: Day
+  section: string
   title: string
   text: string
   refs: string[]
@@ -84,8 +87,22 @@ export interface Revelation {
 
 export interface Station { id: string; name: string; emoji: string; meaning: string; bridge: string; ref: string }
 
+/**
+ * O pacote como o app usa. É GERADO a partir dos YAML de conteudo/ (npm run conteudo:construir);
+ * não se escreve à mão. O formato de autoria está em scripts/conteudo/esquema.ts.
+ */
 export interface ContentPack {
   id: string
+  kind: PackKind
+  status: 'rascunho' | 'publicado'
+  /** hash do conteúdo, muda a cada alteração */
+  version: string
+  audience: string[]
+  curation: { curator: string; reviewedAt: string | null; note?: string }
+  sources: PackSource[]
+  sections: Section[]
+  /** quais verdades cada jogo trabalha (usado pelo planejador e pela abertura de cada jogo) */
+  gameTruths: Record<string, string[]>
   title: string
   subtitle: string
   dates: string
@@ -110,4 +127,22 @@ export interface ContentPack {
   funFacts: string[]
   disguiseClues: Record<string, string[]>
   summary: { questions: string[]; verses: { ref: string; text: string }[] }
+}
+
+/* ───────── Catálogo (gerado em public/conteudo/catalogo.json) ───────── */
+export interface CatalogItem {
+  id: string
+  title: string
+  dates?: string
+  keyText?: string
+  /** null = ainda não publicado (aparece travado) */
+  pack: string | null
+}
+
+export interface Catalog {
+  defaultPack: string
+  lessons: { audience: string; label: string; quarters: { id: string; label: string; weeks: (CatalogItem & { n: number })[] }[] }[]
+  themes: { category: string; items: CatalogItem[] }[]
+  books: { id: string; title: string; author: string; chapters: (CatalogItem & { n: number })[] }[]
+  packs: Record<string, { version: string; title: string; kind: PackKind }>
 }

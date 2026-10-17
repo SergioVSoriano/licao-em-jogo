@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { loadPack } from '../content'
 import { net, type HostTransport } from '../net'
 import { hostCache } from '../net/hostCache'
 import { privateFor, reduce, toPublic, type SessionAction } from '../engine/session'
@@ -69,6 +70,8 @@ export function useHost(pin: string) {
         }
         entry = { host: opened.host, state: JSON.parse(opened.snapshot) as SessionState }
       }
+      // o motor lê o pacote de forma síncrona: ele precisa estar carregado antes do primeiro tick
+      await loadPack(entry.state.packId)
       if (!alive) return
       hostRef.current = entry.host
       stateRef.current = entry.state

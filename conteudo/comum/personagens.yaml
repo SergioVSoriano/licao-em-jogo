@@ -1,0 +1,43 @@
+# Personagens reutilizáveis entre pacotes: nome e emoji.
+# Bio, pistas e referências específicas ficam no pacote.
+
+personagens:
+  - id: elias
+    nome: Elias
+    emoji: 🔥
+  - id: eliseu
+    nome: Eliseu
+    emoji: 🧥
+  - id: acabe
+    nome: Acabe
+    emoji: 🏰
+  - id: jezabel
+    nome: Jezabel
+    emoji: 👸
+  - id: obadias
+    nome: Obadias
+    emoji: 🕳️
+  - id: micaias
+    nome: Micaías
+    emoji: 🗣️
+  - id: josafa
+    nome: Josafá
+    emoji: 🛡️
+  - id: miria
+    nome: Miriã
+    emoji: 🪘
+  - id: debora
+    nome: Débora
+    emoji: 🌴
+  - id: hulda
+    nome: Hulda
+    emoji: 📜
+  - id: josias
+    nome: Josias
+    emoji: 👑
+  - id: samuel
+    nome: Samuel
+    emoji: 🫗
+  - id: ellen
+    nome: Ellen G. White
+    emoji: ✒️

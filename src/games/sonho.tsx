@@ -103,7 +103,6 @@ export const sonho: GameDef<S> = {
   needsJudge: true,
   minPlayers: 4,
   idealRange: [5, 12],
-  truths: ['V2', 'V4', 'V3', 'V5'],
   energy: 3,
   depth: 3,
   accent: 'var(--purpura)',
@@ -123,6 +122,8 @@ export const sonho: GameDef<S> = {
     tip: 'Nada de ler o celular do vizinho! 😄 O facilitador marca ✓/✗ a cada palpite do Rei.',
   },
   rounds: { min: 1, max: 4, label: 'reis', default: () => 2 },
+  // as palavras giram em ciclo: com 6 ou mais, qualquer número de reis funciona
+  maxRoundsFor: (pack) => (pack.dreamWords.length >= 6 ? 99 : 0),
   perRound: () => 2.5,
   setup: 0.5,
 

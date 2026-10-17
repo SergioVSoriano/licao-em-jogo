@@ -1,0 +1,46 @@
+# Catálogo: a árvore do menu (Lição / Temas / Livros).
+# Uma entrada SEM "pacote" aparece travada (🔒 em preparo). Para destravar, publique o pacote e
+# escreva o id dele em "pacote".
+
+padrao: licao-2026-t4-jovens-s03
+
+licao:
+  - publico: jovens
+    titulo: Jovens
+    trimestres:
+      - id: 2026-t4
+        titulo: 4º trimestre de 2026
+        semanas:
+          - { n: 1, titulo: O Criador fala, datas: 26 de setembro a 2 de outubro, textoBase: Gênesis 3 }
+          - { n: 2, titulo: O chamado do profeta, datas: 3 a 9 de outubro, textoBase: Isaías 6 }
+          - { n: 3, titulo: Profetas do AT, datas: 10 a 16 de outubro, textoBase: 1 Reis 19:1-16, pacote: licao-2026-t4-jovens-s03 }
+          - { n: 4, titulo: Profetas do NT, datas: 17 a 23 de outubro, textoBase: Efésios 2:19–3:7 }
+          - { n: 5, titulo: Revelação e inspiração, datas: 24 a 30 de outubro, textoBase: Apocalipse 1 }
+          - { n: 6, titulo: Os escritos proféticos, datas: 31 de outubro a 6 de novembro, textoBase: Jeremias 36:1-19 }
+          - { n: 7, titulo: Preste atenção!, datas: 7 a 13 de novembro, textoBase: Jeremias 36:20-32 }
+          - { n: 8, titulo: Interpretando as profecias, datas: 14 a 20 de novembro, textoBase: Atos 8:26-40 }
+          - { n: 9, titulo: Provando os profetas, datas: 21 a 27 de novembro, textoBase: Mateus 7:13-29 }
+          - { n: 10, titulo: Autoridade e relevância, datas: 28 de novembro a 4 de dezembro, textoBase: Êxodo 3; 4 }
+          - { n: 11, titulo: Momentos decisivos, datas: 5 a 11 de dezembro, textoBase: Juízes 4; 5 }
+          - { n: 12, titulo: Luz para o tempo do fim, datas: 12 a 18 de dezembro, textoBase: Atos 2:1-21 }
+          - { n: 13, titulo: Bênçãos da profecia, datas: 19 a 25 de dezembro, textoBase: 2 Crônicas 20 }
+
+temas:
+  - categoria: Origens
+    itens:
+      - { id: tema-criacao, titulo: A Criação, textoBase: Gênesis 1–2 }
+      - { id: tema-noe, titulo: Noé e o dilúvio, textoBase: Gênesis 6–9 }
+  - categoria: O santuário
+    itens:
+      - { id: tema-santuario, titulo: O santuário, textoBase: Êxodo 25–40 }
+  - categoria: Reis e profetas
+    itens:
+      - { id: tema-elias, titulo: Elias, textoBase: 1 Reis 17 – 2 Reis 2 }
+      - { id: tema-daniel, titulo: Daniel, textoBase: Daniel 1–6 }
+
+livros:
+  - id: egw-profetas-e-reis
+    titulo: Profetas e Reis
+    autor: Ellen G. White
+    capitulos:
+      - { n: 14, titulo: No espírito e virtude de Elias }

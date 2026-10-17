@@ -63,7 +63,6 @@ export const linha: GameDef<S> = {
   needsJudge: false,
   minPlayers: 1,
   idealRange: [3, 30],
-  truths: ['V1', 'V2', 'V3', 'V5', 'V6'],
   energy: 1,
   depth: 3,
   accent: 'var(--bronze)',

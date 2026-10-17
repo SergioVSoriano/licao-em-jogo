@@ -99,7 +99,6 @@ export interface GameDef<S = any, V = any, P = any> {
   needsJudge: boolean
   minPlayers: number
   idealRange: [number, number]
-  truths: string[]
   energy: 1 | 2 | 3
   depth: 1 | 2 | 3
   accent: string
@@ -109,6 +108,7 @@ export interface GameDef<S = any, V = any, P = any> {
   perRound: (n: number) => number
   /** fixed extra minutes (setup) */
   setup?: number
+  /** quantas rodadas o conteúdo do pacote permite (0 = o pacote não tem conteúdo para este jogo) */
   maxRoundsFor?: (pack: ContentPack) => number
 
   init: (ctx: GameCtx, rounds: number) => S

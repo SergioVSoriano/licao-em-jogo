@@ -1,4 +1,5 @@
 import { GAME_BY_ID } from '../games'
+import { usePack } from '../content'
 import { currentRevelation } from '../engine/session'
 import { Btn, Lume } from '../ui/kit'
 import { usePlayer, useWakeLock } from './usePlayer'
@@ -22,12 +23,13 @@ export function Judge({ pin, judgeKey }: { pin: string; judgeKey: string }) {
   const { pub, status, send } = usePlayer(pin)
   useWakeLock(true)
   const fire = (id: string, data?: any) => send('host', { key: judgeKey, id, data })
+  const { pack, error: packError } = usePack(pub?.packId)
 
-  if (status !== 'ok' || !pub)
+  if (status !== 'ok' || !pub || !pack)
     return (
       <div className="flex min-h-dvh flex-col items-center justify-center gap-3 p-6 text-center">
         <Lume size={90} className="anim-bob" />
-        <div className="font-display text-xl font-black">{status === 'notfound' ? 'Sala não encontrada' : 'Conectando ao telão…'}</div>
+        <div className="font-display text-xl font-black">{status === 'notfound' ? 'Sala não encontrada' : packError ? 'Não consegui carregar o conteúdo da sala.' : 'Conectando ao telão…'}</div>
       </div>
     )
 

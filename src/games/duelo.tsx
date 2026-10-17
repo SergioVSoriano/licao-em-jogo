@@ -91,7 +91,6 @@ export const duelo: GameDef<S> = {
   needsJudge: false,
   minPlayers: 2,
   idealRange: [3, 30],
-  truths: ['V1', 'V2', 'V3', 'V4', 'V6'],
   energy: 3,
   depth: 1,
   accent: 'var(--fogo)',

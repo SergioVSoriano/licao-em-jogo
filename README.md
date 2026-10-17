@@ -310,6 +310,7 @@ flowchart TB
 - **Cada jogo é um plugin** (`GameDef`, em `src/engine/types.ts`) com `init`, `input`, `tick`, `scores`, `publicView`, `privateView`, `controls`, `bot` e as telas `HostView` e `PlayerView`. Para criar um 13º jogo basta escrever um novo arquivo em `src/games/` e registrá-lo em `src/games/index.ts`.
 - **O motor** (`src/engine/session.ts`) é uma função pura `reduce(state, evento)`. Isso torna o jogo previsível, fácil de testar e fácil de retomar de um *snapshot*.
 - **Robôs** (`bot` em cada jogo) permitem testar sozinho e completar times.
+- **Cada jogo declara quanto conteúdo precisa** (`maxRoundsFor`): se o pacote não tem material, o jogo aparece travado no planejador.
 - **O planejador** (`src/engine/planner.ts`) estima o tempo de cada jogo (4 minutos fixos de abertura e final, mais o custo de cada rodada e do Momento Revelação) e reduz as rodadas até caber.
 - **Modo demonstração** (`src/net/local.ts`): sem Firebase configurado, o telão e os jogadores conversam por `BroadcastChannel` entre abas do mesmo navegador. É o que roda quando você clona o projeto e executa `npm run dev` pela primeira vez.
 
@@ -348,6 +349,7 @@ npm run typecheck   # checagem de tipos
 npm run build       # build de produção em dist/
 npm run simular     # simulação visual completa dos 12 jogos (cerca de 20 min)
 npm run testar:online   # teste rápido: telão + 3 celulares isolados pelo Firebase
+npm run conteudo:validar    # confere o conteúdo de conteudo/ (o dev e o build já fazem isso)
 ```
 
 ---
@@ -423,15 +425,21 @@ BASE=https://licao-em-jogo.vercel.app npm run testar:online
 ## Estrutura do projeto
 
 ```
+conteudo/       AUTORIA do conteúdo em YAML: catálogo, pacotes (lição, temas, livros) e listas comuns
+  REGRAS.md     regras de curadoria (a IA não interpreta a Bíblia)
 src/
-  content/      pacote da lição (perguntas, cartas, verdades, estações…)
-  engine/       regras da sessão, pontuação → passos, planejador de tempo
+  content/      tipos do pacote e carregamento sob demanda (catálogo + pacote escolhido)
+  engine/       regras da sessão, pontuação → passos, planejador de tempo e capacidade de cada jogo
   games/        os 12 minijogos (lógica + tela do telão + tela do celular)
   net/          tempo real: Firebase ou modo demonstração (BroadcastChannel)
   screens/      Início, Como funciona, Planejador, Telão, Jogador, Controle, Rolo
   ui/           design system: botões 3D, avatares SVG, mascote Lume, mapa do santuário
-scripts/        simulação visual e teste online
-docs/           planejamento, game design e relatório de testes
+scripts/
+  conteudo/     esquema (Zod), validador e construtor do conteúdo, plugin do Vite
+  …             simulação visual e teste online
+public/conteudo/  GERADO no dev/build a partir de conteudo/ (não versionado)
+docs/           planejamento (01–05), ESTADO.md, decisões e relatório de testes
+CLAUDE.md       instruções fixas para o Claude Code neste projeto
 database.rules.json   regras de segurança do Realtime Database
 vercel.json           redireciona todas as rotas para o app
 ```
@@ -440,13 +448,21 @@ vercel.json           redireciona todas as rotas para o app
 
 ## Criar o pacote de uma nova lição
 
-Todos os jogos leem o conteúdo de um **pacote** (`ContentPack`). Para a próxima lição:
+Todo o conteúdo fica em [`conteudo/`](conteudo/), em YAML, separado do código. Cada semana da lição, tema bíblico ou capítulo de livro é um **pacote**: uma pasta com três arquivos.
 
-1. Copie `src/content/l03-profetas.ts` e `src/content/l03-discussao.ts`.
-2. Troque perguntas, cartas, verdades e o Momento Revelação de cada jogo.
-3. Registre o novo pacote em `src/content/index.ts`.
+```
+conteudo/pacotes/licao/2026-t4-jovens/s03-profetas-do-at/
+  pacote.yaml      título, público, curadoria, fontes, abertura, seções e verdades
+  jogos.yaml       perguntas, V/F, linhas do tempo, cartas… (tudo opcional)
+  reflexoes.yaml   Momento Revelação, pontes do santuário e resumo
+```
 
-Nenhuma linha de jogo precisa mudar.
+1. Copie a pasta de um pacote existente e troque o conteúdo, seguindo [`conteudo/REGRAS.md`](conteudo/REGRAS.md).
+2. Rode `npm run conteudo:validar`: o validador aponta arquivo e campo de cada problema.
+3. Jogo sem material no pacote aparece **travado** no planejador; um pacote pode começar pequeno (por exemplo, só perguntas, V/F e uma linha do tempo).
+4. Quando estiver revisado, mude `status: publicado` e escreva o id do pacote em `pacote:` no [`conteudo/catalogo.yaml`](conteudo/catalogo.yaml). Itens sem pacote aparecem como "em preparo".
+
+Nenhuma linha de jogo precisa mudar. A arquitetura completa (modos Lição / Temas / Livros, curadoria e escala) está em [docs/05](docs/05-arquitetura-base-de-conhecimento.md).
 
 ---
 
@@ -460,6 +476,8 @@ O planejamento completo do projeto está em [`docs/`](docs/):
 | [02 · Referências de design e jogos](docs/02-referencias-design-e-jogos.md) | Pesquisa em Kahoot, Duolingo e jogos de grupo |
 | [03 · Game design](docs/03-game-design.md) | Regras, pontuação, mapa, tempos e decisões tomadas |
 | [04 · Banco de conteúdo](docs/04-banco-de-conteudo.md) | Perguntas, cartas e desafios de cada jogo |
+| [05 · Arquitetura da base de conhecimento](docs/05-arquitetura-base-de-conhecimento.md) | Modos de jogo, pacotes, curadoria sem interpretação de IA, escala |
+| [Estado do projeto](docs/ESTADO.md) | O que está pronto, pendências e decisões em vigor |
 | [Relatório de testes](docs/testes/RELATORIO.md) | Execução dos 12 jogos com prints |
 
 ---

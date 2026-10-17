@@ -2,13 +2,13 @@ import { toPng } from 'html-to-image'
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { ContentPack, Truth } from '../content/types'
-import { DAYS } from '../content/types'
+import { sectionLabel } from '../content'
 import { Btn, Lume } from './kit'
 
-const dayLabel = (t: Truth) => DAYS.find((d) => d.id === t.day)?.label ?? ''
+
 
 /** Cartão de um tópico do Rolo (claro para celular/web, escuro para o telão). */
-export function TruthCard({ t, dark, onClick, compact }: { t: Truth; dark?: boolean; onClick?: () => void; compact?: boolean }) {
+export function TruthCard({ t, label, dark, onClick, compact }: { t: Truth; label: string; dark?: boolean; onClick?: () => void; compact?: boolean }) {
   return (
     <div
       onClick={onClick}
@@ -17,7 +17,7 @@ export function TruthCard({ t, dark, onClick, compact }: { t: Truth; dark?: bool
       <div className="flex items-center gap-[0.5em]">
         <span className="text-[1.4em] leading-none">{t.emoji}</span>
         <div className="min-w-0 flex-1">
-          <div className={`text-[0.7em] font-bold tracking-wide uppercase ${dark ? 'opacity-70' : 'text-[var(--muted)]'}`}>{dayLabel(t)}</div>
+          <div className={`text-[0.7em] font-bold tracking-wide uppercase ${dark ? 'opacity-70' : 'text-[var(--muted)]'}`}>{label}</div>
           <div className="font-display text-[1.05em] font-black leading-tight" style={{ color: dark ? 'var(--ouro)' : undefined }}>
             {t.title}
           </div>
@@ -72,7 +72,7 @@ export function Poster({ pack }: { pack: ContentPack }) {
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
                 <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 32, color: '#ffb703' }}>{t.title}</span>
-                <span style={{ fontSize: 20, opacity: 0.65, fontWeight: 700 }}>{dayLabel(t).toUpperCase()}</span>
+                <span style={{ fontSize: 20, opacity: 0.65, fontWeight: 700 }}>{sectionLabel(pack, t.section).toUpperCase()}</span>
               </div>
               <div style={{ fontSize: 24, fontWeight: 600, lineHeight: 1.25 }}>{t.text}</div>
               <div style={{ fontSize: 22, lineHeight: 1.3, opacity: 0.9 }}>

@@ -1,0 +1,70 @@
+# Os 66 livros da Bíblia com abreviações aceitas nas referências (ex.: "1Rs 19:4", "1 Reis 19:4").
+# Usado pelo validador para conferir referências. A comparação ignora acentos, pontos e maiúsculas.
+
+livros:
+  - { nome: Gênesis, abrev: [Gn, Gen] }
+  - { nome: Êxodo, abrev: [Êx, Ex] }
+  - { nome: Levítico, abrev: [Lv] }
+  - { nome: Números, abrev: [Nm] }
+  - { nome: Deuteronômio, abrev: [Dt] }
+  - { nome: Josué, abrev: [Js] }
+  - { nome: Juízes, abrev: [Jz] }
+  - { nome: Rute, abrev: [Rt] }
+  - { nome: 1 Samuel, abrev: [1Sm] }
+  - { nome: 2 Samuel, abrev: [2Sm] }
+  - { nome: 1 Reis, abrev: [1Rs] }
+  - { nome: 2 Reis, abrev: [2Rs] }
+  - { nome: 1 Crônicas, abrev: [1Cr] }
+  - { nome: 2 Crônicas, abrev: [2Cr] }
+  - { nome: Esdras, abrev: [Ed] }
+  - { nome: Neemias, abrev: [Ne] }
+  - { nome: Ester, abrev: [Et] }
+  - { nome: Jó, abrev: [Jó] }
+  - { nome: Salmos, abrev: [Sl, Salmo] }
+  - { nome: Provérbios, abrev: [Pv] }
+  - { nome: Eclesiastes, abrev: [Ec] }
+  - { nome: Cânticos, abrev: [Ct, Cantares] }
+  - { nome: Isaías, abrev: [Is] }
+  - { nome: Jeremias, abrev: [Jr] }
+  - { nome: Lamentações, abrev: [Lm] }
+  - { nome: Ezequiel, abrev: [Ez] }
+  - { nome: Daniel, abrev: [Dn] }
+  - { nome: Oseias, abrev: [Os, Oséias] }
+  - { nome: Joel, abrev: [Jl] }
+  - { nome: Amós, abrev: [Am] }
+  - { nome: Obadias, abrev: [Ob] }
+  - { nome: Jonas, abrev: [Jn] }
+  - { nome: Miqueias, abrev: [Mq, Miquéias] }
+  - { nome: Naum, abrev: [Na] }
+  - { nome: Habacuque, abrev: [Hc] }
+  - { nome: Sofonias, abrev: [Sf] }
+  - { nome: Ageu, abrev: [Ag] }
+  - { nome: Zacarias, abrev: [Zc] }
+  - { nome: Malaquias, abrev: [Ml] }
+  - { nome: Mateus, abrev: [Mt] }
+  - { nome: Marcos, abrev: [Mc] }
+  - { nome: Lucas, abrev: [Lc] }
+  - { nome: João, abrev: [Jo] }
+  - { nome: Atos, abrev: [At] }
+  - { nome: Romanos, abrev: [Rm] }
+  - { nome: 1 Coríntios, abrev: [1Co] }
+  - { nome: 2 Coríntios, abrev: [2Co] }
+  - { nome: Gálatas, abrev: [Gl] }
+  - { nome: Efésios, abrev: [Ef] }
+  - { nome: Filipenses, abrev: [Fp] }
+  - { nome: Colossenses, abrev: [Cl] }
+  - { nome: 1 Tessalonicenses, abrev: [1Ts] }
+  - { nome: 2 Tessalonicenses, abrev: [2Ts] }
+  - { nome: 1 Timóteo, abrev: [1Tm] }
+  - { nome: 2 Timóteo, abrev: [2Tm] }
+  - { nome: Tito, abrev: [Tt] }
+  - { nome: Filemom, abrev: [Fm] }
+  - { nome: Hebreus, abrev: [Hb] }
+  - { nome: Tiago, abrev: [Tg] }
+  - { nome: 1 Pedro, abrev: [1Pe] }
+  - { nome: 2 Pedro, abrev: [2Pe] }
+  - { nome: 1 João, abrev: [1Jo] }
+  - { nome: 2 João, abrev: [2Jo] }
+  - { nome: 3 João, abrev: [3Jo] }
+  - { nome: Judas, abrev: [Jd] }
+  - { nome: Apocalipse, abrev: [Ap] }

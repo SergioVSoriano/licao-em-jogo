@@ -1,5 +1,5 @@
-import type { ContentPack, Day } from '../content/types'
-import { truthDay } from '../content'
+import type { ContentPack } from '../content/types'
+import { gameTruths, truthSection } from '../content'
 import type { Depth, GameDef, PlanItem } from './types'
 
 export const OVERHEAD: Record<Depth, number> = { leve: 1.75, equilibrado: 2.5, profundo: 3.75 }
@@ -9,6 +9,16 @@ export const TOLERANCE = 1.05
 
 export function maxRounds(def: GameDef, pack: ContentPack): number {
   return Math.min(def.rounds.max, def.maxRoundsFor ? def.maxRoundsFor(pack) : def.rounds.max)
+}
+
+/** O pacote tem conteúdo suficiente para ao menos o mínimo de rodadas deste jogo? */
+export function hasContent(def: GameDef, pack: ContentPack): boolean {
+  return maxRounds(def, pack) >= def.rounds.min
+}
+
+/** Rodadas sugeridas, limitadas ao conteúdo que o pacote tem. */
+export function defaultRounds(def: GameDef, pack: ContentPack, n: number): number {
+  return Math.max(def.rounds.min, Math.min(def.rounds.default(n), maxRounds(def, pack)))
 }
 
 export function estimateGame(def: GameDef, n: number, rounds: number, depth: Depth): number {
@@ -21,15 +31,16 @@ export function estimatePlan(plan: PlanItem[], games: Record<string, GameDef>, n
   return { items, total }
 }
 
-export function coverage(plan: PlanItem[], games: Record<string, GameDef>, pack: ContentPack): Set<Day> {
-  const days = new Set<Day>()
+/** Seções do pacote (dias da lição, partes da história…) que o plano cobre. */
+export function coverage(plan: PlanItem[], pack: ContentPack): Set<string> {
+  const sections = new Set<string>()
   for (const p of plan) {
-    for (const t of games[p.gameId].truths) {
-      const d = truthDay(pack, t)
-      if (d) days.add(d)
+    for (const t of gameTruths(pack, p.gameId)) {
+      const d = truthSection(pack, t)
+      if (d) sections.add(d)
     }
   }
-  return days
+  return sections
 }
 
 export interface FitResult {
@@ -82,20 +93,20 @@ export function fillPlan(plan: PlanItem[], games: Record<string, GameDef>, pack:
 /** Greedy suggestion: cover lesson days, vary formats, warm-up first, application last. */
 export function suggestPlan(all: GameDef[], pack: ContentPack, n: number, depth: Depth, minutes: number): PlanItem[] {
   const chosen: GameDef[] = []
-  const days = new Set<Day>()
+  const days = new Set<string>()
   const kinds = new Set<string>()
   let total = FIXED_MINUTES
-  const available = all.filter((g) => n >= g.minPlayers)
+  const available = all.filter((g) => n >= g.minPlayers && hasContent(g, pack))
   for (;;) {
     let best: GameDef | null = null
     let bestScore = -Infinity
     for (const g of available) {
       if (chosen.includes(g)) continue
-      const est = estimateGame(g, n, g.rounds.default(n), depth)
+      const est = estimateGame(g, n, defaultRounds(g, pack, n), depth)
       if (total + est > minutes) continue
       let score = 0
-      for (const t of g.truths) {
-        const d = truthDay(pack, t)
+      for (const t of gameTruths(pack, g.id)) {
+        const d = truthSection(pack, t)
         if (d && !days.has(d)) score += 3
       }
       if (!kinds.has(g.kind)) score += 2
@@ -108,14 +119,14 @@ export function suggestPlan(all: GameDef[], pack: ContentPack, n: number, depth:
     }
     if (!best) break
     chosen.push(best)
-    total += estimateGame(best, n, best.rounds.default(n), depth)
-    best.truths.forEach((t) => {
-      const d = truthDay(pack, t)
+    total += estimateGame(best, n, defaultRounds(best, pack, n), depth)
+    gameTruths(pack, best.id).forEach((t) => {
+      const d = truthSection(pack, t)
       if (d) days.add(d)
     })
     kinds.add(best.kind)
   }
-  return orderArc(chosen).map((g) => ({ gameId: g.id, rounds: g.rounds.default(n) }))
+  return orderArc(chosen).map((g) => ({ gameId: g.id, rounds: defaultRounds(g, pack, n) }))
 }
 
 /** Aquecer → História → Social → Aplicação */
@@ -141,7 +152,7 @@ export interface Preset {
 }
 
 export const PRESETS: Preset[] = [
-  { id: 'recomendado', name: 'Recomendado', emoji: '⭐', minutes: 35, depth: 'equilibrado', description: 'Cobre os 7 dias da lição', games: ['nuvem', 'linha', 'verdade', 'sinais', 'sortes'] },
+  { id: 'recomendado', name: 'Recomendado', emoji: '⭐', minutes: 35, depth: 'equilibrado', description: 'Cobre as partes do conteúdo', games: ['nuvem', 'linha', 'verdade', 'sinais', 'sortes'] },
   { id: 'relampago', name: 'Relâmpago', emoji: '⚡', minutes: 20, depth: 'leve', description: 'Rápido e animado', games: ['verdade', 'nuvem', 'duelo'] },
   { id: 'festa', name: 'Festa', emoji: '🎉', minutes: 30, depth: 'equilibrado', description: 'Os mais divertidos', games: ['nuvem', 'acrostico', 'sonho', 'sortes'] },
   { id: 'debate', name: 'Debate profundo', emoji: '🧠', minutes: 40, depth: 'profundo', description: 'Mais conversa e aplicação', games: ['linha', 'nuvem', 'fruto', 'voz'] },

@@ -103,7 +103,6 @@ export const sortes: GameDef<S> = {
   needsJudge: false,
   minPlayers: 2,
   idealRange: [4, 30],
-  truths: ['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7'],
   energy: 3,
   depth: 2,
   accent: 'var(--purpura)',

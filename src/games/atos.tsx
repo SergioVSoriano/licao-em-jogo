@@ -58,7 +58,6 @@ export const atos: GameDef<S> = {
   needsJudge: true,
   minPlayers: 4,
   idealRange: [6, 30],
-  truths: ['V3', 'V5', 'V6'],
   energy: 3,
   depth: 1,
   accent: 'var(--oliveira)',
@@ -74,6 +73,8 @@ export const atos: GameDef<S> = {
     tip: 'Os profetas também usavam encenações: Jeremias andou com um jugo no pescoço!',
   },
   rounds: { min: 2, max: 8, label: 'turnos', default: (n) => 2 * teamCount(n) },
+  // cada turno oferece uma cena fácil e uma difícil
+  maxRoundsFor: (pack) => Math.min(pack.mimes.filter((m) => !m.hard).length, pack.mimes.filter((m) => m.hard).length),
   perRound: () => 1.2,
 
   init(ctx, rounds) {

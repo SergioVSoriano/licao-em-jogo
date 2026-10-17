@@ -96,7 +96,6 @@ export const acrostico: GameDef<S> = {
   needsJudge: true,
   minPlayers: 2,
   idealRange: [4, 20],
-  truths: ['V2', 'V6'],
   energy: 3,
   depth: 1,
   accent: 'var(--ouro)',
@@ -112,6 +111,7 @@ export const acrostico: GameDef<S> = {
     tip: 'Palavras discutíveis viram mini-debate: "Zimbro vale como objeto?"',
   },
   rounds: { min: 1, max: 3, label: 'rodadas', default: (n) => (n >= 10 ? 1 : 2) },
+  maxRoundsFor: (pack) => pack.acrosticThemes.length,
   perRound: (n) => 0.2 * Math.min(20, n + 5),
 
   init(ctx, rounds) {

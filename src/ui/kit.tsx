@@ -247,3 +247,23 @@ export function Center({ children, className = '' }: { children: ReactNode; clas
 export function Kbd({ children }: { children: ReactNode }) {
   return <kbd className="rounded-md border border-white/30 bg-white/10 px-[0.4em] py-[0.05em] font-sans text-[0.75em]">{children}</kbd>
 }
+
+/** Tela de espera enquanto o pacote de conteúdo chega (ou o erro, se não chegar). */
+export function PackLoading({ error, dark }: { error?: string | null; dark?: boolean }) {
+  return (
+    <div className={`grid min-h-dvh place-items-center p-6 text-center ${dark ? 'stage' : ''}`}>
+      <div className="flex flex-col items-center gap-3">
+        <Lume size={110} mood={error ? 'wow' : 'happy'} className={error ? '' : 'anim-bob'} />
+        {error && (
+          <>
+            <div className="font-display text-2xl font-black">Não consegui carregar o conteúdo.</div>
+            <div className="max-w-md text-sm opacity-75">{error}</div>
+            <button className="font-display font-extrabold text-[var(--azul)] underline" onClick={() => location.reload()}>
+              Tentar de novo
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}

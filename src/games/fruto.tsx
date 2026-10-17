@@ -61,7 +61,6 @@ export const fruto: GameDef<S> = {
   needsJudge: false,
   minPlayers: 3,
   idealRange: [6, 30],
-  truths: ['V2', 'V3', 'V4', 'V5'],
   energy: 3,
   depth: 2,
   accent: 'var(--carmesim)',
@@ -76,6 +75,8 @@ export const fruto: GameDef<S> = {
     phone: 'Quem explica: carta + ✓ Acertaram + Pular. Fiscal: carta + 🚨 BUZZ. Time: adivinha em voz alta.',
   },
   rounds: { min: 2, max: 8, label: 'turnos', default: (n) => (n >= 6 ? 2 * teamCount(n) : Math.max(2, Math.min(n, 4))) },
+  // as cartas giram em ciclo: com 6 ou mais, qualquer número de turnos funciona
+  maxRoundsFor: (pack) => (pack.taboo.length >= 6 ? 99 : 0),
   perRound: () => 1.25,
 
   init(ctx, rounds) {

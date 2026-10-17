@@ -1,4 +1,7 @@
 docs/testes/prints
-scripts
+scripts/simular-partida.mjs
+scripts/testar-firebase.mjs
+conteudo/fontes
+public/conteudo
 *.pdf
 *.log

@@ -1,0 +1,327 @@
+# Metadados, abertura, seções e verdades da semana
+# Pacote: 2026-q4-l03 → novo id licao-2026-t4-jovens-s03
+# Formato e regras: conteudo/REGRAS.md
+
+id: licao-2026-t4-jovens-s03
+tipo: licao
+titulo: Profetas do AT
+subtitulo: Lição 3 · Jovens
+datas: 10 a 16 de outubro de 2026
+textoBase: 1 Reis 19:1-16
+publico:
+  - jovens
+status: publicado
+curadoria:
+  curador: Sérgio Soriano
+  revisadoEm: null
+  observacao: "Pacote anterior às regras de curadoria: os textos foram redigidos com ajuda de IA a partir da lição e das anotações do curador. Precisa de revisão do curador (ver docs/ESTADO.md)."
+fontes:
+  - tipo: licao
+    descricao: Lição da Escola Sabatina Jovens, 4º trimestre de 2026, Lição 3 (10 a 16 de outubro)
+  - tipo: anotacoes
+    descricao: Anotações e transcrições do curador sobre a lição
+abertura:
+  versiculo:
+    ref: Amós 3:7
+    texto: Certamente o Senhor Deus não fará coisa alguma, sem primeiro revelar o Seu segredo aos Seus servos, os profetas.
+  tirinha:
+    - Tira a minha vida!
+    - Modo depressivo ativado
+    - Ainda há trabalho!
+  ideiaCentral: Deus fala por meio de pessoas humanas, frágeis e às vezes cansadas. Ele cuida antes de cobrar e procura gente fiel e disponível, não gente pronta ou popular.
+secoes:
+  - id: sab
+    titulo: Sábado
+  - id: dom
+    titulo: Domingo
+  - id: seg
+    titulo: Segunda
+  - id: ter
+    titulo: Terça
+  - id: qua
+    titulo: Quarta
+  - id: qui
+    titulo: Quinta
+  - id: sex
+    titulo: Sexta
+verdades:
+  - id: V1
+    secao: sab
+    emoji: 🙋
+    titulo: Disponíveis, não prontos
+    texto: Deus não chama os prontos, chama os disponíveis. O profeta revela o coração de Deus.
+    refs:
+      - Am 3:7
+      - Is 6:5-8
+    naLicao: Isaías se sentia impuro, Daniel era estrangeiro e Ellen White começou aos 17 anos. A Ellen chegou a pedir que o encargo fosse dado a outra pessoa, mas depois entregou a vida à missão.
+    exemplos:
+      - ref: Is 6:5,8
+        texto: '"Ai de mim!"… e logo depois: "Eis-me aqui, envia-me a mim."'
+      - ref: Testemunhos v.1 p.61
+        texto: Ellen decidiu "cumprir Sua ordem, não importando o que fosse".
+    pergunta: O que você está esperando "ficar pronto" para fazer por Deus?
+  - id: V2
+    secao: dom
+    emoji: 🧭
+    titulo: GPS espiritual
+    texto: Não deixe a cultura ser o seu GPS. O reavivamento começa dentro de casa.
+    refs:
+      - 2Rs 2:11
+      - Ml 4:5,6
+    naLicao: Elias mostrou a Israel a verdadeira condição espiritual do povo, numa cultura de idolatria. Hoje, a "mensagem de Elias" chama a deixar os ídolos, e isso começa curando os lares.
+    exemplos:
+      - ref: Ml 4:6
+        texto: '"Converterá o coração dos pais aos filhos e o coração dos filhos a seus pais."'
+      - ref: 2Rs 2:11
+        texto: "Elias não morreu: subiu num redemoinho, com carro de fogo."
+    pergunta: Quem (ou o quê) tem sido o seu GPS ultimamente?
+  - id: V3
+    secao: seg
+    emoji: 🌳
+    titulo: Humanos como nós
+    texto: Até pessoas de fé chegam ao limite. Deus cuida antes de cobrar, e a crise não é o fim do chamado.
+    refs:
+      - 1Rs 19:4-8
+      - Tg 5:17
+    naLicao: Depois do fogo no Carmelo, Elias fugiu de Jezabel e pediu a morte debaixo do zimbro. Deus respondeu com pão, água, descanso, uma voz mansa e uma nova missão.
+    exemplos:
+      - ref: 1Rs 19:4-5
+        texto: '"Basta, Senhor! Tira a minha vida."… "Levanta-te e come."'
+      - ref: Tg 5:17
+        texto: '"Elias era homem semelhante a nós."'
+    pergunta: O que é "pão e água" para você quando está no limite?
+  - id: V4
+    secao: ter
+    emoji: ⚖️
+    titulo: Popular ≠ verdadeiro
+    texto: Nem tudo que é popular é verdadeiro. Discirna e fale a verdade com amor.
+    refs:
+      - 1Rs 22
+      - Dt 18:20
+    naLicao: 400 profetas disseram "sobe!" ao rei Acabe, e ainda usavam o nome do Senhor. Micaías, sozinho, falou o que Deus mandou, levou um tapa e foi preso. A palavra dele se cumpriu.
+    exemplos:
+      - ref: 1Rs 22:14
+        texto: '"O que o Senhor me disser, isso falarei."'
+      - ref: 1Rs 22:8
+        texto: 'Acabe: "Eu o odeio, porque nunca profetiza de mim o que é bom."'
+    pergunta: "Onde é mais difícil ser o Micaías: na escola, no trabalho, em casa ou na internet?"
+  - id: V5
+    secao: qua
+    emoji: 🌴
+    titulo: Profetisas
+    texto: Deus chama homens e mulheres. O critério é fidelidade, não gênero.
+    refs:
+      - Êx 15:20
+      - Jz 4:4-5
+      - 2Rs 22:14
+    naLicao: "Deus deu o dom profético e a liderança a mulheres. Também houve falsas profetisas: o problema nunca foi ser mulher, mas ser fiel ou infiel ao chamado."
+    exemplos:
+      - ref: Êx 15:20
+        texto: Miriã liderou o louvor com tamborim depois do mar Vermelho.
+      - ref: Jz 4:4-5
+        texto: "Débora era profetisa e juíza: o povo subia até a palmeira dela."
+      - ref: 2Rs 22:14
+        texto: Hulda foi consultada pelo rei Josias quando acharam o Livro da Lei.
+    pergunta: Quem é uma "Débora" ou "Hulda" na sua vida ou na sua igreja?
+  - id: V6
+    secao: qui
+    emoji: 📯
+    titulo: Funções dos profetas
+    texto: "Profeta não só prevê: orienta, confronta, instrui, escreve e obedece. Deus usa jovens."
+    refs:
+      - 1Sm 8
+      - 2Cr 34
+      - Mt 21:11
+    naLicao: Profetas aconselhavam reis, repreendiam sacerdotes corruptos, ensinavam o povo e escreviam as mensagens. Eram pessoas de oração, e muitos eram jovens.
+    exemplos:
+      - ref: 1Sm 8:5-18
+        texto: Samuel avisou o povo do custo de ter um rei "como as outras nações".
+      - ref: Mt 21:11
+        texto: '"Este é Jesus, o profeta de Nazaré."'
+    pergunta: "Qual dessas funções um jovem pode exercer hoje: aconselhar, confrontar, ensinar ou escrever?"
+  - id: V7
+    secao: sex
+    emoji: ✒️
+    titulo: Imperfeita, mas disposta
+    texto: Deus capacita quem está disponível. A limitação não define o tamanho da influência.
+    refs:
+      - Testemunhos v.1 p.59-61
+      - 2Co 12:9
+    naLicao: Ellen Harmon tinha 17 anos, saúde frágil (levou uma pedrada aos 9) e muito medo. Encorajada por irmãos, se rendeu e deixou cerca de 100 mil páginas que ajudaram a formar a igreja.
+    exemplos:
+      - ref: Testemunhos v.1 p.59
+        texto: '"Orei para que esse encargo fosse removido de mim e posto sobre alguém mais capaz."'
+      - ref: 2Co 12:9
+        texto: '"O poder se aperfeiçoa na fraqueza."'
+    pergunta: Qual limitação sua Deus poderia usar?
+personagens:
+  - id: elias
+    bio: Profeta tisbita que enfrentou Baal no Carmelo, chegou ao limite debaixo do zimbro e ouviu a voz mansa no Horebe.
+    refs: 1Rs 17–19; 2Rs 2:11; Tg 5:17
+    pistas:
+      - Usava cinto de couro
+      - Pediu a morte debaixo de uma árvore
+      - Subiu ao céu num carro de fogo
+    disfarcado: true
+  - id: eliseu
+    bio: Sucessor de Elias, de Abel-Meolá. Pediu porção dobrada do espírito de Elias.
+    refs: 1Rs 19:16,19; 2Rs 2
+    pistas:
+      - Arava com 12 juntas de bois
+      - Pediu porção dobrada
+      - Recebeu o manto de Elias
+    disfarcado: true
+  - id: acabe
+    bio: Rei de Israel, marido de Jezabel. Promoveu o culto a Baal e odiava Micaías.
+    refs: 1Rs 16–22
+    pistas:
+      - Tinha uma casa de marfim
+      - Foi à guerra disfarçado
+      - Marido de Jezabel
+    disfarcado: true
+  - id: jezabel
+    bio: Rainha sidônia que sustentava 850 profetas falsos e jurou matar Elias.
+    refs: 1Rs 16:31; 18:19; 19:2
+    pistas:
+      - Tramou para tomar a vinha de Nabote
+      - Sustentava 850 profetas falsos
+      - Jurou matar Elias em 24 horas
+    disfarcado: true
+  - id: obadias
+    bio: Mordomo do palácio de Acabe que temia ao Senhor e escondeu 100 profetas.
+    refs: 1Rs 18:3-16
+    pistas:
+      - O nome significa "servo do Senhor"
+      - Trabalhava para quem perseguia profetas
+      - Escondeu 100 profetas em covas
+    disfarcado: true
+  - id: micaias
+    bio: Profeta que ficou sozinho contra 400 e só falou o que Deus mandou.
+    refs: 1Rs 22
+    pistas:
+      - O nome significa "Quem é como o Senhor?"
+      - Levou um tapa e foi preso a pão e água
+      - Sozinho contra 400 profetas
+    disfarcado: true
+  - id: josafa
+    bio: Rei de Judá que desconfiou da unanimidade e pediu um profeta do Senhor.
+    refs: 1Rs 22:4-7
+    pistas:
+      - Aliou-se ao rei do norte
+      - Desconfiou da unanimidade
+      - '"Não há aqui um profeta do Senhor?"'
+    disfarcado: true
+  - id: miria
+    bio: Profetisa e líder do êxodo, irmã de Moisés e Arão.
+    refs: Êx 15:20; Mq 6:4
+    pistas:
+      - Foi repreendida por Deus por murmurar
+      - Vigiou o cestinho no Nilo
+      - Cantou com tamborim após o mar Vermelho
+    disfarcado: true
+  - id: debora
+    bio: Profetisa e juíza, chamada de "mãe em Israel".
+    refs: Jz 4–5
+    pistas:
+      - O nome significa "abelha"
+      - Trabalhou com Baraque contra Sísera
+      - Julgava debaixo de uma palmeira
+    disfarcado: true
+  - id: hulda
+    bio: Profetisa consultada pelo rei Josias quando o Livro da Lei foi encontrado.
+    refs: 2Rs 22:14-20
+    pistas:
+      - O marido cuidava das vestimentas
+      - Morava na "segunda parte" de Jerusalém
+      - Consultada quando acharam o Livro da Lei
+    disfarcado: true
+  - id: josias
+    bio: Rei de Judá que começou a reinar aos 8 anos e fez uma grande reforma.
+    refs: 2Rs 22–23; 2Cr 34
+    pistas:
+      - Começou a reinar aos 8 anos
+      - Fez a maior Páscoa desde Samuel
+      - Rasgou as vestes ao ouvir a Lei
+    disfarcado: true
+  - id: samuel
+    bio: Profeta e último juiz. Advertiu o povo sobre ter um rei e ungiu Saul.
+    refs: 1Sm 3; 8; 10
+    pistas:
+      - Filho da oração de Ana
+      - 'Ouviu Deus chamar de noite: "Fala, Senhor"'
+      - Ungiu Saul, o primeiro rei
+    disfarcado: true
+  - id: ellen
+    bio: Recebeu o chamado aos 17 anos. Jovem, tímida e de saúde frágil, tornou-se a voz mais influente da IASD.
+    refs: Testemunhos v.1 p.59-61
+    pistas:
+      - Levou uma pedrada no rosto aos 9 anos
+      - Orou para que o encargo fosse dado a outro
+      - Recebeu a 1ª visão aos 17 anos (1844)
+    disfarcado: false
+coberturaDosJogos:
+  acrostico:
+    - V2
+    - V6
+  atos:
+    - V3
+    - V5
+    - V6
+  disfarcados:
+    - V3
+    - V4
+    - V5
+    - V6
+  duelo:
+    - V1
+    - V2
+    - V3
+    - V4
+    - V6
+  fruto:
+    - V2
+    - V3
+    - V4
+    - V5
+  linha:
+    - V1
+    - V2
+    - V3
+    - V5
+    - V6
+  nuvem:
+    - V3
+    - V2
+    - V5
+    - V6
+  sinais:
+    - V5
+    - V6
+    - V7
+    - V3
+  sonho:
+    - V2
+    - V4
+    - V3
+    - V5
+  sortes:
+    - V1
+    - V2
+    - V3
+    - V4
+    - V5
+    - V6
+    - V7
+  verdade:
+    - V2
+    - V3
+    - V4
+    - V5
+    - V6
+    - V7
+  voz:
+    - V2
+    - V3
+    - V4
+    - V7
+    - V1

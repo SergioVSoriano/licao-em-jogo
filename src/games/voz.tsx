@@ -58,7 +58,6 @@ export const voz: GameDef<S> = {
   needsJudge: false,
   minPlayers: 4,
   idealRange: [6, 24],
-  truths: ['V2', 'V3', 'V4', 'V7', 'V1'],
   energy: 2,
   depth: 3,
   accent: 'var(--oliveira)',
@@ -74,6 +73,7 @@ export const voz: GameDef<S> = {
     tip: 'Ótimo para fechar a lição: aplicação prática com insights da turma.',
   },
   rounds: { min: 2, max: 3, label: 'times', default: (n) => (n >= 9 ? 3 : 2) },
+  maxRoundsFor: (pack) => (pack.pitchCases.length >= 2 ? pack.pitchCases.length : 0),
   perRound: () => 1.25,
   setup: 3.75,
 

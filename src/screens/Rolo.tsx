@@ -1,7 +1,7 @@
-import { DEFAULT_PACK } from '../content'
+import { sectionLabel, useDefaultPack } from '../content'
 import type { ContentPack } from '../content/types'
 import { Link } from '../router'
-import { Logo } from '../ui/kit'
+import { Logo, PackLoading } from '../ui/kit'
 import { DownloadRolo, TruthCard } from '../ui/RoloPoster'
 
 export function RoloContent({ pack }: { pack: ContentPack }) {
@@ -18,7 +18,7 @@ export function RoloContent({ pack }: { pack: ContentPack }) {
         <div className="mb-2 font-display text-xl font-black">As 7 verdades da semana</div>
         <div className="flex flex-col gap-3">
           {pack.truths.map((t) => (
-            <TruthCard key={t.id} t={t} />
+            <TruthCard key={t.id} t={t} label={sectionLabel(pack, t.section)} />
           ))}
         </div>
       </div>
@@ -38,12 +38,14 @@ export function RoloContent({ pack }: { pack: ContentPack }) {
 }
 
 export function Rolo() {
+  const { pack, error } = useDefaultPack()
+  if (!pack) return <PackLoading error={error} />
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-5 px-4 py-6">
       <Link to="/">
         <Logo size="1.2rem" />
       </Link>
-      <RoloContent pack={DEFAULT_PACK} />
+      <RoloContent pack={pack} />
     </div>
   )
 }

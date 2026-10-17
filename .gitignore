@@ -9,3 +9,8 @@ dist
 
 .vercel
 .env*
+
+# conteúdo gerado a partir de conteudo/ (npm run conteudo:construir)
+public/conteudo/
+# caderno do curador: fontes privadas (anotações, transcrições), fica fora do repositório público
+conteudo/fontes/

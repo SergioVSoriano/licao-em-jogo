@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { conteudo } from './scripts/conteudo/vite-plugin'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [conteudo(), react(), tailwindcss()],
   server: { host: true, port: 5173 },
   build: {
     chunkSizeWarningLimit: 700,
