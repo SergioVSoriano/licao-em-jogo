@@ -8,14 +8,19 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { join, relative } from 'node:path'
 import { parse } from 'yaml'
 import type { z } from 'zod'
+import type { DetalhePacote } from '../../src/content/curadoria'
 import type { Catalog, CatalogItem, ContentPack } from '../../src/content/types'
 import { Catalogo, Estacoes, Jogos, LivrosBiblicos, PacoteBase, Personagens, Reflexoes, type TCatalogo, type TJogos, type TPacoteBase, type TReflexoes } from './esquema'
+import { checarOrigem, lerCaderno, listarGerados, refsForaDoCaderno } from './origem'
 
 export interface Resultado {
+  /** erros que bloqueiam o build (pacotes publicados, catálogo, listas comuns) */
   erros: string[]
   avisos: string[]
   pacotes: ContentPack[]
   catalogo: Catalog | null
+  /** relatório por pacote, para a página /curadoria */
+  detalhes: DetalhePacote[]
 }
 
 type Estacao = { id: string; nome: string; emoji: string; significado: string; ref: string }
@@ -68,16 +73,27 @@ function refsNaoBiblicas(ref: string, livros: Set<string>): string[] {
   return fora
 }
 
+/** Lê só o campo "status" (para saber se um pacote com erro é rascunho e não deve travar o build). */
+function statusBruto(arquivo: string): DetalhePacote['status'] {
+  try {
+    const st = (parse(readFileSync(arquivo, 'utf8')) as { status?: string } | null)?.status
+    return st === 'rascunho' || st === 'publicado' ? st : 'desconhecido'
+  } catch {
+    return 'desconhecido'
+  }
+}
+
 export function lerConteudo(raiz = 'conteudo'): Resultado {
   const erros: string[] = []
   const avisos: string[] = []
   const pacotes: ContentPack[] = []
+  const detalhes: DetalhePacote[] = []
 
   const estacoes = lerYaml(join(raiz, 'comum/estacoes-santuario.yaml'), Estacoes, erros, raiz)
   const registro = lerYaml(join(raiz, 'comum/personagens.yaml'), Personagens, erros, raiz)
   const biblia = lerYaml(join(raiz, 'comum/livros-biblicos.yaml'), LivrosBiblicos, erros, raiz)
   const catalogo = lerYaml(join(raiz, 'catalogo.yaml'), Catalogo, erros, raiz)
-  if (!estacoes || !registro || !biblia) return { erros, avisos, pacotes, catalogo: null }
+  if (!estacoes || !registro || !biblia) return { erros, avisos, pacotes, catalogo: null, detalhes }
 
   const livros = new Set(biblia.livros.flatMap((l) => [l.nome, ...l.abrev].map(norm)))
   const porPersonagem = new Map(registro.personagens.map((p) => [p.id, p]))
@@ -85,15 +101,56 @@ export function lerConteudo(raiz = 'conteudo'): Resultado {
 
   for (const pasta of pastasDePacote(join(raiz, 'pacotes'))) {
     const nome = relative(raiz, pasta).replaceAll('\\', '/')
-    const base = lerYaml(join(pasta, 'pacote.yaml'), PacoteBase, erros, raiz)
-    const jogos = existsSync(join(pasta, 'jogos.yaml')) ? lerYaml(join(pasta, 'jogos.yaml'), Jogos, erros, raiz) : Jogos.parse({})
-    if (!existsSync(join(pasta, 'reflexoes.yaml'))) erros.push(`${nome}: falta reflexoes.yaml (ao menos uma revelação)`)
-    const reflexoes = existsSync(join(pasta, 'reflexoes.yaml')) ? lerYaml(join(pasta, 'reflexoes.yaml'), Reflexoes, erros, raiz) : null
-    if (!base || !jogos || !reflexoes) continue
-    const antes = erros.length
-    conferir(nome, base, jogos, reflexoes, { porPersonagem, idsEstacoes, livros }, erros, avisos)
-    if (erros.length > antes) continue
-    pacotes.push(paraApp(base, jogos, reflexoes, estacoes.estacoes, porPersonagem))
+    const pe: string[] = []
+    const pa: string[] = []
+    const base = lerYaml(join(pasta, 'pacote.yaml'), PacoteBase, pe, raiz)
+    const jogos = existsSync(join(pasta, 'jogos.yaml')) ? lerYaml(join(pasta, 'jogos.yaml'), Jogos, pe, raiz) : Jogos.parse({})
+    if (!existsSync(join(pasta, 'reflexoes.yaml'))) pe.push(`${nome}: falta reflexoes.yaml (ao menos uma revelação)`)
+    const reflexoes = existsSync(join(pasta, 'reflexoes.yaml')) ? lerYaml(join(pasta, 'reflexoes.yaml'), Reflexoes, pe, raiz) : null
+    const status = base?.status ?? statusBruto(join(pasta, 'pacote.yaml'))
+    const det: DetalhePacote = {
+      id: base?.id ?? null,
+      pasta: nome,
+      ...(base ? { titulo: base.titulo, tipo: base.tipo } : {}),
+      status,
+      erros: pe,
+      avisos: pa,
+      temCaderno: false,
+      arquivosCaderno: [],
+      origem: [],
+      gerados: [],
+      pendentes: 0,
+      podePublicar: false,
+    }
+    detalhes.push(det)
+    if (base && jogos && reflexoes) {
+      conferir(nome, base, jogos, reflexoes, { porPersonagem, idsEstacoes, livros }, pe, pa)
+      const caderno = lerCaderno(raiz, base.id)
+      det.gerados = listarGerados(base, jogos, reflexoes)
+      if (caderno) {
+        det.temCaderno = true
+        det.arquivosCaderno = caderno.arquivos.map((a) => a.nome)
+        det.origem = checarOrigem(caderno, base, jogos, reflexoes)
+        // itens interpretativos aparecem só na lista de origem (com os trechos), não duas vezes
+        const mesmo = (x: { arquivo: string; caminho: (string | number)[] }) => det.origem.some((o) => o.arquivo === x.arquivo && o.caminho.join('.') === x.caminho.join('.'))
+        det.gerados = det.gerados.filter((g) => !mesmo(g))
+        for (const o of det.origem.filter((x) => x.status === 'sem-origem'))
+          pe.push(`${nome}: "${o.rotulo}" não tem origem no caderno (o texto não está no caderno e não há trechos de "base" encontrados). Interpretação só pode vir do curador.`)
+        const fora = refsForaDoCaderno(caderno, refsDoPacote(base, jogos, reflexoes), biblia.livros)
+        if (fora.length) pa.push(`${nome}: referências que não aparecem no caderno do curador (confira se ele citou estes textos): ${fora.join(' · ')}`)
+      } else pa.push(`${nome}: sem caderno em conteudo/fontes/${base.id}/ (a checagem de origem não foi feita)`)
+      det.pendentes = det.gerados.length + det.origem.filter((o) => o.pendente).length
+      if (base.status === 'publicado' && det.pendentes)
+        pe.push(`${nome}: está "publicado" com ${det.pendentes} item(ns) ainda não revisado(s) pelo curador (gerados pela IA ou sínteses). Revise em /curadoria/${base.id}.`)
+      det.podePublicar = pe.length === 0 && det.pendentes === 0
+      if (pe.length === 0) pacotes.push(paraApp(base, jogos, reflexoes, estacoes.estacoes, porPersonagem))
+    }
+    // rascunho com problema não trava o build: vira aviso (e o pacote só é gerado quando ficar válido)
+    if (status === 'rascunho') avisos.push(...pa, ...pe.map((e) => `(rascunho) ${e}`))
+    else {
+      avisos.push(...pa)
+      erros.push(...pe)
+    }
   }
 
   const ids = new Set<string>()
@@ -102,8 +159,23 @@ export function lerConteudo(raiz = 'conteudo'): Resultado {
     ids.add(p.id)
   }
 
-  const cat = catalogo ? montarCatalogo(catalogo, pacotes, erros, avisos) : null
-  return { erros, avisos, pacotes, catalogo: cat }
+  const rascunhos = new Set(detalhes.filter((d) => d.status === 'rascunho' && d.id).map((d) => d.id!))
+  const cat = catalogo ? montarCatalogo(catalogo, pacotes, rascunhos, erros, avisos) : null
+  return { erros, avisos, pacotes, catalogo: cat, detalhes }
+}
+
+function refsDoPacote(base: TPacoteBase, jogos: TJogos, reflexoes: TReflexoes): string[] {
+  return [
+    base.abertura.versiculo.ref,
+    ...base.verdades.flatMap((v) => [...v.refs, ...v.exemplos.map((x) => x.ref)]),
+    ...jogos.perguntas.map((q) => q.ref),
+    ...jogos.verdadeiroOuFalso.map((q) => q.ref),
+    ...jogos.linhasDoTempo.map((q) => q.ref),
+    ...jogos.tresSinais.map((q) => q.ref),
+    ...jogos.vozProfetica.map((q) => q.ref),
+    ...reflexoes.revelacoes.flatMap((r) => [r.versiculo.ref, ...r.naBiblia.map((x) => x.ref)]),
+    ...reflexoes.resumo.versiculos.map((v) => v.ref),
+  ]
 }
 
 function conferir(
@@ -137,37 +209,12 @@ function conferir(
   for (const id of Object.keys(jogos.disfarcados)) if (!personagens.has(id)) e(`disfarcados: o personagem "${id}" não está em "personagens" do pacote`)
   for (const id of Object.keys(reflexoes.pontesDoSantuario)) if (!comum.idsEstacoes.has(id)) e(`pontesDoSantuario: a estação "${id}" não existe`)
 
-  if (base.status === 'publicado') {
-    const itens: { origem?: string }[] = [
-      ...base.verdades,
-      ...base.personagens,
-      ...jogos.perguntas,
-      ...jogos.verdadeiroOuFalso,
-      ...jogos.linhasDoTempo,
-      ...jogos.tresSinais,
-      ...jogos.frutoProibido,
-      ...jogos.mimicas,
-      ...jogos.nuvem,
-      ...jogos.vozProfetica,
-    ]
-    const gerados = itens.filter((x) => x.origem === 'gerado').length
-    if (gerados) e(`está "publicado" com ${gerados} item(ns) "origem: gerado". Revise cada um e troque para "origem: curador" (ou apague a linha) antes de publicar.`)
-  }
-
-  const refs = [
-    base.abertura.versiculo.ref,
-    ...base.verdades.flatMap((v) => [...v.refs, ...v.exemplos.map((x) => x.ref)]),
-    ...jogos.perguntas.map((q) => q.ref),
-    ...jogos.verdadeiroOuFalso.map((q) => q.ref),
-    ...jogos.linhasDoTempo.map((q) => q.ref),
-    ...jogos.tresSinais.map((q) => q.ref),
-    ...jogos.vozProfetica.map((q) => q.ref),
-    ...reflexoes.revelacoes.flatMap((r) => [r.versiculo.ref, ...r.naBiblia.map((x) => x.ref)]),
-    ...reflexoes.resumo.versiculos.map((v) => v.ref),
-  ]
+  const refs = refsDoPacote(base, jogos, reflexoes)
   const fora = [...new Set(refs.flatMap((r) => refsNaoBiblicas(r, comum.livros)))]
   if (fora.length) avisos.push(`${nome}: referências que não são da Bíblia (confira se a fonte está certa): ${fora.join(' · ')}`)
 }
+
+const ponte = (v: string | { texto: string } | undefined) => (typeof v === 'string' ? v : (v?.texto ?? ''))
 
 function paraApp(b: TPacoteBase, j: TJogos, r: TReflexoes, estacoes: Estacao[], porPersonagem: Map<string, Registro>): ContentPack {
   const bb = (x: { ref: string; texto: string }) => ({ ref: x.ref, text: x.texto })
@@ -215,7 +262,7 @@ function paraApp(b: TPacoteBase, j: TJogos, r: TReflexoes, estacoes: Estacao[], 
       followUps: x.outrasPerguntas,
       ...(x.nota ? { note: x.nota } : {}),
     })),
-    stations: estacoes.map((s) => ({ id: s.id, name: s.nome, emoji: s.emoji, meaning: s.significado, bridge: r.pontesDoSantuario[s.id] ?? '', ref: s.ref })),
+    stations: estacoes.map((s) => ({ id: s.id, name: s.nome, emoji: s.emoji, meaning: s.significado, bridge: ponte(r.pontesDoSantuario[s.id]), ref: s.ref })),
     funFacts: j.curiosidades,
     disguiseClues: j.disfarcados,
     summary: { questions: r.resumo.perguntas, verses: r.resumo.versiculos.map(bb) },
@@ -232,7 +279,7 @@ function semana(inicio: string, n: number) {
   return { start: start.toISOString().slice(0, 10), end: end.toISOString().slice(0, 10) }
 }
 
-function montarCatalogo(c: TCatalogo, pacotes: ContentPack[], erros: string[], avisos: string[]): Catalog {
+function montarCatalogo(c: TCatalogo, pacotes: ContentPack[], rascunhos: Set<string>, erros: string[], avisos: string[]): Catalog {
   const publicados = new Map(pacotes.filter((p) => p.status === 'publicado').map((p) => [p.id, p]))
   const todos = new Map(pacotes.map((p) => [p.id, p]))
   const usados = new Set<string>()
@@ -241,7 +288,7 @@ function montarCatalogo(c: TCatalogo, pacotes: ContentPack[], erros: string[], a
     if (x.pacote) {
       usados.add(x.pacote)
       if (publicados.has(x.pacote)) pack = x.pacote
-      else if (todos.has(x.pacote)) avisos.push(`catalogo.yaml: "${x.titulo}" aponta para ${x.pacote}, que ainda é rascunho (fica travado)`)
+      else if (todos.has(x.pacote) || rascunhos.has(x.pacote)) avisos.push(`catalogo.yaml: "${x.titulo}" aponta para ${x.pacote}, que ainda é rascunho (fica travado)`)
       else erros.push(`catalogo.yaml: "${x.titulo}" aponta para o pacote "${x.pacote}", que não existe ou está com erro`)
     }
     return { id, title: x.titulo, ...(x.emoji ? { emoji: x.emoji } : {}), ...(x.datas ? { dates: x.datas } : {}), ...(x.textoBase ? { keyText: x.textoBase } : {}), pack }
@@ -266,12 +313,18 @@ function montarCatalogo(c: TCatalogo, pacotes: ContentPack[], erros: string[], a
   return cat
 }
 
-/** Escreve public/conteudo/ do zero. Rascunhos também são gerados (para a prévia), mas ficam travados no catálogo. */
+/**
+ * Escreve public/conteudo/. Não apaga a pasta inteira (no Windows isso colide com o watcher):
+ * grava os arquivos e remove só os pacotes que deixaram de existir.
+ * Rascunhos válidos também são gerados (para a prévia), mas ficam travados no catálogo.
+ */
 export function escreverSaida(r: Resultado, saida = 'public/conteudo') {
-  rmSync(saida, { recursive: true, force: true })
-  mkdirSync(join(saida, 'pacotes'), { recursive: true })
+  const dirPacotes = join(saida, 'pacotes')
+  mkdirSync(dirPacotes, { recursive: true })
   writeFileSync(join(saida, 'catalogo.json'), JSON.stringify(r.catalogo))
-  for (const p of r.pacotes) writeFileSync(join(saida, 'pacotes', `${p.id}.json`), JSON.stringify(p))
+  const atuais = new Set(r.pacotes.map((p) => `${p.id}.json`))
+  for (const p of r.pacotes) writeFileSync(join(dirPacotes, `${p.id}.json`), JSON.stringify(p))
+  for (const f of readdirSync(dirPacotes)) if (!atuais.has(f)) rmSync(join(dirPacotes, f), { force: true })
 }
 
 export function construirConteudo(raiz = 'conteudo', saida = 'public/conteudo'): Resultado {

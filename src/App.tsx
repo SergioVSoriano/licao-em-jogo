@@ -7,6 +7,7 @@ import { Play } from './screens/Play'
 import { Judge } from './screens/Judge'
 import { Rolo } from './screens/Rolo'
 import { Choose } from './screens/Choose'
+import { Curadoria } from './screens/Curadoria'
 
 export function App() {
   const path = usePath()
@@ -14,6 +15,8 @@ export function App() {
   switch (parts[0]) {
     case 'como-funciona':
       return <HowItWorks />
+    case 'curadoria':
+      return <Curadoria id={parts[1]} key={parts[1] ?? 'lista'} />
     case 'escolher':
       return <Choose mode={parts[1] ?? 'licao'} key={parts[1]} />
     case 'criar':

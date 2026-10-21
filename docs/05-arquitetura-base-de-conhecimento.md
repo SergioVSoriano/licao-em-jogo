@@ -1,6 +1,6 @@
 # 05 · Arquitetura: base de conhecimento, modos de jogo e crescimento
 
-> Status: **fases 0 e 1 implementadas** (17/10/2026); o resto é proposta. O andamento fica em [`ESTADO.md`](ESTADO.md).
+> Status: **fases 0, 1 e 2 implementadas** (17/10/2026); o resto é proposta. O andamento fica em [`ESTADO.md`](ESTADO.md).
 > Diferenças do que foi implementado em relação a esta proposta: o esquema Zod ficou em `scripts/conteudo/esquema.ts` (o app não precisa dele); a versão do pacote vai como `?v=<hash>` na URL, não no nome do arquivo; a capacidade de cada jogo é calculada no app (`maxRoundsFor`), não gravada no catálogo.
 > Objetivo: sair de "o jogo da Lição 3" para "uma plataforma que joga qualquer conteúdo cristão curado por pessoas", crescendo aos poucos, de graça, sem IA interpretando a Bíblia.
 

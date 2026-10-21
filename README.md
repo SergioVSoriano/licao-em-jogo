@@ -31,7 +31,7 @@
 8. [Como usar na classe](#como-usar-na-classe)
 9. [Testes automáticos com prints](#testes-automáticos-com-prints)
 10. [Estrutura do projeto](#estrutura-do-projeto)
-11. [Criar o pacote de uma nova lição](#criar-o-pacote-de-uma-nova-lição)
+11. [Preparar conteúdo (lições, temas e livros)](#preparar-conteúdo-lições-temas-e-livros)
 12. [Documentação de design](#documentação-de-design)
 
 ---
@@ -467,7 +467,19 @@ vercel.json           redireciona todas as rotas para o app
 
 ---
 
-## Criar o pacote de uma nova lição
+## Preparar conteúdo (lições, temas e livros)
+
+### O jeito mais fácil: /montar-pacote + /curadoria
+
+1. Numa conversa com o Claude Code neste projeto, digite **`/montar-pacote`** e diga o que quer preparar ("Lição 4 do 4º trimestre", "tema Noé", "Profetas e Reis, capítulo 14").
+2. **Anexe ou cole o seu material, sem formato fixo**: anotações, sua interpretação, reflexões, perguntas, PDFs, transcrições de vídeo, versículos.
+3. O Claude guarda tudo como veio no seu **caderno** (`conteudo/fontes/<id>/`, privado), organiza nos campos dos jogos e marca o que ele mesmo escreveu. **Ele não interpreta a Bíblia**: reflexões, ideias e perguntas de discussão precisam estar no seu material, e o validador confere isso por código.
+4. Rode `npm run dev` e abra **http://localhost:5173/curadoria**: cada texto aparece como ✅ do caderno, 🟡 síntese (com os trechos que a sustentam) ou 🔴 sem origem; perguntas, cartas e mímicas criadas pela IA aparecem para você aprovar ou remover.
+5. Teste no planejador, clique em **Publicar** e peça o commit e o deploy.
+
+As regras completas estão em [`conteudo/REGRAS.md`](conteudo/REGRAS.md).
+
+### Como o conteúdo fica guardado
 
 Todo o conteúdo fica em [`conteudo/`](conteudo/), em YAML, separado do código. Cada semana da lição, tema bíblico ou capítulo de livro é um **pacote**: uma pasta com três arquivos.
 
@@ -478,10 +490,10 @@ conteudo/pacotes/licao/2026-t4-jovens/s03-profetas-do-at/
   reflexoes.yaml   Momento Revelação, pontes do santuário e resumo
 ```
 
-1. Copie a pasta de um pacote existente e troque o conteúdo, seguindo [`conteudo/REGRAS.md`](conteudo/REGRAS.md).
+1. Para escrever à mão: `npm run conteudo:novo -- <id> "<título>"` cria a pasta a partir dos modelos comentados em [`conteudo/modelos/`](conteudo/modelos/).
 2. Rode `npm run conteudo:validar`: o validador aponta arquivo e campo de cada problema.
 3. Jogo sem material no pacote aparece **travado** no planejador; um pacote pode começar pequeno (por exemplo, só perguntas, V/F e uma linha do tempo).
-4. Quando estiver revisado, mude `status: publicado` e escreva o id do pacote em `pacote:` no [`conteudo/catalogo.yaml`](conteudo/catalogo.yaml). Itens sem pacote aparecem como "em preparo".
+4. Quando estiver revisado, publique na página `/curadoria` (ou `npm run conteudo:publicar -- <id>`). Itens do [`conteudo/catalogo.yaml`](conteudo/catalogo.yaml) sem pacote publicado aparecem como "em preparo".
 
 Nenhuma linha de jogo precisa mudar. A arquitetura completa (modos Lição / Temas / Livros, curadoria e escala) está em [docs/05](docs/05-arquitetura-base-de-conhecimento.md).
 

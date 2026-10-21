@@ -1,0 +1,26 @@
+# Momento Revelação, pontes do santuário e resumo. TUDO aqui é INTERPRETATIVO:
+# só vale texto do caderno do curador (copiado) ou resumo com "base" (trechos literais do caderno).
+
+revelacoes:
+  - verdade: V1
+    # jogo: nuvem            # opcional: revelação específica de um jogo; sem "jogo", entra em rodízio
+    versiculo: { ref: PREENCHER, texto: PREENCHER }
+    naLicao: PREENCHER
+    naBiblia: []             # [{ ref: "...", texto: "trecho curto" }]
+    ideia: PREENCHER
+    pergunta: PREENCHER
+    enquete: { pergunta: PREENCHER, opcoes: [PREENCHER, PREENCHER] }
+    outrasPerguntas: []
+    # origem: gerado
+    # base: ["trecho literal do caderno"]
+
+# Frase que liga cada estação do mapa ao conteúdo (opcional):
+# porta, altar, pia, mesa, candelabro, incenso, veu, arca
+pontesDoSantuario: {}
+# altar: { texto: "...", base: ["..."], origem: gerado }
+
+resumo:
+  perguntas: []              # perguntas para levar para casa (aparecem no Rolo)
+  versiculos: []             # [{ ref: "...", texto: "..." }]
+  # origem: gerado
+  # base: ["..."]

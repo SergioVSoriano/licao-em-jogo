@@ -11,6 +11,11 @@ const texto = z.string().trim().min(1)
 /** quem escreveu o item: o curador (padrão) ou a IA (precisa de revisão antes de publicar) */
 const origem = z.enum(['curador', 'gerado']).optional()
 const trecho = z.object({ ref: texto, texto: texto }).strict()
+/**
+ * Trechos LITERAIS do caderno do curador (conteudo/fontes/<id>/) que sustentam um texto interpretativo
+ * resumido ou reorganizado. O validador confere que cada trecho existe no caderno.
+ */
+const base = z.array(z.string().trim().min(12, 'trecho de base muito curto (use ao menos uma frase do caderno)')).optional()
 
 /* ───────── pacote.yaml ───────── */
 export const Verdade = z
@@ -25,6 +30,7 @@ export const Verdade = z
     exemplos: z.array(trecho),
     pergunta: texto,
     origem,
+    base,
   })
   .strict()
 
@@ -53,7 +59,7 @@ export const PacoteBase = z
       .object({ curador: texto, revisadoEm: z.string().nullable().default(null), observacao: z.string().optional() })
       .strict(),
     fontes: z.array(z.object({ tipo: texto, descricao: texto, url: z.string().url().optional() }).strict()).min(1),
-    abertura: z.object({ versiculo: trecho, tirinha: z.tuple([texto, texto, texto]), ideiaCentral: texto }).strict(),
+    abertura: z.object({ versiculo: trecho, tirinha: z.tuple([texto, texto, texto]), ideiaCentral: texto, origem, base }).strict(),
     secoes: z.array(z.object({ id: texto, titulo: texto }).strict()).min(1),
     verdades: z.array(Verdade).min(1),
     personagens: z.array(PersonagemDoPacote).default([]),
@@ -106,11 +112,13 @@ export const Jogos = z
     temasAcrostico: z.array(texto).default([]),
     mimicas: z.array(z.object({ cena: texto, dificil: z.boolean(), origem }).strict()).default([]),
     nuvem: z
-      .array(z.object({ pergunta: texto, pontua: z.boolean(), verdade: texto, sinonimos: z.record(z.string(), z.string()).optional(), origem }).strict())
+      .array(z.object({ pergunta: texto, pontua: z.boolean(), verdade: texto, sinonimos: z.record(z.string(), z.string()).optional(), origem, base }).strict())
       .default([]),
-    vozProfetica: z.array(z.object({ caso: texto, ref: texto, origem }).strict()).default([]),
+    vozProfetica: z.array(z.object({ caso: texto, ref: texto, origem, base }).strict()).default([]),
     disfarcados: z.record(z.string(), z.array(texto).min(1)).default({}),
     curiosidades: z.array(texto).default([]),
+    /** listas de texto simples criadas pela IA (não dá para marcar item a item); o curador aprova a lista inteira */
+    listasGeradas: z.array(z.enum(['palavrasDoSonho', 'temasAcrostico', 'curiosidades', 'disfarcados'])).default([]),
   })
   .strict()
 
@@ -131,12 +139,15 @@ export const Reflexoes = z
             enquete: z.object({ pergunta: texto, opcoes: z.array(texto).min(2).max(6) }).strict(),
             outrasPerguntas: z.array(texto).default([]),
             nota: z.string().optional(),
+            origem,
+            base,
           })
           .strict(),
       )
       .min(1),
-    pontesDoSantuario: z.record(z.string(), texto).default({}),
-    resumo: z.object({ perguntas: z.array(texto), versiculos: z.array(trecho) }).strict(),
+    /** frase que liga cada estação do mapa ao conteúdo: texto simples ou { texto, origem, base } */
+    pontesDoSantuario: z.record(z.string(), z.union([texto, z.object({ texto: texto, origem, base }).strict()])).default({}),
+    resumo: z.object({ perguntas: z.array(texto), versiculos: z.array(trecho), origem, base }).strict(),
   })
   .strict()
 
@@ -185,6 +196,16 @@ export const Catalogo = z
     ),
   })
   .strict()
+
+/** Campos interpretativos: só podem vir do caderno do curador (literal ou com "base"). Ver conteudo/REGRAS.md. */
+export const CAMPOS_INTERPRETATIVOS = {
+  abertura: ['ideiaCentral'],
+  verdades: ['texto', 'naLicao', 'pergunta'],
+  revelacoes: ['naLicao', 'ideia', 'pergunta', 'enquete.pergunta', 'outrasPerguntas'],
+  nuvem: ['pergunta'],
+  vozProfetica: ['caso'],
+  resumo: ['perguntas'],
+} as const
 
 export type TPacoteBase = z.infer<typeof PacoteBase>
 export type TJogos = z.infer<typeof Jogos>

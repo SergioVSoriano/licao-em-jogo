@@ -10,6 +10,9 @@
     "typecheck": "tsc -b",
     "conteudo:validar": "tsx scripts/conteudo/cli.ts validar",
     "conteudo:construir": "tsx scripts/conteudo/cli.ts construir",
+    "conteudo:novo": "tsx scripts/conteudo/cli.ts novo",
+    "conteudo:publicar": "tsx scripts/conteudo/cli.ts publicar",
+    "conteudo:testar": "tsx scripts/conteudo/teste-curadoria.ts",
     "simular": "node scripts/simular-partida.mjs",
     "testar:online": "node scripts/testar-firebase.mjs"
   },

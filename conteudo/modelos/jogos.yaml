@@ -1,0 +1,45 @@
+# Conteúdo dos minijogos. TUDO é opcional: jogo sem material aparece travado no planejador.
+# Item criado pela IA leva "origem: gerado" até o curador aprovar.
+# Mínimos para destravar: perguntas 3 (Lançar Sortes/Duelo), verdadeiroOuFalso 5, linhasDoTempo 1,
+# tresSinais 3, nuvem 1, frutoProibido 6, palavrasDoSonho 6, temasAcrostico 1, mimicas 2 fáceis + 2 difíceis,
+# vozProfetica 2, personagens disfarçados 4 (com pistas em "disfarcados").
+
+perguntas: []
+# - pergunta: "..."
+#   opcoes: ["A", "B", "C", "D"]
+#   correta: "B"            # igual a uma das opções
+#   explicacao: "..."
+#   ref: "1Rs 19:2"
+#   verdade: V1
+#   origem: gerado
+
+verdadeiroOuFalso: []
+# - { afirmacao: "...", verdadeira: false, explicacao: "...", ref: "...", verdade: V1, origem: gerado }
+
+linhasDoTempo: []
+# - { id: jornada, titulo: "...", ref: "...", eventos: ["1º", "2º", "3º"], origem: gerado }   # eventos na ordem certa
+
+tresSinais: []
+# - { resposta: "Débora", tipo: "Quem é?", dicas: ["difícil", "média", "fácil"], aceitas: ["debora"], palpitesErrados: ["Hulda", "Miriã"], ref: "Jz 4–5", origem: gerado }
+
+nuvem: []
+# - { pergunta: "...", pontua: true, verdade: V1, base: ["trecho do caderno"], origem: gerado }   # pergunta é interpretativa
+
+frutoProibido: []
+# - { palavra: "ZIMBRO", proibidas: ["árvore", "sombra", "Elias", "deserto", "dormir"], origem: gerado }
+
+mimicas: []
+# - { cena: "Elias dormindo debaixo do zimbro", dificil: false, origem: gerado }
+
+vozProfetica: []
+# - { caso: "...", ref: "...", base: ["trecho do caderno"], origem: gerado }   # caso é interpretativo
+
+palavrasDoSonho: []
+temasAcrostico: []
+curiosidades: []
+disfarcados: {}
+# elias: ["pista criativa 1", "pista 2", "pista 3", "pista 4"]
+
+# Listas de texto simples criadas pela IA (o curador aprova a lista inteira):
+listasGeradas: []
+# listasGeradas: [palavrasDoSonho, temasAcrostico, curiosidades, disfarcados]

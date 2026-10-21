@@ -152,9 +152,10 @@ button {
   box-shadow: 0 0 0 var(--s);
 }
 .btn3d:disabled {
-  --c: #d7d1e6;
-  --s: #b9b1cf;
-  --fg: #8f88a8;
+  /* !important: o componente Btn define as cores inline */
+  --c: #d7d1e6 !important;
+  --s: #b9b1cf !important;
+  --fg: #8f88a8 !important;
   cursor: not-allowed;
 }
 .btn3d.ghost {

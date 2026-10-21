@@ -1,0 +1,49 @@
+# Metadados, abertura, seções e verdades. Regras: conteudo/REGRAS.md
+# Campos INTERPRETATIVOS (ideiaCentral, texto/naLicao/pergunta das verdades) só podem vir do caderno
+# do curador (conteudo/fontes/{{id}}/): copiados de lá, ou resumidos com "base" (trechos literais do caderno).
+
+id: {{id}}
+tipo: {{tipo}}            # licao | tema | livro
+titulo: {{titulo}}
+subtitulo: PREENCHER      # ex.: "Lição 4 · Jovens", "Tema bíblico", "Profetas e Reis · cap. 14"
+datas: ""                 # só para lição, ex.: "17 a 23 de outubro de 2026"
+textoBase: PREENCHER      # ex.: "Efésios 2:19–3:7"
+publico: [jovens]         # criancas | jovens | adultos | todos
+status: rascunho          # só o curador muda para "publicado" (página /curadoria ou npm run conteudo:publicar)
+curadoria:
+  curador: PREENCHER
+  revisadoEm: null
+fontes:
+  - tipo: anotacoes       # licao | livro | video | anotacoes | outro
+    descricao: Caderno do curador
+
+abertura:
+  versiculo: { ref: PREENCHER, texto: PREENCHER }
+  tirinha: [PREENCHER, PREENCHER, PREENCHER]   # três falas curtas para a abertura
+  ideiaCentral: PREENCHER
+  # origem: gerado         # a IA marca o que ela escreveu; o curador aprova
+  # base: ["trecho literal do caderno que sustenta a ideia central"]
+
+# Partes do conteúdo: na lição, os dias; num tema, as partes da história; num capítulo, os blocos.
+secoes:
+  - { id: s1, titulo: PREENCHER }
+
+# As verdades da semana/tema (aparecem no Rolo e ligam os jogos ao conteúdo).
+verdades:
+  - id: V1
+    secao: s1
+    emoji: "📖"
+    titulo: PREENCHER
+    texto: PREENCHER
+    refs: []
+    naLicao: PREENCHER     # como a lição/o capítulo/a história apresenta o tópico
+    exemplos: []           # [{ ref: "1Rs 19:4", texto: "trecho curto" }]
+    pergunta: PREENCHER    # pergunta para discutir o tópico
+
+# Personagens (o nome e o emoji vêm de conteudo/comum/personagens.yaml)
+personagens: []
+# - { id: elias, bio: "...", refs: "1Rs 17–19", pistas: ["difícil", "média", "fácil"], disfarcado: true }
+
+# Quais verdades cada jogo trabalha (ajuda o planejador a cobrir o conteúdo)
+coberturaDosJogos: {}
+# nuvem: [V1], verdade: [V1]

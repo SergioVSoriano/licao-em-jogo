@@ -6,7 +6,7 @@ Jogo presencial estilo Kahoot para a Escola Sabatina, PGs e famílias: o **telã
 
 ## Regras invioláveis
 
-1. **A IA não interpreta a Bíblia.** Reflexões, aplicações, ideias, perguntas de discussão e enquetes vêm só do curador humano. Ao mexer em conteúdo, siga `conteudo/REGRAS.md` à risca. Item criado por IA leva `origem: gerado`; nunca publique pacote (`status: publicado`) nem preencha `curadoria.revisadoEm`.
+1. **A IA não interpreta a Bíblia.** Reflexões, aplicações, ideias, perguntas de discussão e enquetes vêm só do caderno do curador (`conteudo/fontes/<id>/`). Para montar conteúdo, use a skill **/montar-pacote** e siga `conteudo/REGRAS.md` à risca. O que a IA escreve leva `origem: gerado` (sínteses também levam `base` com trechos literais do caderno). Nunca: `origem: curador`, `status: publicado`, `curadoria.revisadoEm`, chamar `/__curadoria` ou rodar `conteudo:publicar`. Aprovar e publicar são do curador, na página `/curadoria`.
 2. **Nenhuma IA dentro do jogo.** O app é determinístico e não chama APIs de IA. Não proponha "IA que lê PDF e monta o jogo".
 3. **Gratuito primeiro.** Vercel (Hobby), Firebase (Spark), GitHub. Não adicione serviço pago sem pedido explícito.
 4. Commit, push e deploy só quando o usuário pedir.
@@ -19,6 +19,9 @@ npm run typecheck           # tsc -b (app + scripts de Node)
 npm run build               # typecheck + vite build
 npm run conteudo:validar    # valida conteudo/ sem gerar nada
 npm run conteudo:construir  # valida e gera public/conteudo/
+npm run conteudo:validar -- <id>   # relatório de um pacote (origem, pendências)
+npm run conteudo:novo -- <id> "<título>"   # pacote rascunho + caderno, a partir de conteudo/modelos/
+npm run conteudo:testar     # teste do fluxo de curadoria numa cópia temporária
 npm run testar:online       # telão + 3 celulares isolados (BASE=http://localhost:5173 ou a URL do site)
 npm run simular             # 12 jogos com prints (~20 min). Precisa de servidor em MODO DEMONSTRAÇÃO:
                             #   VITE_FIREBASE_API_KEY= VITE_FIREBASE_DATABASE_URL= npx vite --port 5174
@@ -30,15 +33,17 @@ No Windows/PowerShell use `npx.cmd`/`npm.cmd` se a política de scripts bloquear
 ## Mapa
 
 ```
-conteudo/          AUTORIA (YAML, chaves em pt-BR): catalogo.yaml, comum/, pacotes/<tipo>/…/{pacote,jogos,reflexoes}.yaml
-                   fontes/ = caderno do curador, privado, fora do Git
-scripts/conteudo/  esquema.ts (Zod), construir.ts (valida + converte), cli.ts, vite-plugin.ts
+conteudo/          AUTORIA (YAML, chaves em pt-BR): catalogo.yaml, comum/, modelos/, pacotes/<tipo>/…/{pacote,jogos,reflexoes}.yaml
+                   fontes/<id>/ = caderno do curador (o material dele, como veio), privado, fora do Git
+scripts/conteudo/  esquema.ts (Zod), construir.ts (valida + converte), origem.ts (checagem de origem), editar.ts (novo/aprovar/publicar),
+                   cli.ts, vite-plugin.ts (gera no dev/build + API /__curadoria só em localhost), extrair-texto.py (PDF → txt)
+.claude/skills/montar-pacote/  a skill que transforma o material do curador em pacote
 public/conteudo/   GERADO: catalogo.json + pacotes/<id>.json. Nunca edite à mão
 src/content/       types.ts (formato do app, chaves em inglês) + index.ts (loadPack/usePack/getPack)
 src/engine/        session.ts (reduce: máquina de estados do telão), planner.ts (tempo, capacidade), types.ts (GameDef)
 src/games/         12 plugins GameDef: lógica + HostView + PlayerView + bot + maxRoundsFor
 src/net/           Firebase (produção) ou modo demonstração (BroadcastChannel entre abas)
-src/screens/       Home, HowItWorks, Planner, Host (telão), Play (celular), Judge (controle), Rolo
+src/screens/       Home, Choose, HowItWorks, Planner, Host (telão), Play (celular), Judge (controle), Rolo, Curadoria
 src/ui/            design system "Tabernáculo", avatares SVG, mascote Lume, mapa do santuário
 docs/              01–05 planejamento; ESTADO.md; decisoes/; testes/ (relatório com prints)
 ```
