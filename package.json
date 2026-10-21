@@ -14,7 +14,8 @@
     "conteudo:publicar": "tsx scripts/conteudo/cli.ts publicar",
     "conteudo:testar": "tsx scripts/conteudo/teste-curadoria.ts",
     "simular": "node scripts/simular-partida.mjs",
-    "testar:online": "node scripts/testar-firebase.mjs"
+    "testar:online": "node scripts/testar-firebase.mjs",
+    "testar:partida": "node scripts/testar-partida.mjs"
   },
   "dependencies": {
     "canvas-confetti": "1.9.4",

@@ -5,3 +5,4 @@ conteudo/fontes
 public/conteudo
 *.pdf
 *.log
+scripts/testar-partida.mjs

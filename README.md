@@ -367,6 +367,7 @@ npm run build       # build de produção em dist/
 npm run simular     # simulação visual completa dos 12 jogos (cerca de 20 min)
 npm run testar:online   # teste rápido: telão + 3 celulares isolados pelo Firebase
 npm run conteudo:validar    # confere o conteúdo de conteudo/ (o dev e o build já fazem isso)
+npm run testar:partida      # telão + 3 celulares jogam uma partida curta (BASE=<url>)
 ```
 
 ---
@@ -511,6 +512,7 @@ O planejamento completo do projeto está em [`docs/`](docs/):
 | [04 · Banco de conteúdo](docs/04-banco-de-conteudo.md) | Perguntas, cartas e desafios de cada jogo |
 | [05 · Arquitetura da base de conhecimento](docs/05-arquitetura-base-de-conhecimento.md) | Modos de jogo, pacotes, curadoria sem interpretação de IA, escala |
 | [Estado do projeto](docs/ESTADO.md) | O que está pronto, pendências e decisões em vigor |
+| [Operação](docs/OPERACAO.md) | Contas, deploy, testes e armadilhas do ambiente |
 | [Relatório de testes](docs/testes/RELATORIO.md) | Execução dos 12 jogos com prints |
 
 ---

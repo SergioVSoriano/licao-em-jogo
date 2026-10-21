@@ -4,12 +4,14 @@ Jogo presencial estilo Kahoot para a Escola Sabatina, PGs e famílias: o **telã
 
 @docs/ESTADO.md
 
+Contas (GitHub, Firebase, Vercel), fluxo de commit/push/deploy, testes e armadilhas deste PC Windows: **`docs/OPERACAO.md`** (leia antes de publicar ou de rodar testes).
+
 ## Regras invioláveis
 
 1. **A IA não interpreta a Bíblia.** Reflexões, aplicações, ideias, perguntas de discussão e enquetes vêm só do caderno do curador (`conteudo/fontes/<id>/`). Para montar conteúdo, use a skill **/montar-pacote** e siga `conteudo/REGRAS.md` à risca. O que a IA escreve leva `origem: gerado` (sínteses também levam `base` com trechos literais do caderno). Nunca: `origem: curador`, `status: publicado`, `curadoria.revisadoEm`, chamar `/__curadoria` ou rodar `conteudo:publicar`. Aprovar e publicar são do curador, na página `/curadoria`.
 2. **Nenhuma IA dentro do jogo.** O app é determinístico e não chama APIs de IA. Não proponha "IA que lê PDF e monta o jogo".
 3. **Gratuito primeiro.** Vercel (Hobby), Firebase (Spark), GitHub. Não adicione serviço pago sem pedido explícito.
-4. Commit, push e deploy só quando o usuário pedir.
+4. Commit, push e deploy só quando o usuário pedir (ele costuma pedir os três juntos). Antes do push, confira que o `gh` está na conta `SergioVSoriano`; depois do deploy, confira o site no ar (`BASE=https://licao-em-jogo.vercel.app npm run testar:partida`).
 
 ## Comandos
 
@@ -23,6 +25,7 @@ npm run conteudo:validar -- <id>   # relatório de um pacote (origem, pendência
 npm run conteudo:novo -- <id> "<título>"   # pacote rascunho + caderno, a partir de conteudo/modelos/
 npm run conteudo:testar     # teste do fluxo de curadoria numa cópia temporária
 npm run testar:online       # telão + 3 celulares isolados (BASE=http://localhost:5173 ou a URL do site)
+npm run testar:partida      # telão + 3 celulares jogam até o Momento Revelação e o mapa (mesmo BASE)
 npm run simular             # 12 jogos com prints (~20 min). Precisa de servidor em MODO DEMONSTRAÇÃO:
                             #   VITE_FIREBASE_API_KEY= VITE_FIREBASE_DATABASE_URL= npx vite --port 5174
                             #   BASE=http://localhost:5174 OUT=<pasta> npm run simular  (OUT evita sobrescrever docs/testes)
@@ -45,7 +48,7 @@ src/games/         12 plugins GameDef: lógica + HostView + PlayerView + bot + m
 src/net/           Firebase (produção) ou modo demonstração (BroadcastChannel entre abas)
 src/screens/       Home, Choose, HowItWorks, Planner, Host (telão), Play (celular), Judge (controle), Rolo, Curadoria
 src/ui/            design system "Tabernáculo", avatares SVG, mascote Lume, mapa do santuário
-docs/              01–05 planejamento; ESTADO.md; decisoes/; testes/ (relatório com prints)
+docs/              01–05 planejamento; ESTADO.md (memória); OPERACAO.md (contas, deploy, testes, armadilhas); decisoes/; testes/; img/ (README)
 ```
 
 - **Telão é a autoridade** (host-authoritative): só ele roda `reduce`; celulares enviam inputs. Estado público/privado/snapshot no Realtime DB (`database.rules.json`).
