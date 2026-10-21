@@ -3,7 +3,7 @@
 > Memória versionada do projeto. Lida em toda sessão do Claude (importada pelo `CLAUDE.md`).
 > **Atualize ao fim de cada tarefa**: o que mudou, o que ficou pendente, decisões novas. Mantenha curto (até ~80 linhas); detalhes vão para `docs/`.
 
-Última atualização: 21/10/2026
+Última atualização: 21/10/2026 (tempos dos minijogos revisados: Linha 90–135 s conforme nº de cartões, Duelo 25 s + 6 s de folga da plateia, Sortes 20 s, Verdade 20 s)
 
 ## No ar
 

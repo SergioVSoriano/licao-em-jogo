@@ -5,13 +5,14 @@ import { Btn, Sheet } from '../ui/kit'
 import { Explain, MCPad, OptionsGrid, PhoneTimer, RoundBar, TimerBox, Waiting, sec } from './common'
 
 const DRAW = sec(3.5)
-const ANS = sec(15)
+const ANS = sec(25)
+const GRACE = sec(6)
 
 interface S {
   qs: number[]
   i: number
   rounds: number
-  stage: 'draw' | 'q' | 'reveal'
+  stage: 'draw' | 'q' | 'grace' | 'reveal'
   t0: number
   t1: number
   a: PlayerId | null
@@ -97,7 +98,7 @@ export const duelo: GameDef<S> = {
   howTo: {
     steps: [
       { icon: '⚔️', text: 'Duas pessoas são sorteadas para um duelo de uma pergunta.' },
-      { icon: '⚡', text: 'Quem acertar PRIMEIRO vence. Errou? Fica travado.' },
+      { icon: '⚡', text: 'Quem acertar PRIMEIRO vence. Errou? Fica travado. A plateia ganha 6 s extras para responder.' },
       { icon: '⛰️', text: 'Rei do Monte: o vencedor fica e enfrenta um novo desafiante.' },
       { icon: '👥', text: 'A plateia aposta em quem vence e também responde.' },
     ],
@@ -105,7 +106,7 @@ export const duelo: GameDef<S> = {
     phone: 'Duelistas: 4 alternativas. Plateia: aposta (2 rostos) + alternativas.',
   },
   rounds: { min: 3, max: 10, label: 'duelos', default: (n) => Math.min(Math.ceil(n / 2), 6) },
-  perRound: () => 0.6,
+  perRound: () => 0.75,
   maxRoundsFor: (pack) => pack.questions.length,
 
   init(ctx, rounds) {
@@ -121,19 +122,21 @@ export const duelo: GameDef<S> = {
       s.duel[pid] = opt
       if (opt === qq.answer) {
         s.winner = pid
-        reveal(s, ctx)
+        s.stage = 'grace'
+        s.t0 = ctx.now
+        s.t1 = ctx.now + GRACE
       } else if (s.duel[s.a!] !== undefined && s.duel[s.b!] !== undefined) reveal(s, ctx)
       return s
     }
     if (pid === s.a || pid === s.b) return s
     if (type === 'bet' && s.stage !== 'reveal' && !s.bets[pid] && (data?.pid === s.a || data?.pid === s.b)) s.bets[pid] = data.pid
-    if (type === 'aud' && s.stage === 'q' && s.aud[pid] === undefined) s.aud[pid] = Number(data?.opt)
+    if (type === 'aud' && (s.stage === 'q' || s.stage === 'grace') && s.aud[pid] === undefined) s.aud[pid] = Number(data?.opt)
     return s
   },
   action(s, a, _d, ctx) {
     if (a !== 'next') return s
     if (s.stage === 'draw') s.t1 = ctx.now
-    else if (s.stage === 'q') reveal(s, ctx)
+    else if (s.stage === 'q' || s.stage === 'grace') reveal(s, ctx)
     else if (s.i + 1 < s.rounds) {
       s.i++
       newDuel(s, ctx)
@@ -145,7 +148,7 @@ export const duelo: GameDef<S> = {
       s.stage = 'q'
       s.t0 = ctx.now
       s.t1 = ctx.now + ANS
-    } else if (s.stage === 'q' && ctx.now >= s.t1) reveal(s, ctx)
+    } else if ((s.stage === 'q' || s.stage === 'grace') && ctx.now >= s.t1) reveal(s, ctx)
     return s
   },
   done: (s) => s.over,
@@ -177,7 +180,7 @@ export const duelo: GameDef<S> = {
   },
   controls(s) {
     if (s.stage === 'reveal') return [{ id: 'next', label: s.i + 1 >= s.rounds ? 'Ver resultado ▶' : 'Próximo duelo ⚔️', key: ' ', tone: 'primary' }]
-    if (s.stage === 'q') return [{ id: 'next', label: 'Encerrar duelo', tone: 'neutral' }]
+    if (s.stage === 'q' || s.stage === 'grace') return [{ id: 'next', label: 'Encerrar duelo', tone: 'neutral' }]
     return []
   },
   bot(s, pid, ctx) {
@@ -185,7 +188,7 @@ export const duelo: GameDef<S> = {
     const guess = ctx.rng() < 0.6 ? qq.answer : Math.floor(ctx.rng() * 4)
     if (pid === s.a || pid === s.b) return s.stage === 'q' && s.duel[pid] === undefined && ctx.now - s.t0 > 4500 && ctx.rng() < 0.15 ? { type: 'answer', data: { opt: guess } } : null
     if (!s.bets[pid] && s.stage !== 'reveal') return { type: 'bet', data: { pid: ctx.rng() < 0.5 ? s.a : s.b } }
-    if (s.stage === 'q' && s.aud[pid] === undefined) return { type: 'aud', data: { opt: guess } }
+    if ((s.stage === 'q' || s.stage === 'grace') && s.aud[pid] === undefined) return { type: 'aud', data: { opt: guess } }
     return null
   },
 
@@ -209,7 +212,7 @@ export const duelo: GameDef<S> = {
       )
     return (
       <div className="flex h-full flex-col gap-[0.7em]">
-        <RoundBar label={`Duelo ${v.i + 1} de ${v.total}`} right={v.stage === 'q' ? <TimerBox start={v.t0} end={v.t1} now={now} /> : null} />
+        <RoundBar label={`Duelo ${v.i + 1} de ${v.total}`} right={v.stage === 'q' || v.stage === 'grace' ? <TimerBox start={v.t0} end={v.t1} now={now} /> : null} />
         <div className="flex items-center justify-center gap-[3em]">
           {side(A, v.bets[0], v.king === v.a && v.streak > 0)}
           <div className="font-display text-[3.5em] font-black text-[var(--fogo)]">VS</div>
@@ -244,6 +247,8 @@ export const duelo: GameDef<S> = {
     }
     if (duelist) {
       if (v.stage === 'draw') return <Waiting title="Você está no duelo! ⚔️" me={me} mood="wow">Olhe para o telão e prepare o dedo…</Waiting>
+      if (v.winner === meId) return <Waiting title="✅ Acertou!" me={me} mood="wow">Veja o telão: a plateia está terminando de responder.</Waiting>
+      if (v.stage === 'grace') return <Waiting title="Seu adversário acertou" me={me} mood="sad">Não deu desta vez.</Waiting>
       if (priv?.mine != null) return <Waiting title="❌ Errou… travado" me={me} mood="sad">Torça pelo erro do adversário!</Waiting>
       return (
         <div className="flex flex-1 flex-col gap-3 p-4">
@@ -271,7 +276,7 @@ export const duelo: GameDef<S> = {
             ) : null,
           )}
         </div>
-        {v.stage === 'q' && (
+        {(v.stage === 'q' || v.stage === 'grace') && (
           <>
             <div className="card p-3 text-center font-display font-black">{v.q}</div>
             {priv?.aud != null ? <Waiting title="Palpite registrado 🤫" /> : <MCPad labels={v.opts} onPick={(i) => send('aud', { opt: i })} hide={priv?.hide} />}

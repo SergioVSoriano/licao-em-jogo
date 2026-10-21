@@ -5,7 +5,8 @@ import { lis, online, shuffle } from '../engine/helpers'
 import { Btn, Sheet } from '../ui/kit'
 import { Answered, PhoneTimer, RoundBar, TimerBox, Waiting, sec } from './common'
 
-const T = sec(75)
+/** 30 s de leitura + 15 s por cartão (6 cartões = 2 min), no mínimo 90 s. */
+const timeFor = (cards: number) => Math.max(sec(90), sec(30 + 15 * cards))
 
 interface S {
   tls: number[]
@@ -34,7 +35,7 @@ function scoreRound(s: S, ctx: any) {
     const l = lis(sub.order)
     const frac = l / n
     if (l === n) s.perfect++
-    const speed = Math.max(0, 1 - (sub.at - s.start) / T)
+    const speed = Math.max(0, 1 - (sub.at - s.start) / (s.end - s.start))
     const g = Math.round(800 * frac + 200 * speed * frac)
     s.gain[p.id] = g
     s.xp[p.id] = (s.xp[p.id] ?? 0) + g
@@ -50,7 +51,7 @@ function newRound(s: S, ctx: GameCtx) {
   s.subs = {}
   s.stage = 'order'
   s.start = ctx.now
-  s.end = ctx.now + T
+  s.end = ctx.now + timeFor(sh.length)
 }
 
 export const linha: GameDef<S> = {
@@ -77,7 +78,7 @@ export const linha: GameDef<S> = {
     tip: 'Este jogo ensina o CONTEXTO da história: ótimo para começar.',
   },
   rounds: { min: 1, max: 4, label: 'sequências', default: () => 2 },
-  perRound: () => 1.75,
+  perRound: () => 2.25,
   maxRoundsFor: (pack) => pack.timelines.length,
 
   init(ctx, rounds) {

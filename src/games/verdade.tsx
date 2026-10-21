@@ -3,7 +3,7 @@ import { online, shuffle, speedPoints } from '../engine/helpers'
 import { Btn, Sheet } from '../ui/kit'
 import { Answered, BigQuestion, Explain, PhoneTimer, RoundBar, TimerBox, Waiting, pct, sec } from './common'
 
-const T = sec(15)
+const T = sec(20)
 
 interface S {
   items: number[]
@@ -61,7 +61,7 @@ export const verdade: GameDef<S> = {
     tip: 'Tema de terça: nem tudo que é popular é verdadeiro.',
   },
   rounds: { min: 5, max: 14, label: 'afirmações', default: () => 8 },
-  perRound: () => 0.42,
+  perRound: () => 0.5,
   maxRoundsFor: (pack) => pack.trueFalse.length,
 
   init(ctx, rounds) {
