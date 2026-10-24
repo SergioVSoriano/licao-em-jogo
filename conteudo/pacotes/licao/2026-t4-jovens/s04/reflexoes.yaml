@@ -1,0 +1,252 @@
+# Momento Revelação, pontes do santuário e resumo. TUDO aqui é INTERPRETATIVO:
+# só vale texto do caderno do curador (copiado) ou resumo com "base" (trechos literais do caderno).
+
+revelacoes:
+  - jogo: nuvem
+    verdade: V4
+    versiculo:
+      ref: 1 João 4:2
+      texto: Todo espírito que confessa que Jesus veio em carne procede de Deus.
+    naLicao: "Quarta (Momento Hipertexto): nem todo aquele que fala em nome de Jesus representa de fato a Sua mensagem. A orientação bíblica não é aceitar tudo, mas examinar com atenção."
+    naBiblia:
+      - ref: 1Jo 4:1
+        texto: Não creiais a todo espírito, mas provai se os espíritos vêm de Deus.
+      - ref: Mt 24:24
+        texto: Falsos profetas fariam grandes sinais, para enganar até os escolhidos, se possível.
+    ideia: Popularidade não é prova de verdade. A Bíblia é o filtro.
+    pergunta: Como é que você vai saber se é verdade se você não conhecer o filtro que é a Bíblia?
+    enquete:
+      pergunta: Você tá estudando a Bíblia todo dia?
+      opcoes:
+        - 📖 Todo dia
+        - 📅 Alguns dias
+        - 🙈 Só no sábado
+        - 🔜 Começo hoje
+    outrasPerguntas:
+      - Que mensagem espiritual é essa que não tem a Bíblia por base?
+    nota: "Comece pela nuvem: quais palavras mais apareceram para EXAMINAR? A lição pede uma rede semântica na quarta."
+    origem: curador
+    base:
+      - "nem todo que aquele fala em Seu nome representa de fato sua mensagem"
+      - "a orientação bíblica não é aceitar tudo, mas examinar com atenção"
+  - jogo: verdade
+    verdade: V2
+    versiculo:
+      ref: Hebreus 3:15
+      texto: '"Hoje, se ouvirem a Sua voz, não endureçam o coração."'
+    naLicao: 'Segunda: as palavras de Deus são "fiéis e verdadeiras" (Ap 22:6). Assim, tudo o que é dito pelos porta-vozes de Deus também é fiel e verdadeiro.'
+    naBiblia:
+      - ref: Mc 6:20
+        texto: Herodes temia João e "de boa mente o escutava", mas depois mandou matá-lo.
+      - ref: Lc 23:9
+        texto: Herodes fez muitas perguntas a Jesus, "mas ele nada lhe respondeu".
+    ideia: Tudo o que é dito pelos porta-vozes de Deus também é fiel e verdadeiro.
+    pergunta: Por que Jesus respondeu a Pilatos, mas não respondeu a Herodes?
+    enquete:
+      pergunta: Silenciar o coração e as próprias vontades para ouvir a voz de Deus, para mim, é…
+      opcoes:
+        - 😌 Fácil
+        - 😅 Difícil
+        - 📱 Impossível com o celular perto
+        - 🌱 Estou aprendendo
+    outrasPerguntas:
+      - Muitas vezes buscamos mensagens que confirmem nossas vontades. Isso já aconteceu com você?
+    nota: "Gancho do curador (fora da lição, só para a conversa): Jesus respondeu a Pilatos, mas não respondeu a Herodes, que já tinha ouvido João Batista. Conte a história em 30 segundos e faça a pergunta."
+    origem: curador
+    base:
+      - "fazer um gancho com a historia de Jesus responder Pilatos, mas nao respopnder Herodes, pois ele ouviu de João Batista"
+      - "aprender a silenciar o próprio coração e as próprias vontades para ouvir a Sua voz"
+      - "mensagens que confirmem nossas vontades, aliviem nossas inseguranças"
+  - jogo: fruto
+    verdade: V1
+    versiculo:
+      ref: Efésios 2:20
+      texto: Edificados sobre o fundamento dos apóstolos e dos profetas, sendo o próprio Cristo Jesus a principal pedra da esquina.
+    naLicao: "Domingo: apóstolo quer dizer mensageiro, enviado. Apóstolos e profetas tinham o mesmo grau de inspiração, mas o dom de profecia não era só dos apóstolos, e nem todo profeta era apóstolo."
+    naBiblia:
+      - ref: Rm 11:13
+        texto: 'Paulo, que não era dos doze: "sou apóstolo dos gentios".'
+      - ref: At 15:32
+        texto: Judas e Silas "também eram profetas" e fortaleceram os irmãos.
+    ideia: A mensagem de Deus nunca entra em contradição com a própria palavra, porque a fonte é a mesma.
+    pergunta: Todos os profetas eram apóstolos? Todos os profetas escreveram livros da Bíblia?
+    enquete:
+      pergunta: Já senti inveja do dom ou do ministério de alguém?
+      opcoes:
+        - 🙋 Já, confesso
+        - 🤏 Um pouquinho
+        - 🙅 Nunca
+        - 🎉 Hoje eu celebro o dom dos outros
+    outrasPerguntas:
+      - Deus chama pessoas diferentes com dons diferentes, mas com a mesma missão. Qual é o seu dom?
+    nota: "Pr. Dudu (domingo): eu não tenho que invejar o seu ministério e nem você o meu. Cada um no seu dom, todos dirigidos pelo Espírito."
+    origem: curador
+    base:
+      - "mesmo grau de inspiração divida entre apostolos e profetas, dom de profecia nao estava restritos aos apostolos e nem todos os profetas eram apostolos"
+      - "a mensagem de Deus nunca entra em contradição com a própria palavra"
+      - "eu não tenho que invejar o seu ministério e nem você o meu"
+  - jogo: sinais
+    verdade: V3
+    versiculo:
+      ref: Lucas 2:38
+      texto: '"…dava graças a Deus e falava a respeito do menino a todos."'
+    naLicao: "Terça: Ana, aos 84 anos, e as quatro filhas de Filipe, provavelmente jovens, tinham o dom profético. Paulo preparou os jovens Timóteo e Tito e confiou a eles grandes responsabilidades."
+    naBiblia:
+      - ref: Tt 2:15
+        texto: '"Ensine essas coisas e encoraje os irmãos a praticá-las. Corrija-os com autoridade." (NVT)'
+      - ref: At 21:9
+        texto: Filipe "tinha quatro filhas solteiras que profetizavam".
+    ideia: Deus usa pessoas muito diferentes, de maneiras extraordinárias. Não escolhe o mais capacitado, mas quem está disponível, e Ele capacita.
+    pergunta: Todo jovem precisa de alguém que o prepare. Quem é o seu "Paulo"?
+    enquete:
+      pergunta: Qual é o seu papel, e como você pode fazer ainda mais?
+      opcoes:
+        - 🎤 Falar e ensinar
+        - 🤝 Servir nos bastidores
+        - 🎵 Louvor e artes
+        - 💬 Encorajar pessoas
+        - 📱 Levar a mensagem nas redes
+    outrasPerguntas:
+      - Tito era jovem, Timóteo era jovem, você é jovem. Qual é a razão de você não se envolver?
+    origem: curador
+    base:
+      - "O Senhor no NT usava pessoas muitos diferentes de maneiras extraordiarias"
+      - "Não é simplesmente o mais capacitado, é aquele que está disponível e aquele que se dispõe, Ele capacita"
+      - "Todo jovem precisa de alguém que o prepare"
+  - jogo: sortes
+    verdade: V7
+    versiculo:
+      ref: Atos 3:22
+      texto: '"…a esse vocês ouvirão em tudo o que ele lhes disser."'
+    naLicao: "Quinta: Moisés anunciou um profeta semelhante a ele, e Pedro pregou que era Jesus. Jesus é Aquele para quem todos os profetas do Antigo Testamento apontavam."
+    naBiblia:
+      - ref: Mc 8:29
+        texto: 'Pedro: "Tu és o Cristo."'
+      - ref: Jo 1:14
+        texto: '"O Verbo se fez carne e habitou entre nós."'
+    ideia: Jesus é o Profeta supremo. A profecia conduzia a Cristo, a vida do profeta era evidenciar Jesus.
+    pergunta: Se Jesus é o profeta supremo, por que Ele não é a referência principal da sua vida?
+    enquete:
+      pergunta: Na minha vida hoje, Jesus é…
+      opcoes:
+        - 🎯 O centro
+        - 🧩 Uma parte
+        - 🗓️ Só no sábado
+        - 🔍 Estou buscando
+    outrasPerguntas:
+      - Reflita no fato de que Jesus, o Criador, também morreu na cruz por seus pecados. O que essa verdade revela sobre o amor de Deus por você?
+    origem: curador
+    base:
+      - "Jesus é o profeta Supremo"
+      - "A profecia conduzia a Cristo, a vida do profeta era evidenciar Jesus"
+      - "Jesus é o centro, não é parte da vida, é o centro"
+  - jogo: duelo
+    verdade: V5
+    versiculo:
+      ref: 1 Tessalonicenses 5:21-22
+      texto: '"Ponham à prova todas as coisas, fiquem com o que é bom, afastem-se de toda forma de mal."'
+    naLicao: "Quarta: para avaliar os profetas, a lição indica 1 Tessalonicenses 5:19-22. Pôr tudo à prova também é um estilo de vida: lidar com coisas boas e ruins com bom ânimo, vendo o lado bom das coisas."
+    naBiblia:
+      - ref: 1Ts 5:19-20
+        texto: '"Não extingais o Espírito; não desprezeis as profecias."'
+      - ref: Rm 8:6
+        texto: A mentalidade do Espírito é vida e paz.
+    ideia: Afastar-se de toda forma de mal é não colocar à prova os seus limites e não confiar na própria capacidade.
+    pergunta: Você já se viu reclamar do caminho que nos leva até o céu?
+    enquete:
+      pergunta: Ver o lado bom das coisas, para mim, é…
+      opcoes:
+        - ☀️ Natural
+        - 🌥️ Depende do dia
+        - 🌧️ Um desafio diário
+        - 😅 Sou o reclamão do grupo
+    outrasPerguntas:
+      - Em que situação você costuma colocar à prova os seus limites?
+    origem: curador
+    base:
+      - "também vejo como uma forma de estilo de vida, onde vamos lidar com coisas boas e ruins, mas devemos ter de bom animo, ver o lado bom das coisas"
+      - "afastar de toda forma de mal, é não colocar a prova seus limites, o que dificulta voce pecar ou se enganar e não confia no sua propria capacidade"
+      - "voce ja se viu reclamar do caminho que nos leva até ceu?"
+  - jogo: sonho
+    verdade: V6
+    versiculo:
+      ref: Romanos 8:6
+      texto: A mentalidade da carne é morte, mas a mentalidade do Espírito é vida e paz.
+    naLicao: "Quarta: o cristão é chamado a permanecer firme, revestido da graça divina, usando a verdade, a fé e a vigilância como proteção. E nada pode separar o povo de Deus do Seu amor."
+    naBiblia:
+      - ref: Ef 6:11
+        texto: '"Revesti-vos de toda a armadura de Deus."'
+      - ref: Ef 6:18
+        texto: Orando em todo tempo no Espírito e vigiando com perseverança.
+    ideia: Sem oração constante e perseverante vigilância, corremos o risco de ficar cada vez mais descuidados, e de desviar-nos do caminho reto.
+    pergunta: Como posso diferenciar, na prática, a voz de Deus das outras vozes ao meu redor?
+    enquete:
+      pergunta: Quais vozes mais influenciam a minha maneira de pensar e tomar decisões hoje?
+      opcoes:
+        - 📱 Redes sociais
+        - 🧑‍🤝‍🧑 Amigos
+        - 👨‍👩‍👧 Família
+        - 🎧 Músicas e séries
+        - 📖 A Bíblia
+    outrasPerguntas:
+      - De que forma eu tenho permitido que aquilo que consumo molde minhas escolhas mais do que a voz do Senhor?
+    nota: "A frase da ideia é de Ellen White, Caminho a Cristo, cap. 11 (do caderno do curador). Pergunte ao Rei como ele percebeu quem era Anjo e quem era Falso Profeta."
+    origem: curador
+    base:
+      - "revestido da graça divina, usando a verdade, a fé e a vigilância como proteção"
+      - "De que forma eu tenho permitido que aquilo que consumo"
+      - "molde minhas escolhas mais do que a voz do Senhor"
+  - jogo: voz
+    verdade: V8
+    versiculo:
+      ref: 2 Pedro 1:19
+      texto: 'As palavras proféticas são como uma "luz que brilha em um lugar escuro, até que o dia clareie".'
+    naLicao: 'Sexta: Deus chamou profetas sobretudo para conduzir as pessoas ao Seu conhecimento e a um relacionamento com Ele. Ellen White via seus escritos como "luz menor", para guiar à "luz maior", a Bíblia.'
+    naBiblia:
+      - ref: Lc 24:13-35
+        texto: No caminho de Emaús, Jesus explicou o que os profetas diziam sobre Ele.
+      - ref: Ap 22:16
+        texto: Jesus é a "Estrela da Manhã".
+    ideia: Relacionamento com Cristo tem que ser diário, não é algo ocasional.
+    pergunta: O seu relacionamento com Cristo tem sido diário ou ocasional?
+    enquete:
+      pergunta: Meu relacionamento com Cristo tem sido…
+      opcoes:
+        - 📅 Diário
+        - 🌦️ De vez em quando
+        - 🆘 Só quando aperta
+        - 🌱 Recomeçando hoje
+    outrasPerguntas:
+      - Conhece as escrituras para poder ter discernimento e separar o joio do trigo, o que é bom e o que é ruim, o que presta e o que não vale nada?
+    origem: curador
+    base:
+      - "Jesus é o centro da palavra. Deus chamou profetas, sobretudo para condizir pessoas ao Seu conhcimento e relacionamento com Ele"
+      - "destinada a guiar as pessoas à “luz maior” – a Bíblia"
+      - "relacionamento com Cristo tem que ser diário, não é algo ocasional"
+
+resumo:
+  perguntas:
+    - Quais vozes mais influenciam a minha maneira de pensar e tomar decisões hoje?
+    - Como posso diferenciar, na prática, a voz de Deus das outras vozes ao meu redor?
+    - Se Jesus é o profeta supremo, por que Ele não é a referência principal da sua vida?
+    - Você já se viu reclamar do caminho que nos leva até o céu?
+  versiculos:
+    - ref: Efésios 2:20
+      texto: Edificados sobre o fundamento dos apóstolos e dos profetas.
+    - ref: Atos 15:32
+      texto: Judas e Silas encorajaram e fortaleceram os irmãos com muitas palavras.
+    - ref: Lucas 2:38
+      texto: Ana falava a respeito do menino a todos.
+    - ref: Mateus 7:16
+      texto: Pelos seus frutos os conhecereis.
+    - ref: 1 Tessalonicenses 5:21
+      texto: Ponham à prova todas as coisas, fiquem com o que é bom.
+    - ref: Romanos 8:6
+      texto: A mentalidade do Espírito é vida e paz.
+    - ref: Atos 3:22
+      texto: A esse vocês ouvirão em tudo o que ele lhes disser.
+    - ref: Hebreus 3:15
+      texto: Hoje, se ouvirem a Sua voz, não endureçam o coração.
+  origem: curador
+  base:
+    - "voce ja se viu reclamar do caminho que nos leva até ceu?"

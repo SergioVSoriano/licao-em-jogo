@@ -11,12 +11,12 @@ licao:
     trimestres:
       - id: 2026-t4
         titulo: 4º trimestre de 2026
-        inicio: 2026-09-26   # sábado da semana 1: o app calcula as datas e destaca a semana atual
+        inicio: 2026-09-26 # sábado da semana 1: o app calcula as datas e destaca a semana atual
         semanas:
           - { n: 1, titulo: O Criador fala, datas: 26 de setembro a 2 de outubro, textoBase: Gênesis 3 }
           - { n: 2, titulo: O chamado do profeta, datas: 3 a 9 de outubro, textoBase: Isaías 6 }
           - { n: 3, titulo: Profetas do AT, datas: 10 a 16 de outubro, textoBase: 1 Reis 19:1-16, pacote: licao-2026-t4-jovens-s03 }
-          - { n: 4, titulo: Profetas do NT, datas: 17 a 23 de outubro, textoBase: Efésios 2:19–3:7 }
+          - { n: 4, titulo: Profetas do NT, datas: 17 a 23 de outubro, textoBase: Efésios 2:19–3:7, pacote: licao-2026-t4-jovens-s04 }
           - { n: 5, titulo: Revelação e inspiração, datas: 24 a 30 de outubro, textoBase: Apocalipse 1 }
           - { n: 6, titulo: Os escritos proféticos, datas: 31 de outubro a 6 de novembro, textoBase: Jeremias 36:1-19 }
           - { n: 7, titulo: Preste atenção!, datas: 7 a 13 de novembro, textoBase: Jeremias 36:20-32 }

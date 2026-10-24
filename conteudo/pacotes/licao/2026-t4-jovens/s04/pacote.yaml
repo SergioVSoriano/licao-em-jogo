@@ -1,0 +1,250 @@
+# Metadados, abertura, seções e verdades da semana. Regras: conteudo/REGRAS.md
+# Campos INTERPRETATIVOS (ideiaCentral, texto/naLicao/pergunta das verdades) só podem vir do caderno
+# do curador (conteudo/fontes/licao-2026-t4-jovens-s04/): copiados de lá, ou resumidos com "base" (trechos literais do caderno).
+
+id: licao-2026-t4-jovens-s04
+tipo: licao
+titulo: Profetas do NT
+subtitulo: Lição 4 · Jovens
+datas: 17 a 23 de outubro de 2026
+textoBase: Efésios 2:19–3:7
+publico: [ jovens ]
+status: publicado
+curadoria:
+  curador: Sérgio Soriano
+  revisadoEm: 2026-10-24
+  observacao: "Montado com /montar-pacote a partir do caderno (lição p. 33–41, vídeos do Pr. Dudu Batista e anotações do curador). Jogos escolhidos: Nuvem, Fruto Proibido, Verdade ou Falsificação, Três Sinais, perguntas (Lançar Sortes / Duelo), O Sonho do Rei e Voz Profética."
+fontes:
+  - tipo: licao
+    descricao: Lição da Escola Sabatina Jovens, 4º trimestre de 2026, Lição 4 (17 a 23 de outubro), p. 33–41
+  - tipo: video
+    descricao: Pr. Dudu Batista, vídeos diários da lição dos jovens (17 a 23/10/2026)
+    url: https://youtu.be/M37r4Gr1b58
+  - tipo: anotacoes
+    descricao: Anotações e interpretação do curador (23/10/2026)
+
+abertura:
+  versiculo:
+    ref: Efésios 2:20
+    texto: Edificados sobre o fundamento dos apóstolos e dos profetas, sendo o próprio Cristo Jesus a principal pedra da esquina.
+  tirinha:
+    - Épocas diferentes…
+    - …mas o mesmo Espírito.
+    - Porta-voz, não espectador!
+  ideiaCentral: Deus falou por meio de profetas no AT e no NT. O Espírito Santo é o mesmo e mantém Cristo no centro, e os profetas foram chamados sobretudo para conduzir as pessoas ao conhecimento de Deus e a um relacionamento com Ele.
+  origem: curador
+  base:
+    - "Espirito Santo é o mesmo mantem o Cristo no centro da revelação. Deus falou por meio de profetas no AT e NT"
+    - "Deus chamou profetas, sobretudo para condizir pessoas ao Seu conhcimento e relacionamento com Ele"
+
+secoes:
+  - { id: sab, titulo: Sábado }
+  - { id: dom, titulo: Domingo }
+  - { id: seg, titulo: Segunda }
+  - { id: ter, titulo: Terça }
+  - { id: qua, titulo: Quarta }
+  - { id: qui, titulo: Quinta }
+  - { id: sex, titulo: Sexta }
+
+verdades:
+  - id: V1
+    secao: dom
+    emoji: "🔗"
+    titulo: A mesma fonte
+    texto: O Espírito Santo é o mesmo no AT e no NT e mantém Cristo no centro da revelação.
+    refs: [ Hb 1:1-3, Ef 2:20, Ef 3:1-5 ]
+    naLicao: "Apóstolo quer dizer mensageiro, enviado. No começo eram os doze; depois, outros também. Apóstolos e profetas tinham o mesmo grau de inspiração, mas o dom de profecia não era só dos apóstolos, e nem todo profeta era apóstolo."
+    exemplos:
+      - ref: Rm 11:13
+        texto: 'Paulo não era um dos doze, mas dizia: "sou apóstolo dos gentios".'
+      - ref: At 15:32
+        texto: Judas e Silas eram profetas, e não eram apóstolos.
+    pergunta: Por que a Bíblia deve ser a autoridade final em nossa crença sobre Jesus?
+    origem: curador
+    base:
+      - "termo apostolo, mensageiros, doze discupulos originalmente, ser enviado para espalhar a mensagem/ser porta-voz, mesmo grau de inspiração divida entre apostolos e profetas, dom de profecia nao estava restritos aos apostolos e nem todos os profetas eram apostolos"
+      - "Espirito Santo é o mesmo mantem o Cristo no centro da revelação"
+      - "O que isso revela sobre por que ela deve ser a autoridade final em nossa crença sobre Jesus"
+  - id: V2
+    secao: seg
+    emoji: "💬"
+    titulo: Palavras que levantam
+    texto: Os dons preparam o povo de Deus para o serviço cristão, até chegarmos à altura espiritual de Cristo. E a profecia também traz ânimo e esperança em tempos difíceis.
+    refs: [ Ef 4:11-13, At 15:32, 1Co 14:31, Ap 22:6 ]
+    naLicao: "Deus usou profetas no NT para orientar o surgimento e o crescimento da igreja. Judas e Silas não escreveram livros da Bíblia, mas encorajaram e fortaleceram os irmãos com muitas palavras."
+    exemplos:
+      - ref: At 15:32
+        texto: 'Judas e Silas "encorajaram e fortaleceram os irmãos com muitas palavras" (NVI).'
+      - ref: Ap 22:6
+        texto: '"Estas palavras são fiéis e verdadeiras."'
+    pergunta: Qual é o seu papel, e como você pode fazer ainda mais?
+    origem: curador
+    base:
+      - "Dons espirituais tem o objetivo de preparar o povo de Deus para o serviços cristão > pessoas maduras e aclançar altura espiritual de cristo"
+      - "Eles tambem oferecem palavras de animo em tempos de dificil e em tempos de tribuilaçãk, o dom de profecia tem sido animo e esperança"
+      - "Deus usou profetas no NT para orientar o surgimento e crscimento da igreja"
+  - id: V3
+    secao: ter
+    emoji: "🌱"
+    titulo: Gente diferente, mesma missão
+    texto: Deus chama pessoas diferentes, com dons diferentes, mas com a mesma missão.
+    refs: [ Lc 2:36-38, At 21:9, 1Tm 1:2, Tt 2:15 ]
+    naLicao: "Ana, profetisa de 84 anos, falou do menino Jesus a todos. Filipe tinha quatro filhas solteiras que profetizavam. Paulo preparou os jovens Timóteo e Tito: ensine, encoraje e corrija."
+    exemplos:
+      - ref: Lc 2:38
+        texto: 'Ana "falava a respeito do menino a todos".'
+      - ref: Tt 2:15
+        texto: '"Ensine essas coisas e encoraje os irmãos a praticá-las. Corrija-os com autoridade." (NVT)'
+    pergunta: Tito era jovem, Timóteo era jovem, você é jovem. Qual é a razão de você não se envolver?
+    origem: curador
+    base:
+      - "Deus chama pessoas diferentes com dons diferentes, mas com a mesma missão"
+      - "Mulheres com dom profetico > Ana (Lc 2:37,38), 4 filhas solteiras de Filipe"
+      - "Paulo e Timoteo, Tt 2:15, ensine, encoraje-os e corrija"
+  - id: V4
+    secao: qua
+    emoji: "🐺"
+    titulo: Lobo com pele de ovelha
+    texto: O engano espiritual será uma marca dos últimos tempos. Nem todo aquele que fala em nome de Jesus representa de fato a Sua mensagem, por isso examine com atenção.
+    refs: [ Mt 7:15-20, Mt 24:11, Mt 24:23-25, 1Jo 4:1-6 ]
+    naLicao: "O verdadeiro profeta é reconhecido pelo caráter e pela conformidade com a vontade divina. Jesus avisou: lobos vêm disfarçados de ovelha, e pelos frutos os conhecereis."
+    exemplos:
+      - ref: Mt 7:16
+        texto: '"Pelos seus frutos os conhecereis."'
+      - ref: 1Jo 4:2
+        texto: Todo espírito que confessa que Jesus veio em carne procede de Deus.
+    pergunta: Como podemos distinguir os verdadeiros mensageiros de Deus dos falsos?
+    origem: curador
+    base:
+      - "engno espiritual sera uma marca dos ultimos tempos\" > nem todo que aquele fala em Seu nome representa de fato sua mensagem > examinirar com atenção"
+      - "verdadeiro profetas é reconhecido pelo carater  e conformidade com a vontade divina"
+      - "Lobo e ovelha e identificar pelos frutos (Mt 7:15-20)"
+  - id: V5
+    secao: qua
+    emoji: "☀️"
+    titulo: Fique com o que é bom
+    texto: "Ponham à prova todas as coisas e fiquem com o que é bom: é um jeito de identificar falsificações e também um estilo de vida, com bom ânimo, vendo o lado bom das coisas."
+    refs: [ 1Ts 5:19-22 ]
+    naLicao: "Afastar-se de toda forma de mal é não colocar à prova os seus limites. Isso dificulta pecar ou se enganar, e é não confiar na própria capacidade."
+    exemplos:
+      - ref: 1Ts 5:21
+        texto: '"Ponham à prova todas as coisas, fiquem com o que é bom."'
+      - ref: 1Ts 5:22
+        texto: '"Afastem-se de toda forma de mal."'
+    pergunta: Você já se viu reclamar do caminho que nos leva até o céu?
+    origem: curador
+    base:
+      - "Ponham a prova todas as coisas, fiquem com o que é bom, afaste-se de toda forma de mal"
+      - "é uma das forma de identificar falsos profetas e falsificaçoes, também vejo como uma forma de estilo de vida, onde vamos lidar com coisas boas e ruins, mas devemos ter de bom animo, ver o lado bom das coisas, voce ja se viu reclamar do caminho que nos leva até ceu?"
+      - "afastar de toda forma de mal, é não colocar a prova seus limites, o que dificulta voce pecar ou se enganar e não confia no sua propria capacidade"
+  - id: V6
+    secao: qua
+    emoji: "🛡️"
+    titulo: Mente no Espírito, armadura completa
+    texto: A mentalidade da carne é morte, mas a mentalidade do Espírito é vida e paz. Use toda a armadura de Deus, e a oração faz parte dela.
+    refs: [ Rm 8:5-6, Ef 6:10-18 ]
+    naLicao: 'Em Caminho a Cristo (cap. 11), Ellen White escreve: "Sem oração constante e perseverante vigilância, corremos o risco de ficar cada vez mais descuidados, e de desviar-nos do caminho reto."'
+    exemplos:
+      - ref: Rm 8:6
+        texto: A mentalidade do Espírito é vida e paz.
+      - ref: Ef 6:18
+        texto: Orando em todo tempo no Espírito e vigiando com perseverança.
+    pergunta: De que forma eu tenho permitido que aquilo que consumo molde minhas escolhas mais do que a voz do Senhor?
+    origem: curador
+    base:
+      - "a mentalidade da carne é mkorte, mas a mentalidade do espirito é vida e paz"
+      - "Usar todas as armaduras de Deus > oração (Ef 6:10-18)"
+      - "Sem oração constante e perseverante vigilância, corremos o risco de ficar cada vez mais descuidados, e de desviar-nos do caminho reto"
+  - id: V7
+    secao: qui
+    emoji: "👑"
+    titulo: O Profeta supremo
+    texto: Jesus é o Profeta supremo. A profecia conduzia a Cristo, a vida do profeta era evidenciar Jesus.
+    refs: [ Dt 18:15, At 3:22, Mc 8:27-29, Jo 1:1-5, Jo 1:14 ]
+    naLicao: 'Moisés anunciou um profeta semelhante a ele, e Pedro pregou que era Jesus. O Verbo que criou todas as coisas se fez carne. Em cada "E Deus disse" de Gênesis 1, ouvimos a voz de Jesus.'
+    exemplos:
+      - ref: At 3:22
+        texto: '"…a esse vocês ouvirão em tudo o que ele lhes disser."'
+      - ref: Jo 1:14
+        texto: '"O Verbo se fez carne e habitou entre nós."'
+    pergunta: Se Jesus é o profeta supremo, por que Ele não é a referência principal da sua vida?
+    origem: curador
+    base:
+      - "Jesus é o profeta Supremo"
+      - "A profecia conduzia a Cristo, a vida do profeta era evidenciar Jesus"
+      - "Moisés o anunciou, e Pedro, quando estava pregando utilizando o texto de Moisés, fez referência como Jesus sendo o cumprimento"
+  - id: V8
+    secao: sex
+    emoji: "🎯"
+    titulo: Jesus e a Palavra no centro
+    texto: Jesus é o centro da Palavra. Deus chamou profetas, sobretudo, para conduzir as pessoas ao Seu conhecimento e a um relacionamento com Ele.
+    refs: [ 2Pe 1:19, Lc 24:13-35, Ap 22:16 ]
+    naLicao: 'Ellen White entendia seus escritos como uma "luz menor", destinada a guiar as pessoas à "luz maior", a Bíblia. E escreveu que o nosso crescimento na graça, nossa alegria e nossa utilidade dependem da união com Cristo.'
+    exemplos:
+      - ref: 2Pe 1:19
+        texto: 'As palavras proféticas são como uma "luz que brilha em um lugar escuro".'
+      - ref: Lc 24:13-35
+        texto: No caminho de Emaús, Jesus explicou o que os profetas diziam sobre Ele.
+    pergunta: Como posso diferenciar, na prática, a voz de Deus das outras vozes ao meu redor?
+    origem: curador
+    base:
+      - "Jesus é o centro da palavra. Deus chamou profetas, sobretudo para condizir pessoas ao Seu conhcimento e relacionamento com Ele"
+      - "destinada a guiar as pessoas à “luz maior” – a Bíblia"
+      - "Nosso crescimento na graça, nossa alegria, nossa utilidade"
+
+personagens:
+  - id: paulo
+    bio: Apóstolo dos gentios. Não era um dos doze, recebeu revelações de Deus e preparou jovens líderes como Timóteo e Tito.
+    refs: Rm 11:13; Ef 3:3; 1Tm 1:2; Tt 1:4
+    pistas:
+      - Viu de noite um homem da Macedônia pedindo ajuda
+      - Chamava dois jovens de "verdadeiro filho na fé"
+      - Apóstolo dos gentios
+    disfarcado: false
+    origem: curador
+  - id: ana
+    bio: A primeira pessoa chamada de profetisa no Novo Testamento. Aos 84 anos, reconheceu o menino Jesus no templo.
+    refs: Lc 2:36-38
+    pistas:
+      - Era da tribo de Aser
+      - Servia a Deus no templo com jejuns e orações
+      - Falou do menino Jesus a todos
+    disfarcado: false
+    origem: curador
+  - id: silas
+    bio: Profeta enviado pela igreja de Jerusalém com Judas. Os dois encorajaram e fortaleceram os irmãos de Antioquia.
+    refs: At 15:22-32
+    pistas:
+      - Levou uma carta a Antioquia
+      - Trabalhou ao lado de Paulo
+      - Ele e Judas eram profetas
+    disfarcado: false
+    origem: curador
+  - id: timoteo
+    bio: Jovem líder preparado por Paulo, que o chamava de "verdadeiro filho na fé" e lhe confiou grandes responsabilidades.
+    refs: 1Tm 1:2,18
+    pistas:
+      - Sobre ele houve palavras proféticas
+      - Paulo o mandou lutar o bom combate
+      - Duas cartas da Bíblia levam o seu nome
+    disfarcado: false
+    origem: curador
+  - id: tito
+    bio: Jovem líder que Paulo deixou em Creta para estabelecer líderes numa igreja desafiadora.
+    refs: Tt 1:4-5; 2:15
+    pistas:
+      - Ficou numa ilha com uma igreja difícil
+      - Devia estabelecer anciãos em cada cidade
+      - '"Ensine, encoraje e corrija"'
+    disfarcado: false
+    origem: curador
+
+coberturaDosJogos:
+  nuvem: [ V4, V3 ]
+  fruto: [ V1, V3, V4, V6, V8 ]
+  verdade: [ V1, V2, V3, V4, V6, V7, V8 ]
+  sinais: [ V2, V3, V4, V6, V7 ]
+  sortes: [ V1, V2, V3, V4, V5, V6, V7, V8 ]
+  duelo: [ V1, V2, V3, V4, V5, V6, V7, V8 ]
+  sonho: [ V4, V6, V3 ]
+  voz: [ V2, V3, V5, V6, V8 ]

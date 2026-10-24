@@ -1,0 +1,583 @@
+# Conteúdo dos minijogos. Jogo sem conteúdo aparece travado no planejador.
+# Esta semana usa: Nuvem, Fruto Proibido, Verdade ou Falsificação, Três Sinais, perguntas
+# (Lançar Sortes / Duelo), O Sonho do Rei e Voz Profética. Item criado pela IA leva "origem: gerado".
+# Perguntas sem "segundo o versículo X": a pessoa responde pela história, não pela referência.
+# Formato e regras: conteudo/REGRAS.md
+
+perguntas:
+  - pergunta: A palavra "apóstolo" quer dizer…
+    opcoes: [ "Enviado, mensageiro", Profeta aposentado, Chefe da igreja, Quem aposta muito 😅 ]
+    correta: "Enviado, mensageiro"
+    explicacao: Apóstolos eram os "enviados" do Senhor para espalhar a mensagem.
+    ref: Rm 1:1
+    verdade: V1
+    origem: curador
+  - pergunta: Paulo não foi um dos doze. Mesmo assim, ele era…
+    opcoes: [ Apóstolo dos gentios, Um penetra no grupo, Fariseu até o fim, Só um escritor ]
+    correta: Apóstolo dos gentios
+    explicacao: O termo apóstolo passou a valer para outros enviados além dos doze.
+    ref: Rm 11:13
+    verdade: V1
+    origem: curador
+  - pergunta: A igreja é como um prédio. Quem é a principal pedra da esquina?
+    opcoes: [ Jesus, Pedro, Paulo, Moisés ]
+    correta: Jesus
+    explicacao: O prédio tem o fundamento dos apóstolos e profetas, e Cristo é a pedra principal.
+    ref: Ef 2:20
+    verdade: V1
+    origem: curador
+  - pergunta: Apóstolos e profetas. Quem tinha mais inspiração de Deus?
+    opcoes: [ Os dois tinham o mesmo grau, Só os apóstolos, Só os profetas, Quem escreveu mais ]
+    correta: Os dois tinham o mesmo grau
+    explicacao: Os dois recebiam revelação de Deus pelo mesmo Espírito.
+    ref: Ef 3:1-5
+    verdade: V1
+    origem: curador
+  - pergunta: Judas e Silas eram profetas. Quantos livros da Bíblia eles escreveram?
+    opcoes: [ Nenhum, Um cada, Dois juntos, Todas as cartas ]
+    correta: Nenhum
+    explicacao: Nem todo profeta escreveu livros. Eles serviram com palavras de ânimo.
+    ref: At 15:32
+    verdade: V2
+    origem: curador
+  - pergunta: O que Judas e Silas fizeram com os irmãos de Antioquia?
+    opcoes: [ Encorajaram e fortaleceram, Deram uma bronca, Cobraram o dízimo, Fizeram um show ]
+    correta: Encorajaram e fortaleceram
+    explicacao: Encorajaram e fortaleceram "os irmãos com muitas palavras" (NVI).
+    ref: At 15:32
+    verdade: V2
+    origem: curador
+  - pergunta: Profeta só fala sobre o futuro?
+    opcoes: [ "Não: também anima e consola", "Sim, só do futuro", Só fala de desgraça, Só fala com reis ]
+    correta: "Não: também anima e consola"
+    explicacao: Profetas também traziam conforto, esperança e advertência.
+    ref: 1Co 14:31
+    verdade: V2
+    origem: curador
+  - pergunta: Para que Deus dá os dons espirituais?
+    opcoes: [ Para servir e amadurecer, Para ganhar seguidores, Para competir na igreja, Para ficar famoso ]
+    correta: Para servir e amadurecer
+    explicacao: Para preparar o povo para o serviço, até a altura espiritual de Cristo.
+    ref: Ef 4:12-13
+    verdade: V2
+    origem: curador
+  - pergunta: Numa lista de dons, os profetas aparecem ao lado de quem?
+    opcoes: [ Pastores e mestres, Atletas e cantores, Reis e soldados, Escribas e fariseus ]
+    correta: Pastores e mestres
+    explicacao: E também de apóstolos e evangelistas. Dons diferentes, a mesma missão.
+    ref: Ef 4:11
+    verdade: V2
+    origem: curador
+  - pergunta: Ana era profetisa e tinha 84 anos. Onde ela servia a Deus noite e dia?
+    opcoes: [ No templo, Numa sinagoga, No deserto, Em casa ]
+    correta: No templo
+    explicacao: '"Adorava noite e dia, com jejuns e orações."'
+    ref: Lc 2:37
+    verdade: V3
+    origem: curador
+  - pergunta: Ana viu um bebê no templo e saiu falando dele para todo mundo. Quem era?
+    opcoes: [ Jesus, João Batista, Samuel, Timóteo ]
+    correta: Jesus
+    explicacao: Ela reconheceu Jesus como o Messias prometido.
+    ref: Lc 2:38
+    verdade: V3
+    origem: curador
+  - pergunta: Filipe tinha quatro filhas. O que elas tinham de especial?
+    opcoes: [ Profetizavam, Eram cantoras, Eram rainhas, Eram quadrigêmeas ]
+    correta: Profetizavam
+    explicacao: Provavelmente eram jovens, e tinham o dom de profecia.
+    ref: At 21:9
+    verdade: V3
+    origem: curador
+  - pergunta: Como Paulo chamava os jovens Timóteo e Tito?
+    opcoes: [ Verdadeiro filho na fé, Meu estagiário, Meu discípulo amado, Irmão caçula ]
+    correta: Verdadeiro filho na fé
+    explicacao: Paulo preparava jovens líderes e confiava a eles grandes responsabilidades.
+    ref: 1Tm 1:2; Tt 1:4
+    verdade: V3
+    origem: curador
+  - pergunta: Paulo deixou Tito numa ilha com uma igreja bem desafiadora. Qual?
+    opcoes: [ Creta, Chipre, Malta, Fernando de Noronha ]
+    correta: Creta
+    explicacao: Lá, Tito devia estabelecer líderes em cada cidade.
+    ref: Tt 1:5
+    verdade: V3
+    origem: curador
+  - pergunta: 'O conselho de Paulo ao jovem Tito: ensine, encoraje e…'
+    opcoes: [ Corrija, Cancele, Cobre, Desista ]
+    correta: Corrija
+    explicacao: '"Corrija-os com autoridade. Não deixe que ignorem o que você diz" (NVT).'
+    ref: Tt 2:15
+    verdade: V3
+    origem: curador
+  - pergunta: Jesus disse que os falsos profetas chegam disfarçados de…
+    opcoes: [ Ovelha, Anjo, Pastor, Pombinha ]
+    correta: Ovelha
+    explicacao: Por fora, ovelhas; por dentro, lobos.
+    ref: Mt 7:15
+    verdade: V4
+    origem: curador
+  - pergunta: Como Jesus disse que reconheceríamos os falsos profetas?
+    opcoes: [ Pelos frutos, Pela roupa, Pelos seguidores, Pelo número de likes ]
+    correta: Pelos frutos
+    explicacao: Árvore boa dá bons frutos; árvore má dá frutos maus.
+    ref: Mt 7:16-20
+    verdade: V4
+    origem: curador
+  - pergunta: Falsos profetas conseguem fazer coisas impressionantes?
+    opcoes: [ "Sim, grandes sinais", Nunca, Só truques de mágica, Só nos filmes ]
+    correta: "Sim, grandes sinais"
+    explicacao: Tão convincentes que enganariam até os escolhidos, se fosse possível.
+    ref: Mt 24:24
+    verdade: V4
+    origem: curador
+  - pergunta: Uma mensagem "cristã" viralizou e todo mundo compartilhou. Isso prova que é de Deus?
+    opcoes: [ "Não: a Bíblia é o filtro", "Sim, se tem muitos likes", "Sim, se me emocionou", "Sim, se tem música boa" ]
+    correta: "Não: a Bíblia é o filtro"
+    explicacao: '"Popularidade não é prova de verdade. A Bíblia é o filtro." (Pr. Dudu Batista)'
+    ref: Mt 24:11
+    verdade: V4
+    origem: curador
+  - pergunta: '"Ponham à prova todas as coisas e…"'
+    opcoes: [ fiquem com o que é bom, acreditem em tudo, rejeitem tudo, compartilhem tudo ]
+    correta: fiquem com o que é bom
+    explicacao: E afastem-se de toda forma de mal.
+    ref: 1Ts 5:21-22
+    verdade: V5
+    origem: curador
+  - pergunta: Na armadura de Deus, qual é a espada?
+    opcoes: [ A Palavra de Deus, A oração, A fé, A coragem ]
+    correta: A Palavra de Deus
+    explicacao: E a lista termina com oração em todo tempo.
+    ref: Ef 6:17-18
+    verdade: V6
+    origem: curador
+  - pergunta: A mente voltada para o que o Espírito deseja traz…
+    opcoes: [ Vida e paz, Fama e dinheiro, Medo e culpa, Sono 😴 ]
+    correta: Vida e paz
+    explicacao: Já a mentalidade da carne é morte.
+    ref: Rm 8:5-6
+    verdade: V6
+    origem: curador
+  - pergunta: Moisés disse que Deus levantaria um profeta semelhante a ele. Quem era esse profeta?
+    opcoes: [ Jesus, Elias, Josué, Davi ]
+    correta: Jesus
+    explicacao: Pedro pregou isso em Jerusalém. Jesus é o Profeta supremo.
+    ref: Dt 18:15; At 3:22
+    verdade: V7
+    origem: curador
+  - pergunta: 'Jesus perguntou: "E vocês, quem dizem que eu sou?" Pedro respondeu…'
+    opcoes: [ Tu és o Cristo, Tu és Elias, Tu és João Batista, Tu és um rabino ]
+    correta: Tu és o Cristo
+    explicacao: O povo achava que Ele era João Batista, Elias ou algum profeta.
+    ref: Mc 8:27-29
+    verdade: V7
+    origem: curador
+  - pergunta: Ellen White chamava seus escritos de "luz menor". Qual seria a "luz maior"?
+    opcoes: [ A Bíblia, O sol, A igreja, O celular 📱 ]
+    correta: A Bíblia
+    explicacao: Ela sempre mandava as pessoas direto às Escrituras.
+    ref: Lição, sexta
+    verdade: V8
+    origem: curador
+  - pergunta: A Série Conflito, de Ellen White, começa e termina com qual frase?
+    opcoes: [ Deus é amor, Jesus voltará, Orai sem cessar, No princípio ]
+    correta: Deus é amor
+    explicacao: Os cinco volumes começam e terminam com "Deus é amor".
+    ref: Lição, sexta
+    verdade: V8
+    origem: curador
+
+verdadeiroOuFalso:
+  - afirmacao: '"Apóstolo" quer dizer "quem aposta muito".'
+    verdadeira: false
+    explicacao: 😅 Quer dizer "enviado", "mensageiro".
+    ref: Rm 1:1
+    verdade: V1
+    origem: curador
+  - afirmacao: Paulo era um dos doze discípulos.
+    verdadeira: false
+    explicacao: Não era, mas foi chamado como "apóstolo dos gentios".
+    ref: Rm 11:13
+    verdade: V1
+    origem: curador
+  - afirmacao: Todo profeta do Novo Testamento também era apóstolo.
+    verdadeira: false
+    explicacao: Judas e Silas eram profetas, e não apóstolos.
+    ref: At 15:32
+    verdade: V1
+    origem: curador
+  - afirmacao: Apóstolos e profetas tinham o mesmo grau de inspiração.
+    verdadeira: true
+    explicacao: O Espírito que falava pelos dois é o mesmo.
+    ref: Ef 3:1-5
+    verdade: V1
+    origem: curador
+  - afirmacao: Ser profeta passava de pai para filho, como ser sacerdote.
+    verdadeira: false
+    explicacao: Deus escolhia profetas e apóstolos conforme a Sua vontade.
+    ref: Ef 3:5
+    verdade: V1
+    origem: curador
+  - afirmacao: Todo profeta escreveu pelo menos um livro da Bíblia.
+    verdadeira: false
+    explicacao: Judas e Silas foram profetas e não escreveram nenhum.
+    ref: At 15:32
+    verdade: V2
+    origem: curador
+  - afirmacao: Os profetas do NT também consolavam e animavam a igreja.
+    verdadeira: true
+    explicacao: Em tempos difíceis, a profecia trazia ânimo e esperança.
+    ref: 1Co 14:31
+    verdade: V2
+    origem: curador
+  - afirmacao: A primeira profetisa do Novo Testamento foi Ana, aos 84 anos.
+    verdadeira: true
+    explicacao: Ela reconheceu o bebê Jesus no templo.
+    ref: Lc 2:36-38
+    verdade: V3
+    origem: curador
+  - afirmacao: No Novo Testamento, só homens profetizavam.
+    verdadeira: false
+    explicacao: Ana e as quatro filhas de Filipe profetizavam.
+    ref: Lc 2:36; At 21:9
+    verdade: V3
+    origem: curador
+  - afirmacao: Paulo confiou grandes responsabilidades aos jovens Timóteo e Tito.
+    verdadeira: true
+    explicacao: Tito, por exemplo, organizou a igreja de Creta.
+    ref: 1Tm 1:18; Tt 1:5
+    verdade: V3
+    origem: curador
+  - afirmacao: Se a mensagem viralizou, é porque é de Deus.
+    verdadeira: false
+    explicacao: '"Popularidade não é prova de verdade." (Pr. Dudu Batista)'
+    ref: Mt 24:11
+    verdade: V4
+    origem: curador
+  - afirmacao: Falsos profetas podem fazer sinais impressionantes.
+    verdadeira: true
+    explicacao: Por isso não dá para aceitar tudo; é preciso examinar com atenção.
+    ref: Mt 24:24
+    verdade: V4
+    origem: curador
+  - afirmacao: '"Lobo em pele de ovelha" é uma imagem que Jesus usou para os falsos profetas.'
+    verdadeira: true
+    explicacao: E disse que eles seriam reconhecidos pelos frutos.
+    ref: Mt 7:15-16
+    verdade: V4
+    origem: curador
+  - afirmacao: Para ficar firme, basta conhecer a Bíblia; a oração é opcional.
+    verdadeira: false
+    explicacao: A lista da armadura de Deus termina com "orando em todo tempo".
+    ref: Ef 6:18
+    verdade: V6
+    origem: curador
+  - afirmacao: Moisés anunciou um profeta que viria, e Pedro pregou que era Jesus.
+    verdadeira: true
+    explicacao: Jesus é o Profeta supremo.
+    ref: Dt 18:15; At 3:22
+    verdade: V7
+    origem: curador
+  - afirmacao: Ellen White dizia que seus escritos podiam tomar o lugar da Bíblia.
+    verdadeira: false
+    explicacao: Ela escreveu que Deus não deu luz adicional para tomar o lugar da Sua Palavra.
+    ref: Lição, sexta
+    verdade: V8
+    origem: curador
+
+tresSinais:
+  - resposta: Ana
+    tipo: Quem é?
+    dicas:
+      - Viúva, quase não saía do templo
+      - Jejuava e orava noite e dia
+      - Aos 84 anos, falou do bebê Jesus para todo mundo
+    aceitas: [ ana, profetisa ana ]
+    palpitesErrados: [ Isabel, Maria, Hulda ]
+    ref: Lc 2:36-38
+    origem: curador
+  - resposta: Silas
+    tipo: Quem é?
+    dicas:
+      - Foi "carteiro" da igreja de Jerusalém
+      - Viajou com Paulo
+      - Com Judas, animou a igreja de Antioquia
+    aceitas: [ silas ]
+    palpitesErrados: [ Barnabé, Timóteo, Judas ]
+    ref: At 15:22-32
+    origem: curador
+  - resposta: Timóteo
+    tipo: Quem é?
+    dicas:
+      - 'Recebeu um conselho: "lute o bom combate"'
+      - Paulo o via como um filho na fé
+      - Duas cartas da Bíblia levam o nome dele
+    aceitas: [ timoteo ]
+    palpitesErrados: [ Tito, Silas, Lucas ]
+    ref: 1Tm 1:2,18
+    origem: curador
+  - resposta: Tito
+    tipo: Quem é?
+    dicas:
+      - Jovem pastor numa igreja difícil
+      - Paulo o deixou numa ilha, Creta
+      - Nome de 4 letras, e uma carta da Bíblia tem o nome dele
+    aceitas: [ tito ]
+    palpitesErrados: [ Timóteo, Lucas, Barnabé ]
+    ref: Tt 1:4-5; 2:15
+    origem: curador
+  - resposta: Paulo
+    tipo: Quem é?
+    dicas:
+      - Não andou com Jesus como os doze
+      - Chamava a si mesmo de apóstolo dos gentios
+      - Escreveu cartas para Timóteo e Tito
+    aceitas: [ paulo, apostolo paulo, saulo ]
+    palpitesErrados: [ Pedro, Barnabé, João ]
+    ref: Rm 11:13; 1Tm 1:2; Tt 1:4
+    origem: curador
+  - resposta: Pedro
+    tipo: Quem é?
+    dicas:
+      - Teve uma visão de um lençol cheio de animais
+      - Pregou que Jesus era o Profeta anunciado por Moisés
+      - 'Respondeu a Jesus: "Tu és o Cristo"'
+    aceitas: [ pedro, simao pedro, simao ]
+    palpitesErrados: [ Paulo, João, Tiago ]
+    ref: At 10:9-16; At 3:22; Mc 8:29
+    origem: curador
+  - resposta: Moisés
+    tipo: Quem é?
+    dicas:
+      - Pedro citou as palavras dele numa pregação
+      - 'Disse: "Deus vai levantar um profeta como eu"'
+      - Tirou o povo de Israel do Egito
+    aceitas: [ moises ]
+    palpitesErrados: [ Elias, Isaías, Davi ]
+    ref: Dt 18:15; At 3:22
+    origem: curador
+  - resposta: Lobo
+    tipo: O que é?
+    dicas:
+      - Adora chegar disfarçado
+      - Usa fantasia de ovelha
+      - Jesus comparou os falsos profetas a ele
+    aceitas: [ lobo, lobos, lobo devorador ]
+    palpitesErrados: [ Leão, Raposa, Serpente ]
+    ref: Mt 7:15
+    origem: curador
+  - resposta: Frutos
+    tipo: O que é?
+    dicas:
+      - Bons ou maus, mostram como é a árvore
+      - Uva não nasce em espinheiro
+      - '"Por eles os conhecereis", disse Jesus'
+    aceitas: [ frutos, fruto, os frutos ]
+    palpitesErrados: [ Folhas, Raízes, Sementes ]
+    ref: Mt 7:16-20
+    origem: curador
+  - resposta: Armadura de Deus
+    tipo: O que é?
+    dicas:
+      - Tem cinto, couraça e capacete
+      - A espada dela é a Palavra de Deus
+      - Paulo manda vestir ela toda contra as ciladas do diabo
+    aceitas: [ armadura, armadura de deus, a armadura de deus ]
+    palpitesErrados: [ Escudo, Arca, Espada ]
+    ref: Ef 6:10-18
+    origem: curador
+  - resposta: Bíblia
+    tipo: O que é?
+    dicas:
+      - Nenhuma mensagem espiritual está acima dela
+      - Ellen White a chamava de "luz maior"
+      - O pastor do vídeo diz que ela é o filtro
+    aceitas: [ biblia, a biblia, palavra de deus, escrituras ]
+    palpitesErrados: [ Igreja, Lição, Oração ]
+    ref: 2Pe 1:19
+    origem: curador
+
+# Fruto Proibido FÁCIL: só 3 proibidas por carta, deixando caminhos fáceis (nomes, histórias, sons).
+frutoProibido:
+  - palavra: PROFETA
+    proibidas: [ profecia, futuro, Elias ]
+    origem: curador
+  - palavra: APÓSTOLO
+    proibidas: [ discípulo, doze, enviado ]
+    origem: curador
+  - palavra: TIMÓTEO
+    proibidas: [ Paulo, Tito, carta ]
+    origem: curador
+  - palavra: TITO
+    proibidas: [ Creta, ilha, Paulo ]
+    origem: curador
+  - palavra: ANA
+    proibidas: [ profetisa, templo, velhinha ]
+    origem: curador
+  - palavra: MOISÉS
+    proibidas: [ Egito, mar Vermelho, mandamentos ]
+    origem: curador
+  - palavra: PEDRO
+    proibidas: [ pescador, galo, negou ]
+    origem: curador
+  - palavra: BÍBLIA
+    proibidas: [ livro, ler, Palavra ]
+    origem: curador
+  - palavra: LOBO
+    proibidas: [ ovelha, uivar, Chapeuzinho ]
+    origem: curador
+  - palavra: OVELHA
+    proibidas: [ lã, rebanho, méé ]
+    origem: curador
+  - palavra: FRUTO
+    proibidas: [ árvore, comer, maçã ]
+    origem: curador
+  - palavra: ARMADURA
+    proibidas: [ soldado, guerra, escudo ]
+    origem: curador
+  - palavra: ORAÇÃO
+    proibidas: [ orar, rezar, joelhos ]
+    origem: curador
+  - palavra: CARTA
+    proibidas: [ correio, envelope, escrever ]
+    origem: curador
+  - palavra: FILTRO
+    proibidas: [ café, água, Instagram ]
+    origem: curador
+  - palavra: JOVEM
+    proibidas: [ idade, adolescente, velho ]
+    origem: curador
+  - palavra: IGREJA
+    proibidas: [ templo, culto, sábado ]
+    origem: curador
+  - palavra: ESPÍRITO SANTO
+    proibidas: [ pomba, Pentecostes, Trindade ]
+    origem: curador
+
+nuvem:
+  - pergunta: "PROFETA: qual a primeira palavra que vem à sua cabeça?"
+    pontua: true
+    verdade: V2
+    sinonimos:
+      futuro: futuro
+      previsao: futuro
+      prever: futuro
+      deus: deus
+      mensageiro: mensagem
+      mensagem: mensagem
+      voz: porta voz
+      elias: elias
+      biblia: biblia
+    origem: curador
+    base:
+      - "estamos acostumados com o termo profeta relacionado à predição do futuro"
+      - "profeta é algo mais abrangente"
+  - pergunta: Como podemos distinguir os verdadeiros mensageiros de Deus dos falsos?
+    pontua: true
+    verdade: V4
+    sinonimos:
+      fruto: frutos
+      biblia: biblia
+      palavra: biblia
+      escrituras: biblia
+      escritura: biblia
+      carater: carater
+      cristo: jesus
+      jesus: jesus
+      oracao: oracao
+      orar: oracao
+  - pergunta: "Rede semântica: que palavras vêm à sua cabeça com EXAMINAR?"
+    pontua: true
+    verdade: V4
+    sinonimos:
+      escritura: escrituras
+      biblia: escrituras
+      palavra: escrituras
+      comparacao: comparar
+      provar: provar
+      testar: provar
+      prova: provar
+      questionar: questionar
+      perguntar: questionar
+    origem: curador
+    base:
+      - "rede semântica, que é o seu desafio"
+      - "em torno da palavra 'examinar'"
+  - pergunta: Qual é o seu papel, e como você pode fazer ainda mais?
+    pontua: false
+    verdade: V3
+
+vozProfetica:
+  - caso: 'Um vídeo "cristão" viralizou e todo mundo está compartilhando. Como saber se a mensagem está alinhada com a Palavra?'
+    ref: Mt 7:15-20; 1Ts 5:19-22
+    origem: curador
+    base:
+      - "não é porque uma mensagem é popular que necessariamente ela é verdadeira"
+      - "Popularidade não é prova de verdade"
+  - caso: Um amigo está passando por um tempo difícil. Como ser um "Judas e Silas" e levar ânimo e esperança para ele?
+    ref: At 15:32
+    origem: curador
+    base:
+      - "Eles tambem oferecem palavras de animo em tempos de dificil e em tempos de tribuilaçãk, o dom de profecia tem sido animo e esperança"
+      - "Judas e Silas"
+  - caso: Você acha que ainda é jovem demais para ser porta-voz de Deus. O que Paulo diria a você, como disse a Timóteo e Tito?
+    ref: 1Tm 1:18; Tt 2:15
+    origem: curador
+    base:
+      - "Juventude não é desculpa para falta de responsabilidade espiritual"
+      - "Todo jovem precisa de alguém que o prepare"
+  - caso: 'A turma vive reclamando de tudo: escola, trabalho, igreja. Como viver o "fiquem com o que é bom" nesta semana?'
+    ref: 1Ts 5:21-22
+    origem: curador
+    base:
+      - "também vejo como uma forma de estilo de vida, onde vamos lidar com coisas boas e ruins, mas devemos ter de bom animo, ver o lado bom das coisas"
+      - "voce ja se viu reclamar do caminho que nos leva até ceu?"
+  - caso: O seu feed molda o que você pensa. Como voltar a mente para o que o Espírito deseja?
+    ref: Rm 8:5-6; Ef 6:10-18
+    origem: curador
+    base:
+      - "quem vive de acordo com o espirito tem a mente voltada para que o espirito deseja"
+      - "pelo algoritmo do que pelas Escrituras"
+
+palavrasDoSonho:
+  - Apóstolo
+  - Profeta
+  - Profetisa
+  - Ana
+  - Templo
+  - Filipe
+  - Timóteo
+  - Tito
+  - Creta
+  - Paulo
+  - Pedro
+  - Silas
+  - Carta
+  - Igreja
+  - Lobo
+  - Ovelha
+  - Frutos
+  - Árvore
+  - Armadura
+  - Escudo
+  - Espada
+  - Capacete
+  - Oração
+  - Bíblia
+  - Filtro
+  - Moisés
+  - Estrela da manhã
+  - Pedra angular
+  - Porta-voz
+  - Jovem
+
+curiosidades:
+  - Apóstolo vem do grego apóstolos, que quer dizer "enviado".
+  - Judas e Silas foram profetas e não escreveram nenhum livro da Bíblia.
+  - Ana, a primeira profetisa do NT, tinha 84 anos.
+  - Filipe tinha quatro filhas que profetizavam (At 21:9).
+  - A Série Conflito, de Ellen White, começa e termina com a frase "Deus é amor".
+  - Paulo mudou a rota da viagem por causa de uma visão de noite (At 16:9).
+
+listasGeradas: []

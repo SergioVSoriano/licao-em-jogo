@@ -203,6 +203,8 @@ function Detalhe({ estado, id, recarregar }: { estado: Estado; id: string; recar
   const [autoria, setAutoria] = useState<Autoria | null>(null)
   const [ocupado, setOcupado] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
+  // confirmação dentro da página: window.confirm() é bloqueado no navegador embutido do app (responde "Cancelar" sozinho)
+  const [pedido, setPedido] = useState<{ corpo: Record<string, unknown>; pergunta: string } | null>(null)
   const { pack } = usePack(d && d.erros.length === 0 ? id : null)
   const versaoEstado = JSON.stringify(d?.gerados.length) + JSON.stringify(d?.origem.length)
 
@@ -210,8 +212,10 @@ function Detalhe({ estado, id, recarregar }: { estado: Estado; id: string; recar
     api<Autoria>(`/autoria?id=${encodeURIComponent(id)}`).then(setAutoria, () => setAutoria(null))
   }, [id, versaoEstado])
 
-  const acao = async (corpo: Record<string, unknown>, pergunta?: string) => {
-    if (pergunta && !confirm(pergunta)) return
+  const acao = (corpo: Record<string, unknown>, pergunta?: string) => (pergunta ? setPedido({ corpo, pergunta }) : executar(corpo))
+
+  const executar = async (corpo: Record<string, unknown>) => {
+    setPedido(null)
     setOcupado(true)
     setMsg(null)
     try {
@@ -274,6 +278,22 @@ function Detalhe({ estado, id, recarregar }: { estado: Estado; id: string; recar
       </div>
 
       {msg && <div className="card p-3 font-bold">{msg}</div>}
+
+      {pedido && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" role="dialog" aria-modal="true" onClick={() => setPedido(null)}>
+          <div className="card flex w-full max-w-md flex-col gap-4 p-5" onClick={(e) => e.stopPropagation()}>
+            <div className="font-display text-lg font-black">{pedido.pergunta}</div>
+            <div className="flex justify-end gap-2">
+              <Btn ghost className="!px-4 !py-1.5 !text-sm" onClick={() => setPedido(null)}>
+                Cancelar
+              </Btn>
+              <Btn tone={pedido.corpo.acao === 'remover' ? 'bad' : undefined} className="!px-4 !py-1.5 !text-sm" onClick={() => executar(pedido.corpo)}>
+                {pedido.corpo.acao === 'publicar' ? '🚀 Sim, publicar' : pedido.corpo.acao === 'remover' ? '✕ Sim, remover' : '✓ Sim, aprovar'}
+              </Btn>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-wrap gap-2">
         {d.temCaderno ? (

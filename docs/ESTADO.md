@@ -3,7 +3,7 @@
 > Memória versionada do projeto. Lida em toda sessão do Claude (importada pelo `CLAUDE.md`).
 > **Atualize ao fim de cada tarefa**: o que mudou, o que ficou pendente, decisões novas. Mantenha curto (até ~80 linhas); detalhes vão para `docs/`.
 
-Última atualização: 21/10/2026 (tempos dos minijogos revisados: Linha 90–135 s conforme nº de cartões, Duelo 25 s + 6 s de folga da plateia, Sortes 20 s, Verdade 20 s)
+Última atualização: 24/10/2026 (Lição 4 publicada e no ar; confirmações da /curadoria agora são dentro da página)
 
 ## No ar
 
@@ -16,10 +16,11 @@
 - [x] **Fase 0, fundação** (17/10/2026): conteúdo em `conteudo/` (YAML) → validador + construtor (`scripts/conteudo/`) → `public/conteudo/` (JSON); carregamento sob demanda (`src/content/index.ts`); cada jogo declara `maxRoundsFor` e o planejador trava jogos sem material; seções no lugar dos dias; cobertura dos jogos no pacote; revelações gerais em rodízio; catálogo com o 4º trimestre (semana 3 aberta), 5 temas e 1 livro travados.
 - [x] **Fase 1, menu de modos** (17/10/2026): Início com os modos e o atalho da lição da semana (`currentWeek`, a partir de `inicio` do trimestre no catálogo); tela `/escolher/:modo` com itens travados; planejador por pacote (`/criar/:id`, botão Trocar); perfis de grupo (`PROFILES` em `planner.ts`); opção sem pontos negativos (`settings.noNegative`, perfil Família); Rolo por pacote (`/rolo/:id`).
 - [x] **Fase 2, curadoria** (17/10/2026): skill `/montar-pacote` (guarda o material do curador no caderno, organiza, marca o que é da IA); checagem de origem (`scripts/conteudo/origem.ts`: literal ✅, síntese com `base` 🟡, sem origem 🔴 = erro); `listasGeradas`; rascunhos não travam o build; página `/curadoria` (aprovar, remover, aprovar em grupo, publicar; API só em localhost no dev); CLI `conteudo:novo`, `conteudo:publicar` (exige terminal interativo), `conteudo:testar`; modelos comentados em `conteudo/modelos/`; extrator de PDF.
-- [ ] **Fase 3, conteúdo**: preparar as próximas semanas, temas e capítulos com `/montar-pacote` (a Lição 4, 17 a 23/10, é a da semana atual e ainda está em preparo).
+- [ ] **Fase 3, conteúdo**: preparar as próximas semanas, temas e capítulos com `/montar-pacote`.
+  - Lição 4 (`licao-2026-t4-jovens-s04`, pasta `s04/`): **publicada em 24/10/2026**. Caderno com lição p. 30–38, vídeos do Pr. Dudu e anotações do curador; 8 verdades (dom–sex). 7 jogos com material, de propósito: Nuvem, Fruto Proibido (fácil, 3 proibidas), Verdade ou Falsificação, Três Sinais, perguntas (Sortes/Duelo), Sonho do Rei, Voz Profética. Preferências do curador para os próximos pacotes: perguntas sem "segundo o versículo X", ganchos de fora da lição só no Momento Revelação, Linha do Tempo só em semana narrativa.
 - [ ] Fase 4, extras (combinar pacotes / livro todo, mapas temáticos, modo só telão, limpeza de salas) · Fase 5, se precisar (Blaze, contas de curadores).
 
-Último deploy: 21/10/2026, commit `1a562d5` (fase 2). Contas, fluxo de deploy e testes: `docs/OPERACAO.md`.
+Último deploy: 24/10/2026, commit "Lição 4: Profetas do NT…" (Lição 4 publicada). Contas, fluxo de deploy e testes: `docs/OPERACAO.md`.
 
 ## Pendências conhecidas
 

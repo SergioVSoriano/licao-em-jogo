@@ -41,3 +41,18 @@ personagens:
   - id: ellen
     nome: Ellen G. White
     emoji: ✒️
+  - id: paulo
+    nome: Paulo
+    emoji: ✉️
+  - id: ana
+    nome: Ana
+    emoji: 🕯️
+  - id: silas
+    nome: Silas
+    emoji: 🤝
+  - id: timoteo
+    nome: Timóteo
+    emoji: 🌱
+  - id: tito
+    nome: Tito
+    emoji: 🏝️

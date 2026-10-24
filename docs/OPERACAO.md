@@ -57,6 +57,9 @@ Sem `OUT`, ela sobrescreve `docs/testes/` (relatório e prints versionados).
 - Caminhos com acento (`Sérgio`) quebram algumas ferramentas; o scratchpad usa `C:/Users/SRGIOS~1/...`.
 - Scripts Node que usam `playwright-core` precisam ficar dentro do projeto (ex.: `scripts/_tmp.mjs`) para achar o pacote; apague depois.
 - O servidor de dev (`npm run dev`) já roda **com Firebase** (por causa do `.env.local`). Para o modo demonstração, suba outro na porta 5174 como acima.
+- **Pacote novo não aparece no `npm run dev`** ("Este conteúdo não existe…", e o JSON volta como HTML): o Vite só serve arquivos de `public/` que já existiam ao subir. Depois de `conteudo:novo` (o primeiro JSON do pacote), reinicie o `npm run dev`.
+- Scripts Node no scratchpad também acham o `playwright-core` se importarem pelo caminho absoluto (`file:///C:/Users/S%C3%A9rgio%20Soriano/LicaoSabatina/node_modules/playwright-core/index.mjs`).
+- **bible-api.com bloqueia (403)** depois de umas 20 consultas seguidas. Para ler versículos, baixe a Almeida em JSON (`raw.githubusercontent.com/thiagobodruk/biblia/master/json/aa.json`) no scratchpad. O texto bíblico serve para conferir fatos; não vai para o caderno.
 - O painel de navegador do app às vezes corta capturas e fica em segundo plano; para prints confiáveis use os scripts com Playwright.
 
 ## Material de origem
