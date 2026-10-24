@@ -20,7 +20,7 @@
   - Lição 4 (`licao-2026-t4-jovens-s04`, pasta `s04/`): **publicada em 24/10/2026**. Caderno com lição p. 30–38, vídeos do Pr. Dudu e anotações do curador; 8 verdades (dom–sex). 7 jogos com material, de propósito: Nuvem, Fruto Proibido (fácil, 3 proibidas), Verdade ou Falsificação, Três Sinais, perguntas (Sortes/Duelo), Sonho do Rei, Voz Profética. Preferências do curador para os próximos pacotes: perguntas sem "segundo o versículo X", ganchos de fora da lição só no Momento Revelação, Linha do Tempo só em semana narrativa.
 - [ ] Fase 4, extras (combinar pacotes / livro todo, mapas temáticos, modo só telão, limpeza de salas) · Fase 5, se precisar (Blaze, contas de curadores).
 
-Último deploy: 24/10/2026, commit "Lição 4: Profetas do NT…" (Lição 4 publicada). Contas, fluxo de deploy e testes: `docs/OPERACAO.md`.
+Último deploy: 24/10/2026, commit `71d2272` (revelação na ordem da semana, tempos do Sortes e do Duelo). Contas, fluxo de deploy e testes: `docs/OPERACAO.md`.
 
 ## Pendências conhecidas
 
