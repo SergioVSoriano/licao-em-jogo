@@ -3,7 +3,7 @@
 > Memória versionada do projeto. Lida em toda sessão do Claude (importada pelo `CLAUDE.md`).
 > **Atualize ao fim de cada tarefa**: o que mudou, o que ficou pendente, decisões novas. Mantenha curto (até ~80 linhas); detalhes vão para `docs/`.
 
-Última atualização: 24/10/2026 (Lição 4 publicada e no ar; confirmações da /curadoria agora são dentro da página)
+Última atualização: 24/10/2026 (Momento Revelação segue a ordem da semana; Sortes 30 s; Duelo 40 s + 12 s em que o outro duelista ainda responde por +100)
 
 ## No ar
 
@@ -39,6 +39,8 @@
 - Firebase Spark: 100 conexões simultâneas (~6 salas de 15 pessoas). Salas antigas não são apagadas ainda.
 
 ## Decisões em vigor
+
+- **Momento Revelação** (24/10/2026): o telão escolhe a revelação ao fim de cada jogo (`pickRevelation` em `session.ts`), seguindo a ordem das seções ao longo da partida (1º jogo = começo da semana, último = sexta) e, perto disso, uma verdade que o jogo trabalhou (`coberturaDosJogos`); o campo `jogo` da revelação virou só preferência. Notas de revelação não devem citar um jogo específico.
 
 - Respostas às decisões em aberto do doc 05 (17/10/2026, sugestões adotadas): começar só com **Jovens** (o catálogo já aceita outros públicos); `conteudo/fontes/` fica **fora do Git público** (repositório privado separado quando houver fontes); versículos: o curador digita trechos curtos com referência; temas iniciais travados: Criação, Noé, Santuário, Elias, Daniel; livro: Profetas e Reis; a IA **pode** redigir itens factuais e mecânicos marcados `origem: gerado`, nunca interpretativos.
 - Registro completo: `docs/decisoes/`.

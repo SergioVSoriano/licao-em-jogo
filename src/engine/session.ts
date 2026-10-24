@@ -1,4 +1,5 @@
-import { getPack } from '../content'
+import { gameTruths, getPack, truthSection } from '../content'
+import type { ContentPack } from '../content/types'
 import { GAME_BY_ID } from '../games'
 import { defaultRounds, estimateGame, estimatePlan, hasContent } from './planner'
 import { pick, shuffle, uid } from './helpers'
@@ -473,8 +474,12 @@ function control(s: SessionState, id: string, data: any, now: number) {
           if (n < def.minPlayers) return skipGame(s, now)
           return startGame(s, now)
         }
-        case 'results':
+        case 'results': {
+          const shown = s.revealed ?? []
+          s.revealIdx = pickRevelation(getPack(s.packId), s.results?.gameId ?? '', shown.length, s.plan.length, shown)
+          if (s.revealIdx >= 0) s.revealed = [...shown, s.revealIdx]
           return setPhase(s, 'reveal', now)
+        }
         case 'reveal':
           return setPhase(s, 'map', now)
         case 'map':
@@ -575,11 +580,42 @@ export function finalRanking(players: Player[]): Player[] {
 }
 
 /**
- * O Momento Revelação do jogo que acabou de terminar: a revelação específica do jogo, se o pacote tiver;
- * senão, as revelações gerais (sem jogo) em rodízio, para pacotes pequenos também funcionarem.
+ * Escolhe o Momento Revelação do jogo que acabou (o n-ésimo de `total`). As revelações seguem a ordem
+ * da semana (seções do pacote) ao longo da partida: o 1º jogo fica com o começo, o último com o fim.
+ * Perto desse alvo, prefere uma revelação de uma verdade que o jogo trabalhou e, depois, a do próprio jogo.
  */
-export function currentRevelation(s: { packId: string; gameIdx: number; results: GameResult | null }) {
+export function pickRevelation(pack: ContentPack, gameId: string, n: number, total: number, shown: number[]): number {
+  const revs = pack.revelations
+  if (!revs.length) return -1
+  const secOf = (i: number) => {
+    const k = pack.sections.findIndex((x) => x.id === truthSection(pack, revs[i].truth))
+    return k < 0 ? pack.sections.length : k
+  }
+  const sorted = revs.map((_, i) => i).sort((a, b) => secOf(a) - secOf(b) || a - b)
+  const rank = new Map(sorted.map((i, k) => [i, k]))
+  const lastRank = Math.max(-1, ...shown.map((i) => rank.get(i) ?? -1))
+  const left = Math.max(1, total - n) // jogos que ainda vão precisar de revelação, contando este
+  const target = total > 1 ? Math.round((n * (sorted.length - 1)) / (total - 1)) : 0
+  const covered = new Set(gameTruths(pack, gameId))
+  const unshown = sorted.filter((i) => !shown.includes(i))
+  const tiers = [
+    unshown.filter((i) => rank.get(i)! > lastRank && rank.get(i)! <= sorted.length - left),
+    unshown.filter((i) => rank.get(i)! > lastRank),
+    unshown,
+    sorted,
+  ]
+  const pool = tiers.find((t) => t.length)!
+  const cost = (i: number) => Math.abs(rank.get(i)! - target) + (covered.has(revs[i].truth) ? 0 : 1.5) - (revs[i].game === gameId ? 1 : 0)
+  return pool.reduce((best, i) => (cost(i) < cost(best) ? i : best), pool[0])
+}
+
+/**
+ * O Momento Revelação do jogo que acabou de terminar: a escolhida por pickRevelation ao fim do jogo.
+ * Salas antigas (sem revealIdx): a revelação do próprio jogo ou as gerais em rodízio.
+ */
+export function currentRevelation(s: { packId: string; gameIdx: number; results: GameResult | null; revealIdx?: number }) {
   const pack = getPack(s.packId)
+  if (s.revealIdx !== undefined && pack.revelations[s.revealIdx]) return pack.revelations[s.revealIdx]
   const own = pack.revelations.find((r) => r.game === s.results?.gameId)
   if (own) return own
   const general = pack.revelations.filter((r) => !r.game)

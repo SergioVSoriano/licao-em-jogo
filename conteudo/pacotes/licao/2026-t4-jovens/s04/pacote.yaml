@@ -240,7 +240,7 @@ personagens:
     origem: curador
 
 coberturaDosJogos:
-  nuvem: [ V4, V3 ]
+  nuvem: [ V2, V4, V3 ]
   fruto: [ V1, V3, V4, V6, V8 ]
   verdade: [ V1, V2, V3, V4, V6, V7, V8 ]
   sinais: [ V2, V3, V4, V6, V7 ]

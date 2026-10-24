@@ -4,7 +4,7 @@ import { Btn, Sheet } from '../ui/kit'
 import { Explain, MCPad, OptionsGrid, PhoneTimer, RoundBar, Spotlight, TimerBox, Waiting, pct, sec } from './common'
 
 const DRAW = sec(3.5)
-const ANS = sec(20)
+const ANS = sec(30)
 const X = 100
 
 type Res = { opt: number | null; result: 'ok' | 'wrong' | 'pass' }
@@ -124,7 +124,7 @@ export const sortes: GameDef<S> = {
     tip: 'Não quer ser sorteado? Ative "Não me sortear" no seu celular (menu ⚙️).',
   },
   rounds: { min: 3, max: 12, label: 'perguntas', default: () => 6 },
-  perRound: () => 0.75,
+  perRound: () => 0.9,
   maxRoundsFor: (pack) => pack.questions.length,
 
   init(ctx, rounds) {

@@ -182,6 +182,10 @@ export interface SessionState {
   /** qual pergunta do Momento Revelação está no telão (0 = principal) */
   revealQ: number
   revealExtra: number
+  /** índice (em pack.revelations) do Momento Revelação escolhido para o jogo que acabou */
+  revealIdx?: number
+  /** revelações já mostradas nesta partida, na ordem */
+  revealed?: number[]
   sessionStartedAt?: number
   trackLength: number
   station?: string

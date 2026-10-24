@@ -5,8 +5,9 @@ import { Btn, Sheet } from '../ui/kit'
 import { Explain, MCPad, OptionsGrid, PhoneTimer, RoundBar, TimerBox, Waiting, sec } from './common'
 
 const DRAW = sec(3.5)
-const ANS = sec(25)
-const GRACE = sec(6)
+const ANS = sec(40)
+// depois do 1º acerto: o outro duelista ainda responde (vale menos) e a plateia termina
+const GRACE = sec(12)
 
 interface S {
   qs: number[]
@@ -21,6 +22,8 @@ interface S {
   streak: number
   duel: Record<PlayerId, number>
   winner: PlayerId | null
+  /** o duelista que respondeu depois do 1º acerto (a resposta só aparece na revelação) */
+  late?: PlayerId | null
   aud: Record<PlayerId, number>
   bets: Record<PlayerId, PlayerId>
   xp: Record<PlayerId, number>
@@ -32,6 +35,7 @@ interface S {
 function newDuel(s: S, ctx: any) {
   s.duel = {}
   s.winner = null
+  s.late = null
   s.aud = {}
   s.bets = {}
   s.note = {}
@@ -67,6 +71,11 @@ function reveal(s: S, ctx: any) {
     const g = Math.round(300 * (1 + 0.5 * (s.streak - 1)))
     addXp(s.xp, s.winner, g)
     s.note[s.winner] = `+${g}`
+    const other = s.winner === s.a ? s.b : s.a
+    if (other && s.duel[other] === qq.answer) {
+      addXp(s.xp, other, 100)
+      s.note[other] = '+100'
+    }
   } else {
     s.king = null
     s.streak = 0
@@ -98,15 +107,15 @@ export const duelo: GameDef<S> = {
   howTo: {
     steps: [
       { icon: '⚔️', text: 'Duas pessoas são sorteadas para um duelo de uma pergunta.' },
-      { icon: '⚡', text: 'Quem acertar PRIMEIRO vence. Errou? Fica travado. A plateia ganha 6 s extras para responder.' },
+      { icon: '⚡', text: 'Quem acertar PRIMEIRO vence. Errou? Fica travado. Depois do 1º acerto, o outro ainda tem 12 s para responder.' },
       { icon: '⛰️', text: 'Rei do Monte: o vencedor fica e enfrenta um novo desafiante.' },
       { icon: '👥', text: 'A plateia aposta em quem vence e também responde.' },
     ],
-    scoring: ['Vencedor: +300, e +50% a cada vitória seguida no monte', 'Plateia: acertou a pergunta +50 · acertou a aposta +50'],
+    scoring: ['Vencedor: +300, e +50% a cada vitória seguida no monte', 'O outro duelista acertou depois: +100', 'Plateia: acertou a pergunta +50 · acertou a aposta +50'],
     phone: 'Duelistas: 4 alternativas. Plateia: aposta (2 rostos) + alternativas.',
   },
   rounds: { min: 3, max: 10, label: 'duelos', default: (n) => Math.min(Math.ceil(n / 2), 6) },
-  perRound: () => 0.75,
+  perRound: () => 1,
   maxRoundsFor: (pack) => pack.questions.length,
 
   init(ctx, rounds) {
@@ -117,9 +126,13 @@ export const duelo: GameDef<S> = {
   input(s, msg, ctx) {
     const { pid, type, data } = msg
     const qq = ctx.pack.questions[s.qs[s.i]]
-    if (s.stage === 'q' && (pid === s.a || pid === s.b) && type === 'answer' && s.duel[pid] === undefined) {
+    if ((s.stage === 'q' || s.stage === 'grace') && (pid === s.a || pid === s.b) && type === 'answer' && s.duel[pid] === undefined) {
       const opt = Number(data?.opt)
       s.duel[pid] = opt
+      if (s.stage === 'grace') {
+        s.late = pid
+        return s
+      }
       if (opt === qq.answer) {
         s.winner = pid
         s.stage = 'grace'
@@ -170,6 +183,8 @@ export const duelo: GameDef<S> = {
       q: s.stage === 'draw' ? null : qq.q,
       opts: s.stage === 'draw' ? null : qq.options,
       locked: Object.keys(s.duel),
+      wrong: Object.keys(s.duel).filter((p) => s.duel[p] !== qq.answer && (p !== s.late || s.stage === 'reveal')),
+      also: s.stage === 'reveal' && s.late && s.duel[s.late] === qq.answer ? s.late : null,
       winner: s.winner,
       bets: [betA, betB],
       reveal: s.stage === 'reveal' ? { answer: qq.answer, explain: qq.explain, ref: qq.ref } : null,
@@ -186,7 +201,7 @@ export const duelo: GameDef<S> = {
   bot(s, pid, ctx) {
     const qq = ctx.pack.questions[s.qs[s.i]]
     const guess = ctx.rng() < 0.6 ? qq.answer : Math.floor(ctx.rng() * 4)
-    if (pid === s.a || pid === s.b) return s.stage === 'q' && s.duel[pid] === undefined && ctx.now - s.t0 > 4500 && ctx.rng() < 0.15 ? { type: 'answer', data: { opt: guess } } : null
+    if (pid === s.a || pid === s.b) return (s.stage === 'q' || (s.stage === 'grace' && pid !== s.winner)) && s.duel[pid] === undefined && ctx.now - s.t0 > 4500 && ctx.rng() < 0.15 ? { type: 'answer', data: { opt: guess } } : null
     if (!s.bets[pid] && s.stage !== 'reveal') return { type: 'bet', data: { pid: ctx.rng() < 0.5 ? s.a : s.b } }
     if ((s.stage === 'q' || s.stage === 'grace') && s.aud[pid] === undefined) return { type: 'aud', data: { opt: guess } }
     return null
@@ -198,16 +213,17 @@ export const duelo: GameDef<S> = {
     const r = v.reveal
     const side = (p: typeof A, bets: number, isKing: boolean) =>
       p && (
-        <div className={`flex flex-col items-center ${v.locked.includes(p.id) && v.winner !== p.id ? 'opacity-40' : ''}`}>
+        <div className={`flex flex-col items-center ${(v.wrong ?? []).includes(p.id) ? 'opacity-40' : ''}`}>
           {isKing && <div className="font-display text-[1.1em] font-black text-[var(--ouro)]">⛰️ Rei do Monte ×{v.streak}</div>}
           <div className={`relative ${v.winner === p.id ? 'anim-pop' : ''}`}>
             {v.winner === p.id && <div className="absolute inset-[-15%] rounded-full bg-[radial-gradient(circle,rgba(255,120,30,.75),transparent_65%)]" />}
-            <Avatar id={p.avatar} color={p.color} size={v.stage === 'draw' ? '11em' : '4.2em'} mood={v.winner === p.id ? 'wow' : v.locked.includes(p.id) ? 'sad' : 'happy'} className="relative" />
+            <Avatar id={p.avatar} color={p.color} size={v.stage === 'draw' ? '11em' : '4.2em'} mood={v.winner === p.id ? 'wow' : (v.wrong ?? []).includes(p.id) ? 'sad' : 'happy'} className="relative" />
           </div>
           <div className="rounded-full bg-white px-[0.8em] font-display text-[1.4em] font-black text-[var(--noite)]">{p.name}</div>
           <div className="mt-[0.2em] text-[0.95em] opacity-80">👥 {bets} apostas</div>
-          {v.locked.includes(p.id) && v.winner !== p.id && <div className="font-display font-black text-[var(--carmesim)]">❌ errou</div>}
+          {(v.wrong ?? []).includes(p.id) && <div className="font-display font-black text-[var(--carmesim)]">❌ errou</div>}
           {v.winner === p.id && <div className="font-display text-[1.4em] font-black text-[var(--ouro)]">🔥 VENCEU!</div>}
+          {v.also === p.id && <div className="font-display font-black text-[var(--oliveira)]">✅ acertou também (+100)</div>}
         </div>
       )
     return (
@@ -248,12 +264,12 @@ export const duelo: GameDef<S> = {
     if (duelist) {
       if (v.stage === 'draw') return <Waiting title="Você está no duelo! ⚔️" me={me} mood="wow">Olhe para o telão e prepare o dedo…</Waiting>
       if (v.winner === meId) return <Waiting title="✅ Acertou!" me={me} mood="wow">Veja o telão: a plateia está terminando de responder.</Waiting>
-      if (v.stage === 'grace') return <Waiting title="Seu adversário acertou" me={me} mood="sad">Não deu desta vez.</Waiting>
+      if (v.stage === 'grace' && priv?.mine != null) return <Waiting title="Resposta registrada 🤞" me={me}>Seu adversário acertou primeiro. Veja no telão se você acertou também.</Waiting>
       if (priv?.mine != null) return <Waiting title="❌ Errou… travado" me={me} mood="sad">Torça pelo erro do adversário!</Waiting>
       return (
         <div className="flex flex-1 flex-col gap-3 p-4">
           <div className="flex items-center justify-between">
-            <span className="font-display font-black text-[var(--fogo)]">⚔️ Quem acertar primeiro vence!</span>
+            <span className="font-display font-black text-[var(--fogo)]">{v.stage === 'grace' ? '⏳ O adversário acertou primeiro. Responda: acerto vale +100' : '⚔️ Quem acertar primeiro vence!'}</span>
             <PhoneTimer end={v.t1} now={now} />
           </div>
           <div className="card p-3 text-center font-display text-lg font-black">{v.q}</div>
